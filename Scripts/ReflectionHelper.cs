@@ -60,6 +60,19 @@ namespace NikosAssets.Helpers
 
             return ReflectionHelper.TypeIsOtherType(t.BaseType, otherType);
         }
+
+        public static List<Type> FindAllDerivedTypesAcrossAllAssemblies<T>()
+        {
+            Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
+            List<Type> types = new List<Type>();
+            
+            foreach (Assembly assembly in assemblies)
+            {
+                types.AddRange(FindAllDerivedTypes<T>(assembly));
+            }
+
+            return types;
+        }
         
         public static List<Type> FindAllDerivedTypes<T>()
         {
