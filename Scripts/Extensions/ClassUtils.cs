@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -9,6 +10,7 @@ namespace NikosAssets.Helpers.Extensions
     {
         /// <summary> Perform a deep Copy of the object. Binary Serialization is used to perform the copy </summary>
         /// Reference Article http://www.codeproject.com/KB/tips/SerializedObjectCloner.aspx
+        /// Very Expensive!!
         /// <typeparam name="T">The type of object being copied </typeparam>
         /// <param name="source">The object instance to copy </param>
         /// <returns>The copied object </returns>
@@ -35,7 +37,7 @@ namespace NikosAssets.Helpers.Extensions
                 return (T) formatter.Deserialize(stream);
             }
         }
-        
+
         /// <summary>
         /// Creates and returns a clone of any given scriptable object.
         /// </summary>
