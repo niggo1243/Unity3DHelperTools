@@ -39,7 +39,7 @@ namespace NikosAssets.Helpers.Extensions
         /// <summary>
         /// Creates and returns a clone of any given scriptable object.
         /// </summary>
-        public static T Clone<T>(this T scriptableObject) where T : ScriptableObject
+        public static T CloneScriptableObject<T>(this T scriptableObject) where T : ScriptableObject
         {
             if (scriptableObject == null)
             {
