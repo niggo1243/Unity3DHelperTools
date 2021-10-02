@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using UnityEngine;
@@ -56,6 +57,62 @@ namespace NikosAssets.Helpers
         public static List<T> ListOfOne<T>(T item)
         {
             return new List<T> { item };
+        }
+
+        public static void IterateArrayInQuadChunks<T>(T[] array, Action<T> action)
+        {
+            if (array.Length >= 4)
+            {
+                int rest = array.Length % 4;
+                
+                for (int i = 0; ((i - 1) + 4) < array.Length; i += 4)
+                {
+                    action.Invoke(array[i]);
+                    action.Invoke(array[i + 1]);
+                    action.Invoke(array[i + 2]);
+                    action.Invoke(array[i + 3]);
+                }
+
+                for (int i = array.Length - rest; i < array.Length; i++)
+                {
+                    action.Invoke(array[i]);
+                }
+            }
+            else
+            {
+                foreach (T obj in array)
+                {
+                    action.Invoke(obj);
+                }
+            }
+        }
+        
+        public static void IterateListInQuadChunks<T>(List<T> list, Action<T> action)
+        {
+            if (list.Count >= 4)
+            {
+                int rest = list.Count % 4;
+                
+                for (int i = 0; ((i - 1) + 4) < list.Count; i += 4)
+                {
+                    action.Invoke(list[i]);
+                    action.Invoke(list[i + 1]);
+                    action.Invoke(list[i + 2]);
+                    action.Invoke(list[i + 3]);
+                }
+                
+                for (int i = list.Count - rest; i < list.Count; i++)
+                {
+                    action.Invoke(list[i]);
+                }
+            }
+            else
+            {
+                foreach (T obj in list)
+                {
+                    action.Invoke(obj);
+                }
+            }
         }
         
         /// <summary>
