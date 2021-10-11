@@ -112,10 +112,10 @@ namespace NikosAssets.Helpers
             return dist >= minMaxDistance.x && dist <= minMaxDistance.y;
         }
 
-        public static bool IsInAreaDistSquared(float distSquared, Vector2 minMaxDistance)
+        public static bool IsInAreaDistSquared(float distSquared, Vector2 minMaxDistanceNotSquared)
         {
-            return distSquared >= minMaxDistance.x * minMaxDistance.x
-                   && distSquared <= minMaxDistance.y * minMaxDistance.y;
+            return distSquared >= minMaxDistanceNotSquared.x * minMaxDistanceNotSquared.x
+                   && distSquared <= minMaxDistanceNotSquared.y * minMaxDistanceNotSquared.y;
         }
         
         /// <summary>
