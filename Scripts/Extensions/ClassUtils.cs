@@ -56,21 +56,6 @@ namespace NikosAssets.Helpers.Extensions
             return instance;
         }
 
-        /// <summary>
-        /// @First() from System.Linq... I know it can be null, so you can stop throwing exceptions at me!!
-        /// Fine Ill do it myself
-        /// </summary>
-        /// <param name="collection"></param>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        public static T MyFirst<T>(this IList<T> collection)
-        {
-            if (collection.Count < 1)
-                return default;
-
-            return collection[0];
-        }
-        
         public static ulong GetUInt64Hash(this string text)
         {
             return text.GetUInt64Hash(SHA256.Create());
