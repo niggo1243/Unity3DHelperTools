@@ -86,6 +86,14 @@ namespace NikosAssets.Helpers
             return q;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="q">the rotation to be clamped</param>
+        /// <param name="boundsX">-180 to 180 angles</param>
+        /// <param name="boundsY">-180 to 180 angles</param>
+        /// <param name="boundsZ">-180 to 180 angles</param>
+        /// <returns></returns>
         public static Quaternion ClampRotation(Quaternion q, Vector2 boundsX, Vector2 boundsY, Vector2 boundsZ)
         {
             q.x /= q.w;
