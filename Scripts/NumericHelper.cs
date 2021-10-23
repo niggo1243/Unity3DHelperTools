@@ -63,6 +63,60 @@ namespace NikosAssets.Helpers
 
             return thisQuat;
         }
+        
+        public static Quaternion ClampRotation(Quaternion q, Vector3 bounds)
+        {
+            q.x /= q.w;
+            q.y /= q.w;
+            q.z /= q.w;
+            q.w = 1.0f;
+
+            float angleX = 2.0f * Mathf.Rad2Deg * Mathf.Atan(q.x);
+            angleX = Mathf.Clamp(angleX, -bounds.x, bounds.x);
+            q.x = Mathf.Tan(0.5f * Mathf.Deg2Rad * angleX);
+
+            float angleY = 2.0f * Mathf.Rad2Deg * Mathf.Atan(q.y);
+            angleY = Mathf.Clamp(angleY, -bounds.y, bounds.y);
+            q.y = Mathf.Tan(0.5f * Mathf.Deg2Rad * angleY);
+
+            float angleZ = 2.0f * Mathf.Rad2Deg * Mathf.Atan(q.z);
+            angleZ = Mathf.Clamp(angleZ, -bounds.z, bounds.z);
+            q.z = Mathf.Tan(0.5f * Mathf.Deg2Rad * angleZ);
+
+            return q;
+        }
+
+        public static Quaternion ClampRotation(Quaternion q, Vector2 boundsX, Vector2 boundsY, Vector2 boundsZ)
+        {
+            q.x /= q.w;
+            q.y /= q.w;
+            q.z /= q.w;
+            q.w = 1.0f;
+
+            float angleX = 2.0f * Mathf.Rad2Deg * Mathf.Atan(q.x);
+            angleX = Mathf.Clamp(angleX, boundsX.x, boundsX.y);
+            q.x = Mathf.Tan(0.5f * Mathf.Deg2Rad * angleX);
+
+            float angleY = 2.0f * Mathf.Rad2Deg * Mathf.Atan(q.y);
+            angleY = Mathf.Clamp(angleY, boundsY.x, boundsY.y);
+            q.y = Mathf.Tan(0.5f * Mathf.Deg2Rad * angleY);
+
+            float angleZ = 2.0f * Mathf.Rad2Deg * Mathf.Atan(q.z);
+            angleZ = Mathf.Clamp(angleZ, boundsZ.x, boundsZ.y);
+            q.z = Mathf.Tan(0.5f * Mathf.Deg2Rad * angleZ);
+
+            return q;
+        }
+
+        public static Quaternion ConvertGlobalToLocalRotation(Quaternion desiredGlobalRotation, Transform forTransform)
+        {
+            Transform parent = forTransform.parent;
+            
+            if (parent == null)
+                return desiredGlobalRotation;
+            
+            return Quaternion.Inverse(parent.rotation) * desiredGlobalRotation;
+        }
 
         public static void CalculateTorqueRotationAlignment(Transform transform, Rigidbody rigidbody, Vector3 direction,
             float alignmentSpeed, float alignmentDamping)
