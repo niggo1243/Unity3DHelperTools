@@ -58,7 +58,7 @@ namespace NikosAssets.Helpers
         /// <returns></returns>
         public static Quaternion LookAt(Vector3 posA, Vector3 targetPos, Vector3 eulerOffset)
         {
-            Quaternion thisQuat = Quaternion.LookRotation(posA - targetPos);
+            Quaternion thisQuat = Quaternion.LookRotation(targetPos - posA);
             thisQuat.eulerAngles -= eulerOffset;
 
             return thisQuat;
