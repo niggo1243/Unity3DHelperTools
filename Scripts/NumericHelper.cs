@@ -4,6 +4,31 @@ namespace NikosAssets.Helpers
 {
     public static class NumericHelper
     {
+        public enum AmountFilter
+        {
+            Irrelevant = 0,
+            HasNone = 1,
+            HasSome = 2,
+            //HasNegative = 3
+        }
+
+        public static bool GetAmountValidation(AmountFilter amountFilter, int amount)
+        {
+            switch (amountFilter)
+            {
+                case AmountFilter.Irrelevant:
+                    return true;
+                case AmountFilter.HasNone:
+                    return amount == 0;
+                case AmountFilter.HasSome:
+                    return amount > 0;
+                // case AmountFilter.HasNegative:
+                //     return amount < 0;
+            }
+
+            return false;
+        }
+        
         /// <summary>
         /// 
         /// </summary>
