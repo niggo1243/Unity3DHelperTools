@@ -31,16 +31,24 @@ namespace NikosAssets.Helpers.Editor
         public static Texture2D WhiteTexBorder2PX { get { return _whiteTexBorder2PX != null ? _whiteTexBorder2PX : _whiteTexBorder2PX = Resources.Load<Texture2D>("white_box_border2px"); } }
         private static Texture2D _whiteTexBorder2PX;
         
-        public static void GUILine(Color color, float height = 1, float widthMultiplier = 1)
+        public static void DrawLineHorizontalCentered(Color color, float height = 1, float widthMultiplier = 1)
         {
             Rect rect = EditorGUILayout.GetControlRect(false, height );
             rect.height = height;
-
+            
             float fullWidth = rect.width;
             rect.width *= widthMultiplier;
-
+            
             float diffWidth = fullWidth - rect.width;
             rect.x += diffWidth * .5f;
+
+            EditorGUI.DrawRect(rect, color);
+        }
+        
+        public static void DrawLineVerticalCentered(Color color, float width = 1, float height = 1)
+        {
+            Rect rect = EditorGUILayout.GetControlRect(false, height);
+            rect.width = width;
 
             EditorGUI.DrawRect(rect, color);
         }
