@@ -55,10 +55,11 @@ namespace NikosAssets.Helpers.Editor
         
         public static void DrawColorBox(Color boxColor, Color prevGUIColor, int boxWidth, int boxHeight, RectOffset margin)
         {
-            ColorBoxStyle.margin = margin;
+            GUIStyle style = new GUIStyle(ColorBoxStyle);
+            style.margin = margin;
 
             GUI.color = boxColor;
-            GUILayout.Label(GUIContent.none, ColorBoxStyle, GUILayout.Width(boxWidth), GUILayout.Height(boxHeight));
+            GUILayout.Label(GUIContent.none, style, GUILayout.Width(boxWidth), GUILayout.Height(boxHeight));
             //revert to prev color
             GUI.color = prevGUIColor;
         }
