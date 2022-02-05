@@ -79,5 +79,13 @@ namespace NikosAssets.Helpers.Extensions
                     .Aggregate((x, y) =>x ^ y); //xor the bytes together so you end up with a ulong (64-bit int)
             }
         }
+
+        public static string CropString(this string text, int maxLength = 40, string cropSymbols = "...")
+        {
+            if (maxLength >= text.Length)
+                return text;
+            
+            return text.Substring(0, maxLength) + cropSymbols;
+        }
     }
 }
