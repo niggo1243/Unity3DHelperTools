@@ -50,17 +50,6 @@ namespace NikosAssets.Helpers
             return null;
         }
 
-        public static bool TypeIsOtherType(Type t, Type otherType)
-        {
-            if (t == null || otherType == null)
-                return false;
-
-            if (t.Name.Equals(otherType.Name))
-                return true;
-
-            return ReflectionHelper.TypeIsOtherType(t.BaseType, otherType);
-        }
-
         public static List<Type> FindAllDerivedTypesAcrossAllAssemblies<T>()
         {
             Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
