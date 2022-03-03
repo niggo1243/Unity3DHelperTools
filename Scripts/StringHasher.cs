@@ -62,20 +62,25 @@ namespace NikosAssets.Helpers
         /// <param name="value">
         /// the string value to map to the generated or desired hash
         /// </param>
+        /// <param name="checkValue"></param>
+        /// check if the value already has a key that doesnt match the desiredKey? 
         /// <returns>
         /// returns the reserved number, if the string value is null or empty
         /// returns the desiredHash value if the string entry matched the hash or no entry was found
         /// returns a new random hash value if the string value did not match the desired key on the found entry (hash collision)
         /// or the desired hash matched the reserved number
         /// </returns>
-        public virtual int GetAndSet32(int desiredHashKey, string value)
+        public virtual int GetAndSet32(int desiredHashKey, string value, bool checkValue = false)
         {
             if (string.IsNullOrEmpty(value))
                 return this.reserved32;
 
             //no hash defined, create one
             if (desiredHashKey == this.reserved32)
+            {
                 desiredHashKey = value.GetHashCode();
+                checkValue = false;
+            }
 
             //is the entry present
             if (this.stringHashDictInt32.TryGetValue(desiredHashKey, out string valueOfDesiredHash))
@@ -91,20 +96,29 @@ namespace NikosAssets.Helpers
                     ++desiredHashKey;
                 } while (this.stringHashDictInt32.ContainsKey(desiredHashKey));
             }
+            //check if the value already has a key that doesnt match the desiredKey? 
+            else if (checkValue)
+            {
+                foreach (KeyValuePair<int,string> valuePair in this.stringHashDictInt32)
+                    if (valuePair.Value.Equals(value)) return valuePair.Key;
+            }
             
             //add a new kvp and return the unique hash
             this.stringHashDictInt32.Add(desiredHashKey, value);
             return desiredHashKey;
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="desiredHashKey">
-        /// the desired hash for the given string value
+        ///     the desired hash for the given string value
         /// </param>
         /// <param name="value">
-        /// the string value to map to the generated or desired hash
+        ///     the string value to map to the generated or desired hash
+        /// </param>
+        /// <param name="checkValue">
+        /// check if the value already has a key that doesnt match the desiredKey?
         /// </param>
         /// <returns>
         /// returns the reserved number, if the string value is null or empty
@@ -112,14 +126,17 @@ namespace NikosAssets.Helpers
         /// returns a new random hash value if the string value did not match the desired key on the found entry (hash collision)
         /// or the desired hash matched the reserved number
         /// </returns>
-        public virtual ulong GetAndSetU64(ulong desiredHashKey, string value)
+        public virtual ulong GetAndSetU64(ulong desiredHashKey, string value, bool checkValue = false)
         {
             if (string.IsNullOrEmpty(value))
                 return this.reservedU64;
 
             //no hash defined, create one
             if (desiredHashKey == this.reservedU64)
+            {
                 desiredHashKey = value.GetUInt64Hash();
+                checkValue = false;
+            }
 
             //is the entry present?
             if (this.stringHashDictUInt64.TryGetValue(desiredHashKey, out string valueOfDesiredHash))
@@ -135,6 +152,12 @@ namespace NikosAssets.Helpers
                 {
                     ++desiredHashKey;
                 } while (this.stringHashDictUInt64.ContainsKey(desiredHashKey));
+            }
+            //check if the value already has a key that doesnt match the desiredKey? 
+            else if (checkValue)
+            {
+                foreach (KeyValuePair<ulong,string> valuePair in this.stringHashDictUInt64)
+                    if (valuePair.Value.Equals(value)) return valuePair.Key;
             }
             
             //add a new kvp and return the unique hash
