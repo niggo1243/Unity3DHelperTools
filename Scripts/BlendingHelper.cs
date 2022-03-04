@@ -27,6 +27,7 @@ namespace NikosAssets.Helpers
         /// </summary>
         [ShowIf(nameof(blendOverTime))]
         [Tooltip("The blend in and out time")]
+        [AllowNesting]
         public float blendTime = 1;
 
         public virtual float Blend(float currentValue, float targetValue, float deltaTime = 1)

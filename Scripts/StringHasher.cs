@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using NikosAssets.Helpers.Extensions;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace NikosAssets.Helpers
@@ -70,7 +71,7 @@ namespace NikosAssets.Helpers
         /// returns a new random hash value if the string value did not match the desired key on the found entry (hash collision)
         /// or the desired hash matched the reserved number
         /// </returns>
-        public virtual int GetAndSet32(int desiredHashKey, string value, bool checkValue = false)
+        public virtual int GetAndSet32(int desiredHashKey, string value, bool checkValue = true)
         {
             if (string.IsNullOrEmpty(value))
                 return this.reserved32;
@@ -88,6 +89,12 @@ namespace NikosAssets.Helpers
                 //is the value equal
                 if (valueOfDesiredHash.Equals(value))
                     return desiredHashKey;
+                
+                if (checkValue)
+                {
+                    foreach (KeyValuePair<int,string> valuePair in this.stringHashDictInt32)
+                        if (valuePair.Value.Equals(value)) return valuePair.Key;
+                }
 
                 //hash collision but with different values! create/ adapt a new hash value
                 desiredHashKey = (int)(desiredHashKey * .3f) + Random.Range((int)(Int32.MinValue * .5f), (int)(Int32.MaxValue * .5f));
@@ -126,7 +133,7 @@ namespace NikosAssets.Helpers
         /// returns a new random hash value if the string value did not match the desired key on the found entry (hash collision)
         /// or the desired hash matched the reserved number
         /// </returns>
-        public virtual ulong GetAndSetU64(ulong desiredHashKey, string value, bool checkValue = false)
+        public virtual ulong GetAndSetU64(ulong desiredHashKey, string value, bool checkValue = true)
         {
             if (string.IsNullOrEmpty(value))
                 return this.reservedU64;
@@ -145,6 +152,12 @@ namespace NikosAssets.Helpers
                 if (valueOfDesiredHash.Equals(value))
                     //kvp match -> hash is already correct!
                     return desiredHashKey;
+
+                if (checkValue)
+                {
+                    foreach (KeyValuePair<ulong,string> valuePair in this.stringHashDictUInt64)
+                        if (valuePair.Value.Equals(value)) return valuePair.Key;
+                }
 
                 //hash collision but with different values! create/ adapt a new hash value
                 desiredHashKey = (ulong)(desiredHashKey * .3f) + (ulong)Random.Range(0, Int32.MaxValue);
