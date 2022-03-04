@@ -90,11 +90,8 @@ namespace NikosAssets.Helpers
                 if (valueOfDesiredHash.Equals(value))
                     return desiredHashKey;
                 
-                if (checkValue)
-                {
-                    foreach (KeyValuePair<int,string> valuePair in this.stringHashDictInt32)
-                        if (valuePair.Value.Equals(value)) return valuePair.Key;
-                }
+                foreach (KeyValuePair<int,string> valuePair in this.stringHashDictInt32)
+                    if (valuePair.Value.Equals(value)) return valuePair.Key;
 
                 //hash collision but with different values! create/ adapt a new hash value
                 desiredHashKey = (int)(desiredHashKey * .3f) + Random.Range((int)(Int32.MinValue * .5f), (int)(Int32.MaxValue * .5f));
@@ -152,12 +149,9 @@ namespace NikosAssets.Helpers
                 if (valueOfDesiredHash.Equals(value))
                     //kvp match -> hash is already correct!
                     return desiredHashKey;
-
-                if (checkValue)
-                {
-                    foreach (KeyValuePair<ulong,string> valuePair in this.stringHashDictUInt64)
-                        if (valuePair.Value.Equals(value)) return valuePair.Key;
-                }
+                
+                foreach (KeyValuePair<ulong,string> valuePair in this.stringHashDictUInt64)
+                    if (valuePair.Value.Equals(value)) return valuePair.Key;
 
                 //hash collision but with different values! create/ adapt a new hash value
                 desiredHashKey = (ulong)(desiredHashKey * .3f) + (ulong)Random.Range(0, Int32.MaxValue);
