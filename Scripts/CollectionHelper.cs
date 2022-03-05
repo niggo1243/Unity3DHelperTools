@@ -8,6 +8,14 @@ namespace NikosAssets.Helpers
 {
     public class CollectionHelper : MonoBehaviour
     {
+        public enum ItemMatching
+        {
+            MatchNone = 0,
+            MatchAtLeastOne = 1,
+            MatchAll = 2,
+            MatchAllIncludingAmount = 3
+        }
+        
         public static bool CollectionIsNullOrEmpty(ICollection collection)
         {
             return collection == null || collection.Count <= 0;
