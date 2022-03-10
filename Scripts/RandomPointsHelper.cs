@@ -20,7 +20,7 @@ namespace NikosAssets.Helpers
         [Range(0, 180)]
         public float maxAngleFromLookDir = 180;
 
-        [Range(0, 360)]
+        [Range(-180, 180)]
         public float shiftAngleClockwise = 0;
 
         public Vector3 GetRandomPointInSphere()
@@ -30,26 +30,41 @@ namespace NikosAssets.Helpers
 
         public Vector3 GetRandomPointOnStraightLine(Vector3 originPoint, Vector3 normalizedLookDirection)
         {
-            return originPoint + (normalizedLookDirection * UnityEngine.Random.Range(this.minMaxDistance.x, this.minMaxDistance.y));
+            return GetRandomPointOnStraightLine(originPoint, normalizedLookDirection, minMaxDistance.x, minMaxDistance.y);
         }
 
         public Vector3 GetRandomPointInSphereArea(Transform target)
         {
+            return GetRandomPointInSphereArea(target, minAngleFromLookDir, maxAngleFromLookDir, 
+                minMaxDistance.x, minMaxDistance.y, shiftAngleClockwise);
+        }
+
+        #region Public Static Methods
+
+        public static Vector3 GetRandomPointOnStraightLine(Vector3 originPoint, Vector3 normalizedLookDirection, float minDist, float maxDist)
+        {
+            return originPoint + (normalizedLookDirection * UnityEngine.Random.Range(minDist, maxDist));
+        }
+        
+        public static Vector3 GetRandomPointInSphereArea(Transform target, float minAngle, float maxAngle, 
+            float minDist, float maxDist, float shiftAngleClock)
+        {
             //half the angle since the rotation from up and down is max 180 -> 360/2
             Vector3 randomSphereAreaUnitPoint 
-                = RandomPointsHelper.GetRandomUnitPointInSphereArea(minAngleFromLookDir, this.maxAngleFromLookDir);
+                = RandomPointsHelper.GetRandomUnitPointInSphereArea(minAngle, maxAngle);
 
             //Debug.DrawRay(Vector3.zero, randomSphereAreaUnitPoint, Color.black, 3f);
 
             //add length to the unit point
-            Vector3 randomSpherePoint = this.GetRandomPointOnStraightLine(Vector3.zero, randomSphereAreaUnitPoint);
+            Vector3 randomSpherePoint = 
+                GetRandomPointOnStraightLine(Vector3.zero, randomSphereAreaUnitPoint, minDist, maxDist);
 
             //Debug.DrawRay(Vector3.zero, randomSphereAreaUnitPoint, Color.black, 3f);
             
             //Debug.DrawRay(target.position, randomSphereTransformedPoint, Color.green, 3f);
 
             Quaternion rotation = Quaternion.FromToRotation(Vector3.up, target.forward);
-            Quaternion shiftRotation = Quaternion.AngleAxis(shiftAngleClockwise, target.up);
+            Quaternion shiftRotation = Quaternion.AngleAxis(shiftAngleClock, target.up);
             randomSpherePoint = shiftRotation * rotation * randomSpherePoint;
             
             Vector3 randomSphereTransformedPoint = target.position + randomSpherePoint;
@@ -58,9 +73,7 @@ namespace NikosAssets.Helpers
 
             return randomSphereTransformedPoint;
         }
-
-        #region Public Static Methods
-
+        
         /// <summary>
         /// 
         /// </summary>
@@ -101,7 +114,7 @@ namespace NikosAssets.Helpers
 
             if (raycastHit.collider == null)
             {
-                Debug.Log("missed surface");
+                Debug.LogWarning("missed surface");
                 Debug.DrawLine(offsetAirPoint, offsetAirPoint + shootDir * maxDist, Color.black, 3);
 
                 return airPoint;

@@ -61,11 +61,19 @@ namespace NikosAssets.Helpers
             return Mathf.Abs(diff) <= approxBuffer;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="chance01">
+        /// represents the chance in percentage (0 = 0%, 1 = 100%)
+        /// </param>
+        /// <returns></returns>
         public static bool RandomChanceSuccess01(float chance01)
         {
             float rand = UnityEngine.Random.Range(0f, 1f);
 
             /*
+             * examples:
              * rand = 0,8; chance = 0,9 -> safe
              * rand = 0,6; chance = 0,5 -> fail
              * rand = 0,2; chance = 0,5 -> safe
@@ -192,6 +200,11 @@ namespace NikosAssets.Helpers
         public static float DistanceSquared(Vector3 a, Vector3 b)
         {
             return (b - a).sqrMagnitude;
+        }
+        
+        public static bool IsInAreaDist(Vector3 a, Vector3 b, Vector2 minMaxDistance)
+        {
+            return IsInAreaDistSquared(DistanceSquared(a, b), minMaxDistance);
         }
         
         public static bool IsInAreaDist(float dist, Vector2 minMaxDistance)
