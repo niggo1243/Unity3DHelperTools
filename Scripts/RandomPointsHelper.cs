@@ -35,7 +35,7 @@ namespace NikosAssets.Helpers
 
         public Vector3 GetRandomPointInSphereArea(Transform target)
         {
-            return GetRandomPointInSphereArea(target, minAngleFromLookDir, maxAngleFromLookDir, 
+            return GetRandomPointInSphereArea(target.position, target.up, target.forward, minAngleFromLookDir, maxAngleFromLookDir, 
                 minMaxDistance.x, minMaxDistance.y, shiftAngleClockwise);
         }
 
@@ -46,7 +46,7 @@ namespace NikosAssets.Helpers
             return originPoint + (normalizedLookDirection * UnityEngine.Random.Range(minDist, maxDist));
         }
         
-        public static Vector3 GetRandomPointInSphereArea(Transform target, float minAngle, float maxAngle, 
+        public static Vector3 GetRandomPointInSphereArea(Vector3 position, Vector3 localUp, Vector3 localFwd, float minAngle, float maxAngle, 
             float minDist, float maxDist, float shiftAngleClock)
         {
             //half the angle since the rotation from up and down is max 180 -> 360/2
@@ -63,11 +63,11 @@ namespace NikosAssets.Helpers
             
             //Debug.DrawRay(target.position, randomSphereTransformedPoint, Color.green, 3f);
 
-            Quaternion rotation = Quaternion.FromToRotation(Vector3.up, target.forward);
-            Quaternion shiftRotation = Quaternion.AngleAxis(shiftAngleClock, target.up);
+            Quaternion rotation = Quaternion.FromToRotation(Vector3.up, localFwd);
+            Quaternion shiftRotation = Quaternion.AngleAxis(shiftAngleClock, localUp);
             randomSpherePoint = shiftRotation * rotation * randomSpherePoint;
             
-            Vector3 randomSphereTransformedPoint = target.position + randomSpherePoint;
+            Vector3 randomSphereTransformedPoint = position + randomSpherePoint;
 
             //Debug.DrawRay(target.position, randomSphereTransformedPoint, Color.blue, 3f);
 
