@@ -2,6 +2,7 @@
 
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace NikosAssets.Helpers
 {
@@ -34,10 +35,10 @@ namespace NikosAssets.Helpers
             this.Init();
         }
         
-        public TimingHelper(TimerType timerType, Vector2 minMaxTime)
+        public TimingHelper(TimerType timerType, Vector2 minMaxRandomTimeRange)
         {
             this.timerType = timerType;
-            this.minMaxTime = minMaxTime;
+            this.minMaxRandomTimeRange = minMaxRandomTimeRange;
             
             this.Init();
         }
@@ -45,9 +46,10 @@ namespace NikosAssets.Helpers
         public TimerType timerType = TimerType.Instant;
 
         private bool _HideIf_MinMaxTime() => timerType == TimerType.Instant || timerType == TimerType.Never;
+        [FormerlySerializedAs("minMaxTime")]
         [HideIf(nameof(_HideIf_MinMaxTime))]
         [AllowNesting]
-        public Vector2 minMaxTime = new Vector2(10, 10);
+        public Vector2 minMaxRandomTimeRange = new Vector2(10, 10);
         
         public DateTime CheckAgainstTime { get; set; } = DateTime.Now;
 
@@ -120,7 +122,7 @@ namespace NikosAssets.Helpers
 
             TimeSpan timeSpan = DateTime.Now - checkAgainst;
 
-            return UnityEngine.Random.Range(this.minMaxTime.x, this.minMaxTime.y) * _milliSecondMultiplier <= timeSpan.TotalMilliseconds;
+            return UnityEngine.Random.Range(this.minMaxRandomTimeRange.x, this.minMaxRandomTimeRange.y) * _milliSecondMultiplier <= timeSpan.TotalMilliseconds;
         }
 
         public virtual bool CheckTimeReachedOrExceeded()
@@ -131,7 +133,7 @@ namespace NikosAssets.Helpers
         public virtual object Clone()
         {
             TimingHelper timing = new TimingHelper();
-            timing.minMaxTime = new Vector2(this.minMaxTime.x, this.minMaxTime.y);
+            timing.minMaxRandomTimeRange = new Vector2(this.minMaxRandomTimeRange.x, this.minMaxRandomTimeRange.y);
             timing._milliSecondMultiplier = _milliSecondMultiplier;
             timing.CheckAgainstTime = new DateTime(this.CheckAgainstTime.Year, this.CheckAgainstTime.Month,
                 this.CheckAgainstTime.Day, this.CheckAgainstTime.Hour, this.CheckAgainstTime.Minute, this.CheckAgainstTime.Second, this.CheckAgainstTime.Millisecond);
