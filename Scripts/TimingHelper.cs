@@ -46,7 +46,6 @@ namespace NikosAssets.Helpers
         public TimerType timerType = TimerType.Instant;
 
         private bool _HideIf_MinMaxTime() => timerType == TimerType.Instant || timerType == TimerType.Never;
-        [FormerlySerializedAs("minMaxTime")]
         [HideIf(nameof(_HideIf_MinMaxTime))]
         [AllowNesting]
         public Vector2 minMaxRandomTimeRange = new Vector2(10, 10);
