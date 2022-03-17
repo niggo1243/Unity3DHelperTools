@@ -78,10 +78,7 @@ namespace NikosAssets.Helpers
 
             //no hash defined, create one
             if (desiredHashKey == this.reserved32)
-            {
                 desiredHashKey = value.GetHashCode();
-                checkValue = false;
-            }
 
             //is the entry present
             if (this.stringHashDictInt32.TryGetValue(desiredHashKey, out string valueOfDesiredHash))
@@ -137,10 +134,7 @@ namespace NikosAssets.Helpers
 
             //no hash defined, create one
             if (desiredHashKey == this.reservedU64)
-            {
                 desiredHashKey = value.GetUInt64Hash();
-                checkValue = false;
-            }
 
             //is the entry present?
             if (this.stringHashDictUInt64.TryGetValue(desiredHashKey, out string valueOfDesiredHash))
