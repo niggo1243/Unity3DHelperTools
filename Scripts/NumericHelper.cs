@@ -149,14 +149,14 @@ namespace NikosAssets.Helpers
             return q;
         }
 
-        public static Quaternion ConvertGlobalToLocalRotation(Quaternion desiredGlobalRotation, Transform forTransform)
+        public static Quaternion ConvertGlobalToLocalRotation(Quaternion globalRotationToConvert, Transform forTransform)
         {
             Transform parent = forTransform.parent;
             
             if (parent == null)
-                return desiredGlobalRotation;
+                return globalRotationToConvert;
             
-            return Quaternion.Inverse(parent.rotation) * desiredGlobalRotation;
+            return Quaternion.Inverse(parent.rotation) * globalRotationToConvert;
         }
 
         public static void CalculateTorqueRotationAlignment(Transform transform, Rigidbody rigidbody, Vector3 direction,
