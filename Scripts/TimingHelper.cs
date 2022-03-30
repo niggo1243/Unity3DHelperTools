@@ -52,6 +52,8 @@ namespace NikosAssets.Helpers
         
         public DateTime CheckAgainstTime { get; set; } = DateTime.Now;
 
+        [SerializeField]
+        [HideInInspector]
         protected double _milliSecondMultiplier = 1;
         public double MilliSecondMultiplier => _milliSecondMultiplier;
         
