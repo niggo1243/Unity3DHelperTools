@@ -2,7 +2,7 @@
 
 namespace NikosAssets.Helpers
 {
-    public class KeepSceneViewInFocus : MonoBehaviour
+    public class KeepSceneViewInFocusMono : MonoBehaviour
     {
 #if UNITY_EDITOR
         private void Start()

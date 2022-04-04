@@ -13,7 +13,7 @@ namespace NikosAssets.Helpers.Extensions
         /// <param name="cor"></param>
         public static void StopRunningCoroutine(this MonoBehaviour sender, Coroutine cor)
         {
-            if (cor != null && sender != null)
+            if (cor != null)
             {
                 sender.StopCoroutine(cor);
             }
@@ -33,17 +33,8 @@ namespace NikosAssets.Helpers.Extensions
 
             if (!sender.gameObject.activeInHierarchy)
                 return coroutine = null;
-
-            try
-            {
-                return coroutine = sender.StartCoroutine(enumeratorToStart);
-            }
-            catch (System.NullReferenceException ne)
-            {
-                Debug.LogWarning(ne.Message);
-            }
-
-            return coroutine = null;
+            
+            return coroutine = sender.StartCoroutine(enumeratorToStart);
         }
     }
 

@@ -2,7 +2,7 @@
 
 namespace NikosAssets.Helpers
 {
-    public class LookAtTargetMonoBehaviour : MonoBehaviour
+    public class LookAtTargetMono : MonoBehaviour
     {
         public Transform target = default;
 
