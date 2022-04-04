@@ -1,0 +1,16 @@
+{
+  "name": "com.nikosassets.nikoshelpers",
+  "displayName": "NikosHelpers",
+  "version": "1.0",
+  "unity": "2019.4",
+  "description": "",
+  "keywords": [ "utility", "inspector", "editor" ],
+  "category": "editor extensions",
+  "dependencies": {
+    "com.nikosassets.naughtyattributes": "https://github.com/niggo1243/NaughtyAttributes.git#v2.1.5"
+  },
+  "author": {
+    "name": "Nikodem Grzonkowski",
+    "url": "TODO"
+  }
+}
