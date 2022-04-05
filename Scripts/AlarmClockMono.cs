@@ -7,7 +7,7 @@ namespace NikosAssets.Helpers
     [Serializable]
     public class AlarmUnityEvent : UnityEvent{}
     
-    public class AlarmClockMono : MonoBehaviour
+    public class AlarmClockMono : BaseNotesMono
     {
         public AlarmUnityEvent OnAlarmUnityEvent = new AlarmUnityEvent();
         public event Action OnAlarm;
