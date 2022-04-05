@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using NaughtyAttributes;
+using UnityEngine;
 
 namespace NikosAssets.Helpers
 {
@@ -7,16 +8,16 @@ namespace NikosAssets.Helpers
         public Transform target = default;
 
         [SerializeField]
-        private bool keepEulerX = default, keepEulerY = default, keepEulerZ = default;
+        protected bool keepEulerX = default, keepEulerY = default, keepEulerZ = default;
 
         [SerializeField]
-        private bool alignWithTargetsUp = default;
+        protected bool alignWithTargetsUp = default;
 
         [SerializeField]
-        private Vector3 eulerOffset = default;
+        protected Vector3 eulerOffset = default;
 
         // Update is called once per frame
-        private void Update()
+        protected virtual void Update()
         {
             Vector3 prevEuler = this.transform.eulerAngles;
 

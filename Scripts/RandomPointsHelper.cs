@@ -23,17 +23,17 @@ namespace NikosAssets.Helpers
         [Range(-180, 180)]
         public float shiftAngleClockwise = 0;
 
-        public Vector3 GetRandomPointInSphere()
+        public virtual Vector3 GetRandomPointInSphere()
         {
             return UnityEngine.Random.insideUnitSphere * UnityEngine.Random.Range(this.minMaxDistance.x, this.minMaxDistance.y);
         }
 
-        public Vector3 GetRandomPointOnStraightLine(Vector3 originPoint, Vector3 normalizedLookDirection)
+        public virtual Vector3 GetRandomPointOnStraightLine(Vector3 originPoint, Vector3 normalizedLookDirection)
         {
             return GetRandomPointOnStraightLine(originPoint, normalizedLookDirection, minMaxDistance.x, minMaxDistance.y);
         }
 
-        public Vector3 GetRandomPointInSphereArea(Transform target)
+        public virtual Vector3 GetRandomPointInSphereArea(Transform target)
         {
             return GetRandomPointInSphereArea(target.position, target.up, target.forward, minAngleFromLookDir, maxAngleFromLookDir, 
                 minMaxDistance.x, minMaxDistance.y, shiftAngleClockwise);
