@@ -14,7 +14,7 @@ namespace NikosAssets.Helpers
         public AlarmUnityEvent OnAlarmUnityEvent = new AlarmUnityEvent();
         public event Action OnAlarm;
         
-        [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_DESCRIPTIONS)]
+        [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_SETTINGS)]
         public TimingHelper timer = new TimingHelper(TimingHelper.TimerType.Seconds, Vector2.one);
 
         protected virtual void OnValidate()

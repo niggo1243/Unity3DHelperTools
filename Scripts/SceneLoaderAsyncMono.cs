@@ -22,6 +22,7 @@ namespace NikosAssets.Helpers
         public SceneLoadedUnityEvent SceneLoadedUnityEvent = default;
 
         [SerializeField]
+        [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_SETTINGS)]
         protected int[] scenesToLoadAdditive = default;
 
         protected virtual void Start()
