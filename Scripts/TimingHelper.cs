@@ -49,13 +49,14 @@ namespace NikosAssets.Helpers
         [HideIf(nameof(_HideIf_MinMaxTime))]
         [AllowNesting]
         public Vector2 minMaxRandomTimeRange = new Vector2(10, 10);
-        
-        public DateTime CheckAgainstTime { get; set; } = DateTime.Now;
 
+        public float CheckAgainstTime { get; set; }
+
+        [FormerlySerializedAs("_milliSecondMultiplier")]
         [SerializeField]
         [HideInInspector]
-        protected double _milliSecondMultiplier = 1;
-        public double MilliSecondMultiplier => _milliSecondMultiplier;
+        protected double _secondsMultiplier = 1;
+        public double SecondsMultiplier => _secondsMultiplier;
         
         /// <summary>
         /// Call this before using the timer
@@ -66,42 +67,28 @@ namespace NikosAssets.Helpers
 
             switch (this.timerType)
             {
+                case TimerType.MilliSeconds:
+                    _secondsMultiplier = 1 / 60;
+                    break;
+                
                 case TimerType.Seconds:
-                    //example:
-                    //Total Milli = 5000, MaxTime = 5 (sec)
-                    //Expected Calc: MaxTime * 1000 <= TotalMilli -> 5000 <= 5000 -> true
-
-                    _milliSecondMultiplier = 1000;
+                    _secondsMultiplier = 1;
                     break;
 
                 case TimerType.Minutes:
-                    //example:
-                    //Total Milli = 5000, MaxTime = 5 (minutes)
-                    //Expected Calc: MaxTime * 1000 * 60 < TotalMilli -> 60000 * 5 < 5000 -> false
-
-                    _milliSecondMultiplier = 1000 * 60;
+                    _secondsMultiplier =  60;
                     break;
 
                 case TimerType.Hours:
-                    //example:
-                    //Total Milli = 5000, MaxTime = 5 (hours)
-                    //Expected Calc: MaxTime * 1000 * 60 * 60 < TotalMilli -> 3600000 * 5 < 5000 -> false
-
-                    _milliSecondMultiplier = 1000 * 60 * 60;
-
+                    _secondsMultiplier = 60 * 60;
                     break;
 
                 case TimerType.Days:
-                    //example:
-                    //Total Milli = 5000, MaxTime = 5 (days)
-                    //Expected Calc: MaxTime * 1000 * 60 * 60 * 24 < TotalMilli -> 3600000 * 24 * 5 < 5000 -> false
-
-                    _milliSecondMultiplier = 1000 * 60 * 60 * 24;
-
+                    _secondsMultiplier = 60 * 60 * 24;
                     break;
 
                 default:
-                    _milliSecondMultiplier = 1;
+                    _secondsMultiplier = 1;
                     break;
             }
         }
@@ -113,17 +100,17 @@ namespace NikosAssets.Helpers
         /// <returns>
         /// bool: false = inTime, true = time reached or exceeded
         /// </returns>
-        public virtual bool CheckTimeReachedOrExceeded(DateTime checkAgainst)
+        public virtual bool CheckTimeReachedOrExceeded(float checkAgainst)
         {
             //Instant represents no check/ infinite
             if (this.timerType == TimerType.Instant)
                 return true;
             if (this.timerType == TimerType.Never)
                 return false;
+            
+            float timeSpan = Time.time - checkAgainst;
 
-            TimeSpan timeSpan = DateTime.Now - checkAgainst;
-
-            return UnityEngine.Random.Range(this.minMaxRandomTimeRange.x, this.minMaxRandomTimeRange.y) * _milliSecondMultiplier <= timeSpan.TotalMilliseconds;
+            return UnityEngine.Random.Range(this.minMaxRandomTimeRange.x, this.minMaxRandomTimeRange.y) * _secondsMultiplier <= timeSpan;
         }
 
         public virtual bool CheckTimeReachedOrExceeded()
@@ -135,9 +122,8 @@ namespace NikosAssets.Helpers
         {
             TimingHelper timing = new TimingHelper();
             timing.minMaxRandomTimeRange = new Vector2(this.minMaxRandomTimeRange.x, this.minMaxRandomTimeRange.y);
-            timing._milliSecondMultiplier = _milliSecondMultiplier;
-            timing.CheckAgainstTime = new DateTime(this.CheckAgainstTime.Year, this.CheckAgainstTime.Month,
-                this.CheckAgainstTime.Day, this.CheckAgainstTime.Hour, this.CheckAgainstTime.Minute, this.CheckAgainstTime.Second, this.CheckAgainstTime.Millisecond);
+            timing._secondsMultiplier = _secondsMultiplier;
+            timing.CheckAgainstTime = CheckAgainstTime;
             timing.timerType = this.timerType;
             
             return timing;

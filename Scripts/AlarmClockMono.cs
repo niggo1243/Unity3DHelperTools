@@ -25,7 +25,7 @@ namespace NikosAssets.Helpers
         protected virtual void Start()
         {
             timer.Init();
-            timer.CheckAgainstTime = DateTime.Now;
+            timer.CheckAgainstTime = Time.time;
         }
 
         protected virtual void Update()
@@ -36,7 +36,7 @@ namespace NikosAssets.Helpers
                 OnAlarm?.Invoke();
                 OnAlarmUnityEvent?.Invoke();
                 
-                timer.CheckAgainstTime = DateTime.Now;
+                timer.CheckAgainstTime = Time.time;
             }
         }
     }
