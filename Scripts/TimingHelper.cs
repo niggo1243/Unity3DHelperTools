@@ -52,7 +52,6 @@ namespace NikosAssets.Helpers
 
         public float CheckAgainstTime { get; set; }
 
-        [FormerlySerializedAs("_milliSecondMultiplier")]
         [SerializeField]
         [HideInInspector]
         protected double _secondsMultiplier = 1;
