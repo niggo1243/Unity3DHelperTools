@@ -68,7 +68,7 @@ namespace NikosAssets.Helpers
             switch (this.timerType)
             {
                 case TimerType.MilliSeconds:
-                    _secondsMultiplier = 1 / 60;
+                    _secondsMultiplier = 0.001f;
                     break;
                 
                 case TimerType.Seconds:
