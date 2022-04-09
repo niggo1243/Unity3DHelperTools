@@ -25,18 +25,18 @@ namespace NikosAssets.Helpers
         protected virtual void Start()
         {
             timer.Init();
-            timer.CheckAgainstTime = Time.time;
+            timer.CheckAgainstRunningTime = Time.time;
         }
 
         protected virtual void Update()
         {
-            if (timer.CheckTimeReachedOrExceeded())
+            if (timer.CheckRunningTimeReachedOrExceeded())
             {
                 // invoke the timing events
                 OnAlarm?.Invoke();
                 OnAlarmUnityEvent?.Invoke();
                 
-                timer.CheckAgainstTime = Time.time;
+                timer.CheckAgainstRunningTime = Time.time;
             }
         }
     }

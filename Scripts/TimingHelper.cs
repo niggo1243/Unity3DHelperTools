@@ -50,12 +50,19 @@ namespace NikosAssets.Helpers
         [AllowNesting]
         public Vector2 minMaxRandomTimeRange = new Vector2(10, 10);
 
-        public float CheckAgainstTime { get; set; }
+        public float CheckAgainstRunningTime { get; set; }
+        
+        public DateTime CheckAgainstDateTime { get; set; } = DateTime.Now;
 
         [SerializeField]
         [HideInInspector]
         protected double _secondsMultiplier = 1;
         public double SecondsMultiplier => _secondsMultiplier;
+        
+        [SerializeField]
+        [HideInInspector]
+        protected double _milliSecondsMultiplier = 1;
+        public double MilliSecondsMultiplier => _milliSecondsMultiplier;
         
         /// <summary>
         /// Call this before using the timer
@@ -75,7 +82,7 @@ namespace NikosAssets.Helpers
                     break;
 
                 case TimerType.Minutes:
-                    _secondsMultiplier =  60;
+                    _secondsMultiplier = 60;
                     break;
 
                 case TimerType.Hours:
@@ -90,6 +97,8 @@ namespace NikosAssets.Helpers
                     _secondsMultiplier = 1;
                     break;
             }
+            
+            _milliSecondsMultiplier = _secondsMultiplier * 1000;
         }
 
         /// <summary>
@@ -99,7 +108,7 @@ namespace NikosAssets.Helpers
         /// <returns>
         /// bool: false = inTime, true = time reached or exceeded
         /// </returns>
-        public virtual bool CheckTimeReachedOrExceeded(float checkAgainst)
+        public virtual bool CheckRunningTimeReachedOrExceeded(float checkAgainst)
         {
             //Instant represents no check/ infinite
             if (this.timerType == TimerType.Instant)
@@ -111,10 +120,28 @@ namespace NikosAssets.Helpers
 
             return UnityEngine.Random.Range(this.minMaxRandomTimeRange.x, this.minMaxRandomTimeRange.y) * _secondsMultiplier <= timeSpan;
         }
-
-        public virtual bool CheckTimeReachedOrExceeded()
+        
+        public virtual bool CheckRunningTimeReachedOrExceeded()
         {
-            return this.CheckTimeReachedOrExceeded(this.CheckAgainstTime);
+            return this.CheckRunningTimeReachedOrExceeded(this.CheckAgainstRunningTime);
+        }
+
+        public virtual bool CheckDateTimeReachedOrExceeded(DateTime checkAgainst)
+        {
+            //Instant represents no check/ infinite
+            if (this.timerType == TimerType.Instant)
+                return true;
+            if (this.timerType == TimerType.Never)
+                return false;
+            
+            TimeSpan timeSpan = DateTime.Now - checkAgainst;
+
+            return UnityEngine.Random.Range(this.minMaxRandomTimeRange.x, this.minMaxRandomTimeRange.y) * _milliSecondsMultiplier <= timeSpan.TotalMilliseconds;
+        }
+        
+        public virtual bool CheckDateTimeReachedOrExceeded()
+        {
+            return this.CheckDateTimeReachedOrExceeded(this.CheckAgainstDateTime);
         }
 
         public virtual object Clone()
@@ -122,7 +149,9 @@ namespace NikosAssets.Helpers
             TimingHelper timing = new TimingHelper();
             timing.minMaxRandomTimeRange = new Vector2(this.minMaxRandomTimeRange.x, this.minMaxRandomTimeRange.y);
             timing._secondsMultiplier = _secondsMultiplier;
-            timing.CheckAgainstTime = CheckAgainstTime;
+            timing.CheckAgainstRunningTime = CheckAgainstRunningTime;
+            timing.CheckAgainstDateTime = new DateTime(this.CheckAgainstDateTime.Year, this.CheckAgainstDateTime.Month,
+                this.CheckAgainstDateTime.Day, this.CheckAgainstDateTime.Hour, this.CheckAgainstDateTime.Minute, this.CheckAgainstDateTime.Second, this.CheckAgainstDateTime.Millisecond);
             timing.timerType = this.timerType;
             
             return timing;
