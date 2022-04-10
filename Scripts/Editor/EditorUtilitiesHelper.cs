@@ -9,6 +9,30 @@ namespace NikosAssets.Helpers.Editor
 {
     public static class EditorUtilitiesHelper
     {
+        private static bool _applicationPlayingAccurate;
+        public static bool ApplicationIsPlayingAccurate => _applicationPlayingAccurate;
+        
+        [InitializeOnLoadMethod]
+        public static void InitEditor()
+        {
+            try
+            {
+                EditorApplication.playModeStateChanged -= EditorApplicationOnplayModeStateChanged;
+            }
+            catch
+            {
+                //ignored
+            }
+
+            EditorApplication.playModeStateChanged += EditorApplicationOnplayModeStateChanged;
+        }
+
+        private static void EditorApplicationOnplayModeStateChanged(PlayModeStateChange state)
+        {
+            _applicationPlayingAccurate = state != PlayModeStateChange.EnteredEditMode &&
+                                          state != PlayModeStateChange.ExitingPlayMode;
+        }
+    
         public static string PickFolderInsideProject(string folderPickerTitle, string oldPath)
         {
             string path = EditorUtility.OpenFolderPanel(folderPickerTitle, oldPath, "");
