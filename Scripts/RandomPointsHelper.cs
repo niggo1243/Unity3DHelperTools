@@ -5,13 +5,16 @@ using UnityEngine.AI;
 
 namespace NikosAssets.Helpers
 {
+    /// <summary>
+    /// A helper class to determine random points either in air or on surfaces or <see cref="NavMesh"/>es
+    /// </summary>
     [Serializable]
     public class RandomPointsHelper 
     {
         /// <summary>
-        /// the random distance is generated based on the minimum (x) and maximum (y) float value
+        /// The random distance is generated based on the minimum (x) and maximum (y) float value (both inclusive)
         /// </summary>
-        [Tooltip("the random distance is generated based on the minimum (x) and maximum (y) float value")]
+        [Tooltip("the random distance is generated based on the minimum (x) and maximum (y) float value (both inclusive)")]
         public Vector2 minMaxDistance = new Vector2(1, 2);
 
         [Range(0, 180)]
@@ -74,14 +77,6 @@ namespace NikosAssets.Helpers
             return randomSphereTransformedPoint;
         }
         
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="minAngle"></param>
-        /// <param name="maxAngle">
-        /// maxAngle is 180, since a rotation from up and down is 180
-        /// </param>
-        /// <returns></returns>
         public static Vector3 GetRandomUnitPointInSphereArea(float minAngle = 0, float maxAngle = 180)
         {
             float randomAngle = UnityEngine.Random.Range(minAngle, maxAngle);
