@@ -5,15 +5,24 @@ using System.Text;
 
 namespace NikosAssets.Helpers.Extensions
 {
+    /// <summary>
+    /// A custom string extension helper class
+    /// </summary>
     public static class StringUtils
     {
+        /// <summary>
+        /// Turn this string into a <see cref="ulong"/> hash using the <see cref="SHA256"/> algorithm
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns>
+        /// The <see cref="ulong"/> hash
+        /// </returns>
         public static ulong GetUInt64Hash(this string text)
         {
             return text.GetUInt64Hash(SHA256.Create());
         }
         
         /// <summary>
-        ///
         /// author: https://stackoverflow.com/a/50364956
         /// </summary>
         /// <param name="text"></param>
@@ -31,12 +40,21 @@ namespace NikosAssets.Helpers.Extensions
             }
         }
 
-        public static string CropString(this string text, int maxLength = 40, string cropSymbols = "...")
+        /// <summary>
+        /// Crop this string and append with <paramref name="appendSymbolsOnLengthExceeded"/> if the <paramref name="maxLength"/> is exceeded
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="maxLength"></param>
+        /// <param name="appendSymbolsOnLengthExceeded"></param>
+        /// <returns>
+        /// The cropped and appended string, if the <paramref name="maxLength"/> was exceeded. Otherwise the same as before (input = output)
+        /// </returns>
+        public static string CropString(this string text, int maxLength = 40, string appendSymbolsOnLengthExceeded = "...")
         {
             if (maxLength >= text.Length)
                 return text;
             
-            return text.Substring(0, maxLength) + cropSymbols;
+            return text.Substring(0, maxLength) + appendSymbolsOnLengthExceeded;
         }
     }
 }

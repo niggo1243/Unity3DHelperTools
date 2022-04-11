@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace NikosAssets.Helpers.Extensions
 {
+    /// <summary>
+    /// A general <see cref="UnityEngine"/>.<see cref="UnityEngine.Object"/> extension helper class
+    /// </summary>
     public static class ObjectUtils
     {
         /// <summary> Perform a deep Copy of the object. Binary Serialization is used to perform the copy </summary>

@@ -8,6 +8,10 @@ namespace NikosAssets.Helpers
     [Serializable]
     public class AlarmUnityEvent : UnityEvent{}
     
+    /// <summary>
+    /// A helper class that emits <see cref="OnAlarmUnityEvent"/> and <see cref="OnAlarm"/> events
+    /// using the <see cref="TimingHelper"/> if the time gets exceeded
+    /// </summary>
     public class AlarmClockMono : BaseNotesMono
     {
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_EVENTS)]

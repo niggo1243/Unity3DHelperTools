@@ -1,10 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 namespace NikosAssets.Helpers.Extensions
 {
+    /// <summary>
+    /// A extension helper class for <see cref="NavMeshAgent"/> and desired movement calculations
+    /// </summary>
     public static class NavMeshAgentUtils
     {
         public static float GetDesiredMovementSpeed(this NavMeshAgent navMeshAgent)

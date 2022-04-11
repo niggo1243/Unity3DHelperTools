@@ -2,6 +2,10 @@
 
 namespace NikosAssets.Helpers
 {
+    /// <summary>
+    /// A helper class to draw a GUI list (for the Unity inspector) with alternating backgrounds foreach list item
+    /// using the <see cref="AlternateListItemStyle"/> method
+    /// </summary>
     public class AlternatingListStyleHelper
     {
         protected Texture2D _selectedListItemTexture;
@@ -40,6 +44,18 @@ namespace NikosAssets.Helpers
             _listWrappingStyle.margin = this.marginWrappingStyle;
         }
         
+        /// <summary>
+        /// Use this style as a background style for example when drawing with <see cref="GUILayout"/>.BeginHorizontal
+        /// </summary>
+        /// <param name="isActiveSelection">
+        /// A special (blue by default) <see cref="GUIStyle"/> when the element is selected by the developer
+        /// </param>
+        /// <param name="i">
+        /// The list item's index
+        /// </param>
+        /// <returns>
+        /// The (alternating) list item <see cref="GUIStyle"/>
+        /// </returns>
         public virtual GUIStyle AlternateListItemStyle(bool isActiveSelection, int i)
         {
             if (isActiveSelection)
@@ -54,12 +70,24 @@ namespace NikosAssets.Helpers
             return _listHorizontalItemStyle;
         }
 
+        /// <summary>
+        /// Used to draw the list header
+        /// </summary>
+        /// <returns>
+        /// <see cref="GUIStyle"/>
+        /// </returns>
         public virtual GUIStyle GetWrappingStyle() => _listWrappingStyle;
 
+        /// <summary>
+        /// Used to draw the item's content
+        /// </summary>
+        /// <returns>
+        /// <see cref="GUIStyle"/>
+        /// </returns>
         public virtual GUIStyle GetBodyItemStyle() => _listHorizontalItemStyle;
         
         /// <summary>
-        /// special case when unity flushed the textures. This happens for example if we return from playmode to edit mode again...
+        /// Special case when Unity flushed the <see cref="Texture2D"/>s. This happens for example if we return from playmode to edit mode again...
         /// </summary>
         /// <returns></returns>
         public virtual bool RefreshNeeded() => _selectedListItemTexture == null;
