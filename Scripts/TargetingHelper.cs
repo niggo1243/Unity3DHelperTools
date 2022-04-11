@@ -3,15 +3,20 @@ using UnityEngine;
 
 namespace NikosAssets.Helpers
 {
+    /// <summary>
+    /// A helper class for Component targeting and list sorting
+    /// </summary>
     public static class TargetingHelper
     {
         /// <summary>
-        /// Sorts the passed list
+        /// Sorts the passed <paramref name="targets"/> by distance checking against the <paramref name="checkAgainst"/> component
         /// </summary>
         /// <param name="targets"></param>
         /// <param name="checkAgainst"></param>
         /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
+        /// <returns>
+        /// The sorted list
+        /// </returns>
         public static List<T> GetCompsSortedByDist<T>(List<T> targets, T checkAgainst) where T : Component
         {
             if (targets == null || targets.Count < 2)

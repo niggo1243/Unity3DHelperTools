@@ -34,7 +34,7 @@ namespace NikosAssets.Helpers
 
         protected virtual void Update()
         {
-            if (timer.CheckRunningTimeReachedOrExceeded())
+            if (timer.CheckRunningTime())
             {
                 // invoke the timing events
                 OnAlarm?.Invoke();

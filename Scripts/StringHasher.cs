@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using NikosAssets.Helpers.Extensions;
-using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace NikosAssets.Helpers
@@ -18,14 +17,12 @@ namespace NikosAssets.Helpers
 
                 return _hasher;
             }
-            set
-            {
-                if (value != null)
-                    _hasher = value;
-            }
         }
     }
     
+    /// <summary>
+    /// A helper class to map key (numbers) to strings and add new ones 
+    /// </summary>
     public class StringHasher
     {
         public Dictionary<int, string> stringHashDictInt32 = new Dictionary<int, string>();
@@ -55,20 +52,21 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// 
+        /// Returns the hash value for the given string <paramref name="value"/>,
+        /// either an existing one or a new one using the <see cref="stringHashDictInt32"/>
         /// </summary>
         /// <param name="desiredHashKey">
-        /// the desired hash for the given string value
+        /// The desired hash for the given string value
         /// </param>
         /// <param name="value">
-        /// the string value to map to the generated or desired hash
+        /// The string value to map to the generated or desired hash
         /// </param>
-        /// <param name="checkValue"></param>
-        /// check if the value already has a key that doesnt match the desiredKey? 
+        /// <param name="checkValue">
+        /// Check if the value already has a key that doesnt match the desiredKey?         /// </param>
         /// <returns>
-        /// returns the reserved number, if the string value is null or empty
-        /// returns the desiredHash value if the string entry matched the hash or no entry was found
-        /// returns a new random hash value if the string value did not match the desired key on the found entry (hash collision)
+        /// Returns the reserved number, if the string value is null or empty.
+        /// Returns the desiredHash value if the string entry matched the hash or no entry was found.
+        /// Returns a new random hash value if the string value did not match the desired key on the found entry (hash collision)
         /// or the desired hash matched the reserved number
         /// </returns>
         public virtual int GetAndSet32(int desiredHashKey, string value, bool checkValue = true)
@@ -110,21 +108,22 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// 
+        /// Returns the hash value for the given string <paramref name="value"/>,
+        /// either an existing one or a new one using the <see cref="stringHashDictUInt64"/>
         /// </summary>
         /// <param name="desiredHashKey">
-        ///     the desired hash for the given string value
+        /// The desired hash for the given string value
         /// </param>
         /// <param name="value">
-        ///     the string value to map to the generated or desired hash
+        /// The string value to map to the generated or desired hash
         /// </param>
         /// <param name="checkValue">
-        /// check if the value already has a key that doesnt match the desiredKey?
+        /// Check if the value already has a key that doesnt match the desiredKey?
         /// </param>
         /// <returns>
-        /// returns the reserved number, if the string value is null or empty
-        /// returns the desiredHash value if the string entry matched the hash or no entry was found
-        /// returns a new random hash value if the string value did not match the desired key on the found entry (hash collision)
+        /// Returns the reserved number, if the string value is null or empty.
+        /// Returns the desiredHash value if the string entry matched the hash or no entry was found.
+        /// Returns a new random hash value if the string value did not match the desired key on the found entry (hash collision)
         /// or the desired hash matched the reserved number
         /// </returns>
         public virtual ulong GetAndSetU64(ulong desiredHashKey, string value, bool checkValue = true)

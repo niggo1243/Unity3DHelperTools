@@ -13,6 +13,9 @@ namespace NikosAssets.Helpers
         
     }
     
+    /// <summary>
+    /// A helper class to load <see cref="Scene"/>s async and emit events as well
+    /// </summary>
     public class SceneLoaderAsyncMono : BaseNotesMono
     {
         public static event Action<Scene> SceneLoadedGlobalAdditiveSuccess;

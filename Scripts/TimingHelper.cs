@@ -2,10 +2,12 @@
 
 using NaughtyAttributes;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace NikosAssets.Helpers
 {
+    /// <summary>
+    /// A helper class to handle in-game (Application) time and global <see cref="DateTime"/> as well
+    /// </summary>
     [Serializable]
     public class TimingHelper : ICloneable
     {
@@ -46,8 +48,13 @@ namespace NikosAssets.Helpers
         public TimerType timerType = TimerType.Instant;
 
         private bool _HideIf_MinMaxTime() => timerType == TimerType.Instant || timerType == TimerType.Never;
+        
+        /// <summary>
+        /// Inclusive times to randomly generate
+        /// </summary>
         [HideIf(nameof(_HideIf_MinMaxTime))]
         [AllowNesting]
+        [Tooltip("Inclusive times to randomly generate")]
         public Vector2 minMaxRandomTimeRange = new Vector2(10, 10);
 
         public float CheckAgainstRunningTime { get; set; }
@@ -102,13 +109,13 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// 
+        /// Checks if the in-game time is reached using the <paramref name="checkAgainst"/> time
         /// </summary>
         /// <param name="checkAgainst"></param>
         /// <returns>
         /// bool: false = inTime, true = time reached or exceeded
         /// </returns>
-        public virtual bool CheckRunningTimeReachedOrExceeded(float checkAgainst)
+        public virtual bool CheckRunningTime(float checkAgainst)
         {
             //Instant represents no check/ infinite
             if (this.timerType == TimerType.Instant)
@@ -121,12 +128,25 @@ namespace NikosAssets.Helpers
             return UnityEngine.Random.Range(this.minMaxRandomTimeRange.x, this.minMaxRandomTimeRange.y) * _secondsMultiplier <= timeSpan;
         }
         
-        public virtual bool CheckRunningTimeReachedOrExceeded()
+        /// <summary>
+        /// Checks if the in-game time is reached using the local <see cref="CheckAgainstRunningTime"/>
+        /// </summary>
+        /// <returns>
+        /// bool: false = inTime, true = time reached or exceeded
+        /// </returns>
+        public virtual bool CheckRunningTime()
         {
-            return this.CheckRunningTimeReachedOrExceeded(this.CheckAgainstRunningTime);
+            return this.CheckRunningTime(this.CheckAgainstRunningTime);
         }
 
-        public virtual bool CheckDateTimeReachedOrExceeded(DateTime checkAgainst)
+        /// <summary>
+        /// Checks if the <see cref="DateTime"/> is reached using the <paramref name="checkAgainst"/> time
+        /// </summary>
+        /// <param name="checkAgainst"></param>
+        /// <returns>
+        /// bool: false = inTime, true = time reached or exceeded
+        /// </returns>
+        public virtual bool CheckDateTime(DateTime checkAgainst)
         {
             //Instant represents no check/ infinite
             if (this.timerType == TimerType.Instant)
@@ -139,11 +159,23 @@ namespace NikosAssets.Helpers
             return UnityEngine.Random.Range(this.minMaxRandomTimeRange.x, this.minMaxRandomTimeRange.y) * _milliSecondsMultiplier <= timeSpan.TotalMilliseconds;
         }
         
-        public virtual bool CheckDateTimeReachedOrExceeded()
+        /// <summary>
+        /// Checks if the <see cref="DateTime"/> is reached using the local <see cref="CheckAgainstDateTime"/>
+        /// </summary>
+        /// <returns>
+        /// bool: false = inTime, true = time reached or exceeded
+        /// </returns>
+        public virtual bool CheckDateTime()
         {
-            return this.CheckDateTimeReachedOrExceeded(this.CheckAgainstDateTime);
+            return this.CheckDateTime(this.CheckAgainstDateTime);
         }
 
+        /// <summary>
+        /// Fast cloning
+        /// </summary>
+        /// <returns>
+        /// An independent clone of this object
+        /// </returns>
         public virtual object Clone()
         {
             TimingHelper timing = new TimingHelper();
