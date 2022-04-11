@@ -2,6 +2,9 @@
 
 namespace NikosAssets.Helpers
 {
+    /// <summary>
+    /// Helps with numbers
+    /// </summary>
     public static class NumericHelper
     {
         public enum AmountFilter
@@ -30,14 +33,16 @@ namespace NikosAssets.Helpers
         }
         
         /// <summary>
-        /// 
+        /// Map incoming input values to another value (with that you can keep the same ratio for different dimensions)
         /// </summary>
         /// <param name="currentInput"></param>
         /// <param name="minInput"></param>
         /// <param name="maxInput"></param>
         /// <param name="minTarget"></param>
         /// <param name="maxTarget"></param>
-        /// <returns></returns>
+        /// <returns>
+        /// The mapped result
+        /// </returns>
         public static float GetMappedResult(float currentInput, float minInput, float maxInput, float minTarget, float maxTarget)
         {
             float diffInput = maxInput - minInput;
@@ -49,49 +54,50 @@ namespace NikosAssets.Helpers
             return minTarget + diffTargetValue * inputPercentageResult;
         }
 
+        /// <summary>
+        /// A custom approx helper respecting a certain tolerance
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="approxBuffer"></param>
+        /// <returns></returns>
         public static bool Approx(float a, float b, float approxBuffer)
         {
             float diff = a - b;
-
-            //Debug.Log(a);
-            //Debug.Log(b);
-            //Debug.Log(diff);
-            //Debug.Log(approxBuffer);
-
             return Mathf.Abs(diff) <= approxBuffer;
         }
 
         /// <summary>
-        /// 
+        /// Returns true or false at a given chance
         /// </summary>
         /// <param name="chance01">
-        /// represents the chance in percentage (0 = 0%, 1 = 100%)
+        /// Represents the chance in percentage (0 = 0%, 1 = 100%)
         /// </param>
-        /// <returns></returns>
+        /// <returns>
+        /// <example>
+        /// rand = 0,8; chance = 0,9 -> safe    |
+        /// rand = 0,6; chance = 0,5 -> fail    |
+        /// rand = 0,2; chance = 0,5 -> safe    |
+        /// </example>
+        /// </returns>
         public static bool RandomChanceSuccess01(float chance01)
         {
             float rand = UnityEngine.Random.Range(0f, 1f);
-
-            /*
-             * examples:
-             * rand = 0,8; chance = 0,9 -> safe
-             * rand = 0,6; chance = 0,5 -> fail
-             * rand = 0,2; chance = 0,5 -> safe
-             */
-
             return !(rand > chance01);
         }
 
-
         /// <summary>
-        /// does the math to look at a given target
+        /// Does the calculations to look at a given target
         /// </summary>
-        /// <param name="posA"></param>
+        /// <param name="startingPos"></param>
         /// <param name="targetPos"></param>
-        /// <returns></returns>
-        public static Quaternion LookAt(Vector3 posA, Vector3 targetPos, Vector3 eulerOffset)
+        /// <param name="eulerOffset"></param>
+        /// <returns>
+        /// The <see cref="Quaternion"/> rotation to look at the <paramref name="targetPos"/>
+        /// </returns>
+        public static Quaternion LookAt(Vector3 startingPos, Vector3 targetPos, Vector3 eulerOffset)
         {
-            Quaternion thisQuat = Quaternion.LookRotation(targetPos - posA);
+            Quaternion thisQuat = Quaternion.LookRotation(targetPos - startingPos);
             thisQuat.eulerAngles -= eulerOffset;
 
             return thisQuat;
@@ -119,14 +125,6 @@ namespace NikosAssets.Helpers
             return q;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="q">the rotation to be clamped</param>
-        /// <param name="boundsX">-180 to 180 angles</param>
-        /// <param name="boundsY">-180 to 180 angles</param>
-        /// <param name="boundsZ">-180 to 180 angles</param>
-        /// <returns></returns>
         public static Quaternion ClampRotation(Quaternion q, Vector2 boundsX, Vector2 boundsY, Vector2 boundsZ)
         {
             q.x /= q.w;
@@ -192,39 +190,84 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// more lightweight distance calc then unity internal Vector3.Distance
+        /// More lightweight distance calculation than Unity's internal <see cref="Vector3"/>.<see cref="Vector3.Distance"/> calculation
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
-        /// <returns></returns>
+        /// <returns>
+        /// The squared distance
+        /// </returns>
         public static float DistanceSquared(Vector3 a, Vector3 b)
         {
             return (b - a).sqrMagnitude;
         }
         
-        public static bool IsInAreaDist(Vector3 a, Vector3 b, Vector2 minMaxDistance)
+        /// <summary>
+        /// Is the distance between <paramref name="a"/> and <paramref name="b"/> (not squared) in the bounds of <paramref name="minMaxDistanceInclusive"/>?
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="minMaxDistanceInclusive"></param>
+        /// <returns>
+        /// Inbounds = true, otherwise false
+        /// </returns>
+        public static bool IsInAreaDist(Vector3 a, Vector3 b, Vector2 minMaxDistanceInclusive)
         {
-            return IsInAreaDistSquared(DistanceSquared(a, b), minMaxDistance);
-        }
-        
-        public static bool IsInAreaDist(float dist, Vector2 minMaxDistance)
-        {
-            return dist >= minMaxDistance.x && dist <= minMaxDistance.y;
+            return IsInAreaDist((b - a).magnitude, minMaxDistanceInclusive);
         }
 
-        public static bool IsInAreaDistSquared(float distSquared, Vector2 minMaxDistanceNotSquared)
+        /// <summary>
+        /// Is the <paramref name="dist"/> (not squared) in the bounds of <paramref name="minMaxDistanceInclusive"/>?
+        /// </summary>
+        /// <param name="dist"></param>
+        /// <param name="minMaxDistanceInclusive"></param>
+        /// <returns>
+        /// Inbounds = true, otherwise false
+        /// </returns>
+        public static bool IsInAreaDist(float dist, Vector2 minMaxDistanceInclusive)
         {
-            return distSquared >= minMaxDistanceNotSquared.x * minMaxDistanceNotSquared.x
-                   && distSquared <= minMaxDistanceNotSquared.y * minMaxDistanceNotSquared.y;
+            return dist >= minMaxDistanceInclusive.x && dist <= minMaxDistanceInclusive.y;
+        }
+
+        /// <summary>
+        /// Is the distance between <paramref name="a"/> and <paramref name="b"/> (squared) in the bounds of <paramref name="minMaxDistanceNotSquaredInclusive"/>?
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="minMaxDistanceNotSquaredInclusive"></param>
+        /// <returns>
+        /// Inbounds = true, otherwise false
+        /// </returns>
+        public static bool IsInAreaDistSquared(Vector3 a, Vector3 b, Vector2 minMaxDistanceNotSquaredInclusive)
+        {
+            return IsInAreaDistSquared(DistanceSquared(a, b), minMaxDistanceNotSquaredInclusive);
         }
         
         /// <summary>
-        /// checks if the origin transform is in the given angle view
+        /// Is the <paramref name="distSquared"/> (squared) in the bounds of <paramref name="minMaxDistanceNotSquaredInclusive"/>?
         /// </summary>
-        /// <param name="originTrans"></param>
+        /// <param name="distSquared"></param>
+        /// <param name="minMaxDistanceNotSquaredInclusive"></param>
+        /// <returns>
+        /// Inbounds = true, otherwise false
+        /// </returns>
+        public static bool IsInAreaDistSquared(float distSquared, Vector2 minMaxDistanceNotSquaredInclusive)
+        {
+            return distSquared >= minMaxDistanceNotSquaredInclusive.x * minMaxDistanceNotSquaredInclusive.x
+                   && distSquared <= minMaxDistanceNotSquaredInclusive.y * minMaxDistanceNotSquaredInclusive.y;
+        }
+
+        /// <summary>
+        /// Checks if the (<paramref name="targetPos"/> - <paramref name="originPos"/>) Vector3 direction
+        /// is within the given <paramref name="maxAngle"/>, taking the <paramref name="originNormal"/> into account
+        /// </summary>
+        /// <param name="originPos"></param>
+        /// <param name="originNormal"></param>
         /// <param name="targetPos"></param>
         /// <param name="maxAngle"></param>
-        /// <returns></returns>
+        /// <returns>
+        /// True if within angle, otherwise false
+        /// </returns>
         public static bool IsInViewArea3D(Vector3 originPos, Vector3 originNormal, Vector3 targetPos, float maxAngle)
         {
             Vector3 inverseDirectionToTarget = targetPos - originPos;
@@ -234,13 +277,15 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Checks if the target is within the horizontal and vertical angle bounds of the origin (caster)
+        /// Checks if the <paramref name="targetPos"/> is within the horizontal and vertical angle bounds of the origin (caster)
         /// </summary>
         /// <param name="origin"></param>
         /// <param name="targetPos"></param>
         /// <param name="verticalMaxAngle"></param>
         /// <param name="horizontalMaxAngle"></param>
-        /// <returns></returns>
+        /// <returns>
+        /// True if within angle, otherwise false
+        /// </returns>
         public static bool IsInViewHorAndVertBounds(Transform origin, Vector3 targetPos, float verticalMaxAngle, float horizontalMaxAngle)
         {
             Vector3 originPos = origin.position;
@@ -269,11 +314,13 @@ namespace NikosAssets.Helpers
         }
         
         /// <summary>
-        /// Returns a vector division for each value of the given vectors
+        /// Returns a <see cref="Vector3"/> division for each value of the given vectors
         /// </summary>
         /// <param name="dividend"></param>
         /// <param name="divisor"></param>
-        /// <returns></returns>
+        /// <returns>
+        /// The item by item divided <see cref="Vector3"/>
+        /// </returns>
         public static Vector3 Divide2Vectors(Vector3 dividend, Vector3 divisor)
         {
             return new Vector3(dividend.x / divisor.x, dividend.y / divisor.y, dividend.z / divisor.z);

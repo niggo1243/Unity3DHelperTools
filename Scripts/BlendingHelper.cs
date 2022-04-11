@@ -5,6 +5,9 @@ using NaughtyAttributes;
 
 namespace NikosAssets.Helpers
 {
+    /// <summary>
+    /// A helper class to blend <see cref="float"/>s, <see cref="Vector2"/>s, <see cref="Vector3"/>s and <see cref="Vector4"/>s
+    /// </summary>
     [Serializable]
     public class BlendingHelper
     {

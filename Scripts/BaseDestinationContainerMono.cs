@@ -16,6 +16,7 @@ namespace NikosAssets.Helpers
 
     /// <summary>
     /// A helper class that stores and offers methods for its list of generic <see cref="ComponentType"/>s
+    /// and emits events if the <see cref="Destinations"/> list was modified using methods of this class
     /// </summary>
     /// <typeparam name="ComponentType"></typeparam>
     public abstract class BaseDestinationContainerMono<ComponentType> : BaseNotesMono
@@ -30,12 +31,7 @@ namespace NikosAssets.Helpers
         protected List<ComponentType> _destinations = new List<ComponentType>();
 
         public List<ComponentType> Destinations => _destinations;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="comp"></param>
-        /// <param name="addDistinct"></param>
+        
         public virtual bool AddToDestinations(ComponentType comp, bool addDistinct = false)
         {
             if (comp != null)
@@ -93,15 +89,7 @@ namespace NikosAssets.Helpers
 
             return true;
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="excludeDestinations"></param>
-        /// <param name="removeFoundDoubleFromExclusiveList">
-        /// Set this to true if you know, that the destinations list of this container are distinct (no doubles). In that case the filter will go faster
-        /// </param>
-        /// <returns></returns>
+        
         public virtual List<ComponentType> GetDestinationsWithExcluded(List<ComponentType> excludeDestinations, bool removeFoundDoubleFromExclusiveList)
         {
             List<ComponentType> filteredList = new List<ComponentType>();

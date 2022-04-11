@@ -10,17 +10,16 @@ namespace NikosAssets.Helpers
 
         [SerializeField]
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_SETTINGS)]
-        protected bool keepEulerX = default, keepEulerY = default, keepEulerZ = default;
+        protected bool keepEulerX, keepEulerY, keepEulerZ;
 
         [SerializeField]
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_SETTINGS)]
-        protected bool alignWithTargetsUp = default;
+        protected bool alignWithTargetsUp;
 
         [SerializeField]
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_SETTINGS)]
         protected Vector3 eulerOffset = default;
 
-        // Update is called once per frame
         protected virtual void Update()
         {
             Vector3 prevEuler = this.transform.eulerAngles;

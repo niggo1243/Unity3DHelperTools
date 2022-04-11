@@ -1,5 +1,8 @@
 ﻿namespace NikosAssets.Helpers
 {
+    /// <summary>
+    /// Used for <see cref="NaughtyAttributes"/> descriptions
+    /// </summary>
     public static class HelperConstants
     {
         public const string ATTRIBUTE_FIELD_BOXGROUP_EDITORONLY = "Editor Only";
