@@ -21,7 +21,7 @@ namespace NikosAssets.Helpers
     }
     
     /// <summary>
-    /// A helper class to map key (numbers) to strings and add new ones 
+    /// A helper class to map key (numbers) to existing or to be added strings
     /// </summary>
     public class StringHasher
     {
