@@ -7,7 +7,7 @@
   "keywords": [ "utility", "inspector", "editor" ],
   "category": "editor extensions",
   "dependencies": {
-    "com.nikosassets.naughtyattributes": "https://github.com/niggo1243/NaughtyAttributes.git#v2.1.5"
+    "com.nikosassets.naughtyattributes": "2.1.5"
   },
   "author": {
     "name": "Nikodem Grzonkowski",
