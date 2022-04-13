@@ -1,16 +1,16 @@
 {
-  "name": "com.nikosassets.nikoshelpers",
-  "displayName": "NikosHelpers",
+  "name": "com.nikosassets.u3dhelpertools",
+  "displayName": "Unity3DHelperTools",
   "version": "1.0.0",
   "unity": "2019.4",
   "description": "",
-  "keywords": [ "utility", "inspector", "editor" ],
-  "category": "editor extensions",
+  "keywords": [ "utility", "inspector", "editor", "algorithms", "helpers", "common" ],
+  "documentationUrl": "https://niggo1243.github.io/Unity3DHelperTools/annotated.html",
   "dependencies": {
     "com.nikosassets.naughtyattributes": "2.1.5"
   },
   "author": {
     "name": "Nikodem Grzonkowski",
-    "url": "https://github.com/niggo1243/nikoshelpers.git"
+    "url": "https://github.com/niggo1243/Unity3DHelperTools"
   }
 }
