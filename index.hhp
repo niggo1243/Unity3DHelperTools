@@ -6,10 +6,10 @@ Default Window=main
 Default topic=index.html
 Index file=index.hhk
 Language=0x409 English (United States)
-Title=NikosHelpers
+Title=Unity3DHelperTools
 
 [WINDOWS]
-main="NikosHelpers","index.hhc","index.hhk","index.html","index.html",,,,,0x23520,,0x10387e,,,,,,,,0
+main="Unity3DHelperTools","index.hhc","index.hhk","index.html","index.html",,,,,0x23520,,0x10387e,,,,,,,,0
 
 [FILES]
 annotated.html
@@ -55,13 +55,13 @@ class_nikos_assets_1_1_helpers_1_1_targeting_helper.html
 class_nikos_assets_1_1_helpers_1_1_timing_helper-members.html
 class_nikos_assets_1_1_helpers_1_1_timing_helper.html
 classes.html
-dir_0badbffc839cfa69b0490c5f3e2b99ea.html
-dir_483a4d738e8f77ef419ad75cdae0ab85.html
-dir_4855bd870d39ff3de7e3a5fceb90822d.html
-dir_9f478106bab232d878017084bc9ea038.html
-dir_ad126e0ad3672f3e3ab1a013d15fbd0d.html
-dir_d76c7e64011935ca9b7ecfa3d34c5045.html
-dir_e6d09eeecb897ef96786b81473074946.html
+dir_0c1f5cc0a4c1dd261a64bea2ec1b2e12.html
+dir_33f81eb2ec08a56bcaaa648205718851.html
+dir_3f19857dccf393aeff4b80f0b7a24127.html
+dir_54fdac49734e948de219893345548daf.html
+dir_7d62f4c71f2ed906b1c686b0c3abba3d.html
+dir_83a1ae618325fe1326551edebfd9880a.html
+dir_b7874144b806f41cb96a0b2edda8b78d.html
 functions.html
 functions_func.html
 functions_prop.html
