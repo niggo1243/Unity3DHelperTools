@@ -49,8 +49,7 @@ The final result should look something like this in your manifest.json:
             "com.nikosassets.naughtyattributes"
             ]
         }
-    ]
-    }], 
+    ], 
     "dependencies" 
     {
         "com.nikosassets.u3dhelpertools": "https://github.com/niggo1243/Unity3DHelperTools.git#upm"
@@ -84,6 +83,18 @@ Or alternatively (without git urls):
     }
 }
 ```
+
+### Unity Project
+
+You can simply download a (release) zip file or just clone this project via the git command: 
+
+```
+git clone --recursive https://github.com/niggo1243/Unity3DHelperTools.git
+```
+
+## Samples
+
+WIP
 
 
 
