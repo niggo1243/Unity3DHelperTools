@@ -4,7 +4,7 @@ using UnityEngine.AI;
 namespace NikosAssets.Helpers.Extensions
 {
     /// <summary>
-    /// A extension helper class for <see cref="NavMeshAgent"/> and desired movement calculations
+    /// An extension helper class for <see cref="NavMeshAgent"/> and desired movement calculations
     /// </summary>
     public static class NavMeshAgentUtils
     {

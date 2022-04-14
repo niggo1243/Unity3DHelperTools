@@ -4,7 +4,7 @@ using UnityEngine;
 namespace NikosAssets.Helpers.Editor
 {
     /// <summary>
-    /// A custom editor (window & Inspector) GUIHelper to draw stuff
+    /// A custom Editor GUI helper to draw stuff in the Editor Window & Inspector 
     /// </summary>
     public static class GUIHelper
     {
