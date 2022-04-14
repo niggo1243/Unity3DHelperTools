@@ -77,8 +77,7 @@ Or alternatively (without git urls):
             "com.nikosassets.u3dhelpertools"
             ]
         }
-    ]
-    }], 
+    ], 
     "dependencies" 
     {
         "com.nikosassets.u3dhelpertools": "1.0.0"
