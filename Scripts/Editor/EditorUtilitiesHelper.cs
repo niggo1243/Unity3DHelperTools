@@ -39,22 +39,25 @@ namespace NikosAssets.Helpers.Editor
             _applicationPlayingAccurate = state != PlayModeStateChange.EnteredEditMode &&
                                           state != PlayModeStateChange.ExitingPlayMode;
         }
-    
+
         /// <summary>
         /// Restrict the returning path to be within this Unity project
         /// </summary>
         /// <param name="folderPickerTitle">
         /// The title of the file picker window
         /// </param>
-        /// <param name="startingPath">
+        /// <param name="desiredPath">
         /// The path to open in the file picker window
         /// </param>
+        /// <param name="localProjectPathOnAbort">
+        /// If the file picker was aborted (string is null or empty), return this path
+        /// </param>
         /// <returns>
-        /// The picked project path on success, otherwise logs errors and returns "Assets/" as default path
+        /// The picked project path on success, otherwise logs errors and returns "Assets/" as default path or if aborted, returns <paramref name="localProjectPathOnAbort"/>
         /// </returns>
-        public static string PickFolderInsideProject(string folderPickerTitle, string startingPath)
+        public static string PickFolderInsideProject(string folderPickerTitle, string desiredPath, string localProjectPathOnAbort)
         {
-            string path = EditorUtility.OpenFolderPanel(folderPickerTitle, startingPath, "");
+            string path = EditorUtility.OpenFolderPanel(folderPickerTitle, desiredPath, "");
             
             if (!string.IsNullOrEmpty(path))
             {
@@ -71,7 +74,11 @@ namespace NikosAssets.Helpers.Editor
                     Debug.LogError("Path must be within the Unity Project!");
                     path = "Assets/";
                 }
-
+            }
+            //if string was null, the folder picker was aborted
+            else
+            {
+                path = localProjectPathOnAbort;
             }
 
             return path;
