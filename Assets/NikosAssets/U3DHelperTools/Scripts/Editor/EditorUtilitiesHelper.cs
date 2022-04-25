@@ -62,26 +62,17 @@ namespace NikosAssets.Helpers.Editor
             if (!string.IsNullOrEmpty(path))
             {
                 if (!path.Contains(Application.dataPath))
-                    Debug.LogError("Path must be within the Unity Project!");
-
-                try
-                {
-                    path = "Assets" + path.Substring(Application.dataPath.Length) + "/";
-                    return path;
-                }
-                catch
                 {
                     Debug.LogError("Path must be within the Unity Project!");
-                    path = "Assets/";
+                    return "Assets/";
                 }
+                
+                path = "Assets" + path.Substring(Application.dataPath.Length) + "/";
+                return path;
             }
+            
             //if string was null, the folder picker was aborted
-            else
-            {
-                path = localProjectPathOnAbort;
-            }
-
-            return path;
+            return localProjectPathOnAbort;
         }
         
         /// <summary>
