@@ -13,7 +13,8 @@ namespace NikosAssets.Helpers.Samples
 #if UNITY_EDITOR
         private void OnDisable()
         {
-            if (SceneManager.GetActiveScene().name.Equals(sceneToCheck))
+            Scene activeScene = SceneManager.GetActiveScene();
+            if (activeScene.name != null && activeScene.name.Equals(sceneToCheck))
             {
                 Debug.Log(this.name + " SO Disable: ");
                 Debug.Log("Application.isPlaying: " + Application.isPlaying);
