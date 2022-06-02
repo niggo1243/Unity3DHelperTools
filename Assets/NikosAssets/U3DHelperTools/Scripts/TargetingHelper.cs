@@ -1,21 +1,24 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace NikosAssets.Helpers
 {
     /// <summary>
-    /// A helper class for Component targeting and list sorting
+    /// A helper class for <see cref="Component"/> targeting and list sorting by distance measures
     /// </summary>
     public static class TargetingHelper
     {
         /// <summary>
-        /// Sorts the passed <paramref name="targets"/> by distance checking against the <paramref name="checkAgainst"/> component
+        /// Sorts the passed <paramref name="targets"/> by distance checking against the <paramref name="checkAgainst"/> <see cref="Component"/>.
+        /// If you dont want to sort the original list, make a copy of it.
         /// </summary>
         /// <param name="targets"></param>
         /// <param name="checkAgainst"></param>
         /// <typeparam name="T"></typeparam>
         /// <returns>
-        /// The sorted list
+        /// The sorted (same) list by distance to <paramref name="checkAgainst"/>.
+        /// The same list, if only 1 element is found in the list or the list is null.
         /// </returns>
         public static List<T> GetCompsSortedByDist<T>(List<T> targets, T checkAgainst) where T : Component
         {
@@ -27,7 +30,22 @@ namespace NikosAssets.Helpers
 
             return targets;
         }
-        
+
+        /// <summary>
+        /// Get the <see cref="Component"/> that is closest to the median distance to <paramref name="checkAgainst"/>.
+        /// If you dont want to sort the original list, make a copy of it.
+        /// </summary>
+        /// <param name="targets">
+        /// The <see cref="Component"/> to pick from
+        /// </param>
+        /// <param name="checkAgainst">
+        /// The <see cref="Component"/> to check the <paramref name="targets"/> against
+        /// </param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>
+        /// Null if the list is empty or null, otherwise
+        /// the <see cref="Component"/> at median distance to <paramref name="checkAgainst"/>
+        /// </returns>
         public static T GetCompAtMedianDist<T>(List<T> targets, T checkAgainst) where T : Component
         {
             if (targets == null || targets.Count < 1)
@@ -37,7 +55,18 @@ namespace NikosAssets.Helpers
             return GetCompsSortedByDist(targets, checkAgainst)[Mathf.CeilToInt(targets.Count * .5f) - 1];
         }
 
-        public static T CalcAverageComp<T>(List<T> targets, T checkAgainst) where T : Component
+        /// <summary>
+        /// Get the <see cref="Component"/> that is approx at the average distance to <paramref name="checkAgainst"/> relative to the other
+        /// <paramref name="targets"/>.
+        /// The given list will not be sorted and remains unchanged.
+        /// </summary>
+        /// <param name="targets"></param>
+        /// <param name="checkAgainst"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>
+        /// Null if the list is null or empty, otherwise a <see cref="Component"/>
+        /// </returns>
+        public static T GetCompAtAverageDist<T>(List<T> targets, T checkAgainst) where T : Component
         {
             if (targets == null || targets.Count < 1)
                 return null;
@@ -78,13 +107,28 @@ namespace NikosAssets.Helpers
             return avgTarget;
         }
 
+        /// <summary>
+        /// Get a random <see cref="Component"/> from the given list
+        /// </summary>
+        /// <param name="targets"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>
+        /// Null if list is empty or null, otherwise a random <see cref="Component"/>
+        /// </returns>
         public static T GetRandomComp<T>(List<T> targets) where T : Component
         {
             //unity says its inclusive for both!
             return (targets == null || targets.Count < 1) ? null : targets[UnityEngine.Random.Range(0, targets.Count - 1)];
         }
 
-        public static float CalcDistSquaredSum<T>(List<T> targets, T checkAgainst) where T : Component
+        /// <summary>
+        /// Get the summed squared distance of the <paramref name="targets"/> to the <paramref name="checkAgainst"/> <see cref="Component"/>
+        /// </summary>
+        /// <param name="targets"></param>
+        /// <param name="checkAgainst"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>The summed squared distance float value</returns>
+        public static float GetDistSquaredSum<T>(List<T> targets, T checkAgainst) where T : Component
         {
             float distSum = 0;
 
@@ -96,14 +140,29 @@ namespace NikosAssets.Helpers
             return distSum;
         }
 
-        public static float CalcAverageDistSquared<T>(List<T> targets, T checkAgainst) where T : Component
+        /// <summary>
+        /// Get the average squared distance of the <paramref name="targets"/> to the <paramref name="checkAgainst"/> <see cref="Component"/> 
+        /// </summary>
+        /// <param name="targets"></param>
+        /// <param name="checkAgainst"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>0 if list is empty or null, otherwise the average squared distance</returns>
+        public static float GetAverageDistSquared<T>(List<T> targets, T checkAgainst) where T : Component
         {
             if (targets == null || targets.Count < 1)
                 return 0;
 
-            return CalcDistSquaredSum(targets, checkAgainst) / targets.Count;
+            return GetDistSquaredSum(targets, checkAgainst) / targets.Count;
         }
         
+        /// <summary>
+        /// A helper method to compare 2 <see cref="Component"/>s against another one based on their distance to it
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="checkAgainst"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public static int CompareTargetsByDistanceTo<T>(T a, T b, T checkAgainst) where T : Component
         {
             Vector3 position = checkAgainst.transform.position;
@@ -119,5 +178,30 @@ namespace NikosAssets.Helpers
 
             return 0;
         }
+
+        #region Obsolete Methods
+        
+        [Obsolete("This method will be replaced by 'GetCompAtAverageDist'")]
+        public static T CalcAverageComp<T>(List<T> targets, T checkAgainst) where T : Component
+        {
+            return GetCompAtAverageDist(targets, checkAgainst);
+        }
+        
+        [Obsolete("This method will be replaced by 'GetDistSquaredSum'")]
+        public static float CalcDistSquaredSum<T>(List<T> targets, T checkAgainst) where T : Component
+        {
+            return GetDistSquaredSum(targets, checkAgainst);
+        }
+
+        [Obsolete("This method will be replaced by 'GetAverageDistSquared'")]
+        public static float CalcAverageDistSquared<T>(List<T> targets, T checkAgainst) where T : Component
+        {
+            if (targets == null || targets.Count < 1)
+                return 0;
+
+            return CalcDistSquaredSum(targets, checkAgainst) / targets.Count;
+        }
+        
+        #endregion
     }
 }

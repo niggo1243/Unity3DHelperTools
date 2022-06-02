@@ -4,7 +4,8 @@ namespace NikosAssets.Helpers
 {
     /// <summary>
     /// A helper class to draw a GUI list (for the Unity inspector) with alternating backgrounds foreach list item
-    /// using the <see cref="AlternateListItemStyle"/> method
+    /// using the <see cref="AlternateListItemStyle"/> method.
+    /// It is important to call the <see cref="InitStyles"/> method before any other method once after instantiation (or when a refresh is needed)!
     /// </summary>
     public class AlternatingListStyleHelper
     {
@@ -16,6 +17,21 @@ namespace NikosAssets.Helpers
         public RectOffset paddingHorizontalItemStyle = new RectOffset(), paddingWrappingStyle = new RectOffset();
         public RectOffset marginHorizontalItemStyle = new RectOffset(), marginWrappingStyle = new RectOffset();
         
+        /// <summary>
+        /// It is very important to call this before any other method once after instantiation (or when a refresh is needed)!
+        /// </summary>
+        /// <param name="selectedItemColor">
+        /// The special color for selected items
+        /// </param>
+        /// <param name="listItemAColor">
+        /// First and every odd list item's color
+        /// </param>
+        /// <param name="listItemBColor">
+        /// Second and every even list item's color
+        /// </param>
+        /// <param name="wrappingColor">
+        /// The header and footer color of the list body (if used)
+        /// </param>
         public virtual void InitStyles(Color selectedItemColor, Color listItemAColor, Color listItemBColor, Color wrappingColor)
         {
             _selectedListItemTexture = new Texture2D(1, 1);

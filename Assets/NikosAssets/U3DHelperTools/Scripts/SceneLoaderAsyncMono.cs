@@ -24,31 +24,46 @@ namespace NikosAssets.Helpers
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_EVENTS)]
         public SceneLoadedUnityEvent SceneLoadedUnityEvent = default;
 
+        /// <summary>
+        /// The <see cref="Scene"/>s to load additive
+        /// </summary>
         [SerializeField]
+        [Scene]
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_SETTINGS)]
+        [Tooltip("The Scenes to load additive")]
         protected int[] scenesToLoadAdditive = default;
 
+        /// <summary>
+        /// Should we load the <see cref="Scene"/>s at <see cref="Start"/>?
+        /// </summary>
+        [SerializeField]
+        [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_SETTINGS)]
+        [Tooltip("Should we load the Scenes at Start()?")]
+        protected bool loadScenesAtStart = true;
+        
         protected virtual void Start()
         {
-            this.StartCoroutine(this.LoadScenesAsync());
+            if (loadScenesAtStart)
+                this.StartCoroutine(this.LoadScenesAsync());
         }
 
-        protected virtual IEnumerator LoadScenesAsync()
+        /// <summary>
+        /// Loads the <see cref="scenesToLoadAdditive"/> Scenes and emits the
+        /// <see cref="SceneLoadedUnityEvent"/>, <see cref="SceneLoadedAdditiveSuccess"/> and <see cref="SceneLoadedGlobalAdditiveSuccess"/> events
+        /// </summary>
+        /// <returns></returns>
+        public virtual IEnumerator LoadScenesAsync()
         {
             foreach (int sceneIndex in this.scenesToLoadAdditive)
             {
                 Scene scene = SceneManager.GetSceneByBuildIndex(sceneIndex);
+                if (!scene.isLoaded)
+                    yield return SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
 
-                if (scene != null)
-                {
-                    if (!scene.isLoaded)
-                        yield return SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
-
-                    //event handling
-                    SceneLoaderAsyncMono.SceneLoadedGlobalAdditiveSuccess?.Invoke(scene);
-                    this.SceneLoadedAdditiveSuccess?.Invoke(scene);
-                    this.SceneLoadedUnityEvent?.Invoke(scene);
-                }
+                //event handling
+                SceneLoaderAsyncMono.SceneLoadedGlobalAdditiveSuccess?.Invoke(scene);
+                this.SceneLoadedAdditiveSuccess?.Invoke(scene);
+                this.SceneLoadedUnityEvent?.Invoke(scene);
             }
         }
     }

@@ -6,7 +6,7 @@ namespace NikosAssets.Helpers
     /// <summary>
     /// A helper class you can inherit from to add descriptions to your custom <see cref="Component"/>s
     /// </summary>
-    public class BaseNotesComponent : Component
+    public abstract class BaseNotesComponent : Component
     {
 #if UNITY_EDITOR
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_EDITORONLY)]

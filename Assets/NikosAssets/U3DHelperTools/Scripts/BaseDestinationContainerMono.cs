@@ -18,7 +18,9 @@ namespace NikosAssets.Helpers
     /// A helper class that stores and offers methods for its list of generic <see cref="ComponentType"/>s
     /// and emits events if the <see cref="Destinations"/> list was modified using methods of this class
     /// </summary>
-    /// <typeparam name="ComponentType"></typeparam>
+    /// <typeparam name="ComponentType">
+    /// The type stored in the <see cref="Destinations"/> list.
+    /// </typeparam>
     public abstract class BaseDestinationContainerMono<ComponentType> : BaseNotesMono
         where ComponentType : Component
     {
@@ -32,6 +34,15 @@ namespace NikosAssets.Helpers
 
         public List<ComponentType> Destinations => _destinations;
         
+        /// <summary>
+        /// Adds the given type only if it is not null and either if no duplicate is found or if <paramref name="addDistinct"/> is false.
+        /// Emits the <see cref="OnDestinationAddedUnityEvent"/> and <see cref="OnDestinationAdded"/> events on success.
+        /// </summary>
+        /// <param name="comp"></param>
+        /// <param name="addDistinct"></param>
+        /// <returns>
+        /// false if couldn't add, otherwise true
+        /// </returns>
         public virtual bool AddToDestinations(ComponentType comp, bool addDistinct = false)
         {
             if (comp != null)
@@ -50,11 +61,21 @@ namespace NikosAssets.Helpers
             return false;
         }
 
+        /// <summary>
+        /// A helper method to add multiple <see cref="ComponentType"/>s to the <see cref="Destinations"/> list,
+        /// also emitting the <see cref="OnDestinationAddedUnityEvent"/> and <see cref="OnDestinationAdded"/> events.
+        /// </summary>
+        /// <param name="componentTypes"></param>
+        /// <param name="addDistinct">Are duplicates allowed?</param>
         public virtual void AddMultipleToDestinations(List<ComponentType> componentTypes, bool addDistinct = false)
         {
             componentTypes.ForEach(ct => this.AddToDestinations(ct, addDistinct));
         }
 
+        /// <summary>
+        /// Removes all items from the <see cref="Destinations"/> list and emits
+        /// the <see cref="OnDestinationRemovedUnityEvent"/> and <see cref="OnDestinationRemoved"/> events.
+        /// </summary>
         public virtual void RemoveAllFromDestinations()
         {
             for (int i = 0; i < this.Destinations.Count; i++)
@@ -64,6 +85,14 @@ namespace NikosAssets.Helpers
             }
         }
         
+        /// <summary>
+        /// Removes the given type and
+        /// emits the <see cref="OnDestinationRemovedUnityEvent"/> and <see cref="OnDestinationRemoved"/> events on success.
+        /// </summary>
+        /// <param name="comp"></param>
+        /// <returns>
+        /// false if couldn't remove, otherwise true
+        /// </returns>
         public virtual bool RemoveFromDestinations(ComponentType comp)
         {
             if (_destinations.Remove(comp))
@@ -77,6 +106,11 @@ namespace NikosAssets.Helpers
             return false;
         }
         
+        /// <summary>
+        /// Remove and emit events at index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns>true on removal success, otherwise false</returns>
         public virtual bool RemoveFromDestinationsAt(int index)
         {
             if (index < 0 || index >= _destinations.Count) return false;
@@ -89,7 +123,10 @@ namespace NikosAssets.Helpers
 
             return true;
         }
-        
+
+        #region Obsolete Methods
+
+        [Obsolete("This method will be removed and a similar one might appear in the CollectionsHelper class")]
         public virtual List<ComponentType> GetDestinationsWithExcluded(List<ComponentType> excludeDestinations, bool removeFoundDoubleFromExclusiveList)
         {
             List<ComponentType> filteredList = new List<ComponentType>();
@@ -112,5 +149,8 @@ namespace NikosAssets.Helpers
 
             return filteredList;
         }
+        
+        #endregion
+
     }
 }

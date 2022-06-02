@@ -20,7 +20,7 @@ namespace NikosAssets.Helpers.Editor
         public static bool ApplicationIsPlayingAccurate => _applicationPlayingAccurate;
         
         [InitializeOnLoadMethod]
-        public static void InitEditor()
+        private static void InitEditor()
         {
             try
             {
@@ -79,10 +79,10 @@ namespace NikosAssets.Helpers.Editor
         /// Create a script using a (.txt) template file, replacing its contents with the key value pairs in <paramref name="replaceContentsDict"/>
         /// </summary>
         /// <param name="pathName">
-        /// The script creation path (must include ".cs" or any other desired fileEnding postfix)
+        /// The script creation path (must include ".cs" or any other desired fileEnding suffix)
         /// </param>
         /// <param name="templateFileName">
-        /// The template file to convert (must include fileEnding as well)
+        /// The template file to convert
         /// </param>
         /// <param name="replaceContentsDict">
         /// What contents to replace in the template for the script file conversion?

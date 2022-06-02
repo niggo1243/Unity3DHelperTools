@@ -6,11 +6,14 @@ using UnityEngine;
 namespace NikosAssets.Helpers
 {
     /// <summary>
-    /// A helper class to handle in-game (Application) time and global <see cref="DateTime"/> as well
+    /// A helper class to handle in-game (Application) time and overall <see cref="DateTime"/> as well
     /// </summary>
     [Serializable]
     public class TimingHelper : ICloneable
     {
+        /// <summary>
+        /// The available time frames to check
+        /// </summary>
         public enum TimerType
         {
             //Instant represents no check/ instant true
@@ -45,6 +48,10 @@ namespace NikosAssets.Helpers
             this.Init();
         }
         
+        /// <summary>
+        /// Which time frames do you want to check?
+        /// </summary>
+        [Tooltip("Which time frames do you want to check?")]
         public TimerType timerType = TimerType.Instant;
 
         private bool _HideIf_MinMaxTime() => timerType == TimerType.Instant || timerType == TimerType.Never;
@@ -57,18 +64,37 @@ namespace NikosAssets.Helpers
         [Tooltip("Inclusive times to randomly generate")]
         public Vector2 minMaxRandomTimeRange = new Vector2(10, 10);
 
+        /// <summary>
+        /// Update this value, whenever you want to reset the timer to a certain time
+        /// </summary>
         public float CheckAgainstRunningTime { get; set; }
         
+        /// <summary>
+        /// Update this value, whenever you want to reset the timer to a certain time
+        /// </summary>
         public DateTime CheckAgainstDateTime { get; set; } = DateTime.Now;
 
+        /// <summary>
+        /// Used in <see cref="Time"/>.<see cref="Time.time"/> checks
+        /// </summary>
         [SerializeField]
         [HideInInspector]
         protected double _secondsMultiplier = 1;
+        /// <summary>
+        /// Used in <see cref="Time"/>.<see cref="Time.time"/> checks
+        /// </summary>
         public double SecondsMultiplier => _secondsMultiplier;
         
+        /// <summary>
+        /// Used in <see cref="DateTime"/> checks
+        /// </summary>
         [SerializeField]
         [HideInInspector]
         protected double _milliSecondsMultiplier = 1;
+        
+        /// <summary>
+        /// Used in <see cref="DateTime"/> checks
+        /// </summary>
         public double MilliSecondsMultiplier => _milliSecondsMultiplier;
         
         /// <summary>

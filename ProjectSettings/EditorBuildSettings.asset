@@ -4,5 +4,20 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/NikosAssets/U3DHelperTools/Samples/Scenes/Demo_MonoBehaviours.unity
+    guid: a75c3581abf5cbc44add8926db9e3c20
+  - enabled: 1
+    path: Assets/NikosAssets/U3DHelperTools/Samples/Scenes/Demo_MiscUtilities.unity
+    guid: cecf730639886b946bc2db8fc362c36f
+  - enabled: 1
+    path: Assets/NikosAssets/U3DHelperTools/Samples/Scenes/Demo_EditorAndGUI.unity
+    guid: 0facf87a59fef2447857bbc8689b5011
+  - enabled: 1
+    path: Assets/NikosAssets/U3DHelperTools/Samples/Scenes/Demo_Extensions.unity
+    guid: c0c2618fff38f294abc4696d86eda4f5
+  - enabled: 1
+    path: Assets/NikosAssets/U3DHelperTools/Samples/Scenes/Demo_MathOperations.unity
+    guid: 64d76718ddeebe4459533092cc418c64
   m_configObjects: {}
