@@ -13,8 +13,8 @@ namespace NikosAssets.Helpers
         /// <summary>
         /// Find the direct child of the desired <paramref name="ancestorToFind"/>
         /// </summary>
-        /// <param name="descendant"></param>
-        /// <param name="ancestorToFind"></param>
+        /// <param name="descendant">The (grand) child we want to move up from</param>
+        /// <param name="ancestorToFind">The child of this to find</param>
         /// <returns>
         /// null on fail, otherwise the first child <see cref="Type"/> of <paramref name="ancestorToFind"/>
         /// </returns>
@@ -68,9 +68,13 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
+        /// Finds all from the given <paramref name="rootType"/> derived types across all assemblies in this project.
         /// Note: Doesn't work with interfaces
         /// </summary>
-        /// <returns></returns>
+        /// <param name="rootType"></param>
+        /// <returns>
+        /// A list of the found child <see cref="Type"/>s
+        /// </returns>
         public static List<Type> FindAllDerivedTypesAcrossAllAssemblies(Type rootType)
         {
             Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
@@ -85,18 +89,27 @@ namespace NikosAssets.Helpers
         }
         
         /// <summary>
+        /// Finds all from the given <paramref name="rootType"/> derived types within the same assembly, the <paramref name="rootType"/> is in.
         /// Note: Doesn't work with interfaces
         /// </summary>
-        /// <returns></returns>
+        /// <param name="rootType"></param>
+        /// <returns>
+        /// A list of the found child <see cref="Type"/>s
+        /// </returns>
         public static List<Type> FindAllDerivedTypes(Type rootType)
         {
             return FindAllDerivedTypes(rootType, Assembly.GetAssembly(rootType));
         }
 
         /// <summary>
+        /// Finds all from the given <paramref name="rootType"/> derived types within the given <paramref name="assembly"/>.
         /// Note: Doesn't work with interfaces
         /// </summary>
-        /// <returns></returns>
+        /// <param name="rootType"></param>
+        /// <param name="assembly"></param>
+        /// <returns>
+        /// A list of the found child <see cref="Type"/>s
+        /// </returns>
         public static List<Type> FindAllDerivedTypes(Type rootType, Assembly assembly)
         {
             return assembly
@@ -108,9 +121,13 @@ namespace NikosAssets.Helpers
         } 
         
         /// <summary>
+        /// Finds all direct (first generation) child <see cref="Type"/>s of the given <paramref name="parentType"/> across all assemblies of this project.
         /// Note: Doesn't work with interfaces
         /// </summary>
-        /// <returns></returns>
+        /// <param name="parentType"></param>
+        /// <returns>
+        /// A list of the found child <see cref="Type"/>s
+        /// </returns>
         public static List<Type> FindDirectChildrenOfTypeAcrossAllAssemblies(Type parentType)
         {
             Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
@@ -125,20 +142,27 @@ namespace NikosAssets.Helpers
         }
         
         /// <summary>
+        /// Finds all direct (first generation) child <see cref="Type"/>s of the given <paramref name="parentType"/> within its assembly.
         /// Note: Doesn't work with interfaces
         /// </summary>
-        /// <returns></returns>
+        /// <param name="parentType"></param>
+        /// <returns>
+        /// A list of the found child <see cref="Type"/>s
+        /// </returns>
         public static List<Type> FindDirectChildrenOfType(Type parentType)
         {
             return FindDirectChildrenOfType(parentType, Assembly.GetAssembly(parentType));
         }
 
         /// <summary>
+        /// Finds all direct (first generation) child <see cref="Type"/>s of the given <paramref name="parentType"/> within the given <paramref name="assembly"/>
         /// Note: Doesn't work with interfaces
         /// </summary>
         /// <param name="parentType"></param>
         /// <param name="assembly"></param>
-        /// <returns></returns>
+        /// <returns>
+        /// A list of the found child <see cref="Type"/>s
+        /// </returns>
         public static List<Type> FindDirectChildrenOfType(Type parentType, Assembly assembly)
         {
             return assembly
@@ -148,32 +172,77 @@ namespace NikosAssets.Helpers
                 ).ToList();
         }
         
-        public static List<Type> FindInterfacesAcrossAllAssemblies(Type interfaceToContain, int maxInterfaces = 1)
+        /// <summary>
+        /// Find "child" interfaces of the given <paramref name="parentInterface"/> that contain a limited amount of other interfaces
+        /// across all assemblies for this project
+        /// </summary>
+        /// <param name="parentInterface">
+        /// The "parent" interface to start the search from
+        /// </param>
+        /// <param name="maxInterfaces">
+        /// You can interpret this value as a maximum "child/ancestor" depth.
+        /// It checks how many interfaces the current traversed interface contains/ implements
+        /// </param>
+        /// <returns>
+        /// A list of the found "child" <see cref="Type"/> interfaces
+        /// </returns>
+        public static List<Type> FindInterfacesAcrossAllAssemblies(Type parentInterface, int maxInterfaces = 1)
         {
             Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
             List<Type> types = new List<Type>();
             
             foreach (Assembly assembly in assemblies)
             {
-                types.AddRange(FindInterfaces(interfaceToContain, assembly, maxInterfaces));
+                types.AddRange(FindInterfaces(parentInterface, assembly, maxInterfaces));
             }
 
             return types;        
         }
         
-        public static List<Type> FindInterfaces(Type interfaceToContain, int maxInterfaces = 1)
+        /// <summary>
+        /// Find "child" interfaces of the given <paramref name="parentInterface"/> that contain a limited amount of other interfaces
+        /// within the <paramref name="parentInterface"/>'s assembly
+        /// </summary>
+        /// <param name="parentInterface">
+        /// The "parent" interface to start the search from
+        /// </param>
+        /// <param name="maxInterfaces">
+        /// You can interpret this value as a maximum "child/ancestor" depth.
+        /// It checks how many interfaces the current traversed interface contains/ implements
+        /// </param>
+        /// <returns>
+        /// A list of the found "child" <see cref="Type"/> interfaces
+        /// </returns>
+        public static List<Type> FindInterfaces(Type parentInterface, int maxInterfaces = 1)
         {
-            return FindInterfaces(interfaceToContain, Assembly.GetAssembly(interfaceToContain), maxInterfaces);
+            return FindInterfaces(parentInterface, Assembly.GetAssembly(parentInterface), maxInterfaces);
         }
-        
-        public static List<Type> FindInterfaces(Type interfaceToContain, Assembly assembly, int maxInterfaces = 1)
+
+        /// <summary>
+        /// Find "child" interfaces of the given <paramref name="parentInterface"/> that contain a limited amount of other interfaces
+        /// within the given <paramref name="assembly"/>
+        /// </summary>
+        /// <param name="parentInterface">
+        /// The "parent" interface to start the search from
+        /// </param>
+        /// <param name="assembly">
+        /// The assembly to search the interfaces
+        /// </param>
+        /// <param name="maxInterfaces">
+        /// You can interpret this value as a maximum "child/ancestor" depth.
+        /// It checks how many interfaces the current traversed interface contains/ implements
+        /// </param>
+        /// <returns>
+        /// A list of the found "child" <see cref="Type"/> interfaces
+        /// </returns>
+        public static List<Type> FindInterfaces(Type parentInterface, Assembly assembly, int maxInterfaces = 1)
         {
             return assembly
                 .GetTypes()
                 .Where(t =>
                 {
                     Type[] interfaces = t.GetInterfaces();
-                    return t.IsInterface && interfaces.Length == maxInterfaces && interfaces.Contains(interfaceToContain);
+                    return t.IsInterface && interfaces.Length <= maxInterfaces && interfaces.Contains(parentInterface);
                 }).ToList();
         }
     }

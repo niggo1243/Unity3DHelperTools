@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using UnityEngine;
 
 namespace NikosAssets.Helpers
@@ -9,8 +7,11 @@ namespace NikosAssets.Helpers
     /// <summary>
     /// Helps with <see cref="ICollection"/>s and <see cref="List{T}"/>s
     /// </summary>
-    public class CollectionHelper : MonoBehaviour
+    public static class CollectionHelper
     {
+        /// <summary>
+        /// An enum for collection matching checks (<see cref="CollectionHelper.CollectionsMatcher"/>)
+        /// </summary>
         public enum ItemMatching
         {
             MatchNone = 0,
@@ -18,65 +19,95 @@ namespace NikosAssets.Helpers
             MatchAll = 2,
             MatchAllIncludingAmount = 3
         }
-        
-        public static bool CollectionIsNullOrEmpty(ICollection collection)
+
+        /// <summary>
+        /// Checks if the given <see cref="ICollection{T}"/>s match based on the desired <paramref name="matching"/> setup,
+        /// with <paramref name="colA"/> being the main collection to check (outer loop).
+        /// </summary>
+        /// <param name="matching"></param>
+        /// <param name="colA"></param>
+        /// <param name="colB"></param>
+        /// <returns>
+        /// true if matched successfully, otherwise false
+        /// </returns>
+        public static bool CollectionsMatcher(ItemMatching matching, ICollection colA, ICollection colB)
         {
-            return collection == null || collection.Count <= 0;
+            bool success = colA.Count == 0 && colB.Count == 0;
+
+            switch (matching)
+            {
+                case ItemMatching.MatchAtLeastOne:
+                    foreach (object objA in colA)
+                    {
+                        foreach (object objB in colB)
+                        {
+                            if (objA.Equals(objB)) return true;
+                        }
+                    }
+                    break;
+                
+                case ItemMatching.MatchAll:
+                    success = CollectionsMatchAllItems(colA, colB);
+                    break;
+                
+                case ItemMatching.MatchNone:
+                    success = true;
+                    foreach (object objA in colA)
+                    {
+                        foreach (object objB in colB)
+                        {
+                            if (objA.Equals(objB)) return false;
+                        }
+                    }
+                    break;
+                
+                case ItemMatching.MatchAllIncludingAmount:
+                    if (colA.Count != colB.Count) return false;
+                    success = CollectionsMatchAllItems(colA, colB);
+                    break;
+            }
+
+            return success;
         }
 
         /// <summary>
-        /// Checks if the given index is in bounds of the given <see cref="ICollection"/>
+        /// Checks if the given <see cref="ICollection"/> elements all match against each other
         /// </summary>
-        /// <param name="collection"></param>
-        /// <param name="i"></param>
-        /// <param name="logErrorOnInvalidIndex">
-        /// Log index out of bounds error?
-        /// </param>
+        /// <param name="colA"></param>
+        /// <param name="colB"></param>
         /// <returns>
-        /// true, if <paramref name="i"/> is in <paramref name="collection"/>
+        /// true if matched successfully, otherwise false
         /// </returns>
-        public static bool CollectionAndIndexChecker(ICollection collection, int i, bool logErrorOnInvalidIndex = false)
+        public static bool CollectionsMatchAllItems(ICollection colA, ICollection colB)
         {
-            if (collection == null)
+            bool success = colA.Count == 0 && colB.Count == 0;
+
+            foreach (object objA in colA)
             {
-                Debug.LogError("The given Collection is null");
+                success = false;
+                        
+                foreach (object objB in colB)
+                {
+                    if (objA.Equals(objB))
+                    {
+                        success = true;
+                        break;
+                    }
+                }
 
-                return false;
+                //stop the check
+                if (!success) return false;
             }
-
-            if (i < 0 || i >= collection.Count || collection.Count <= 0)
-            {
-                if (logErrorOnInvalidIndex)
-                    Debug.LogError("Invalid index: " + i + " or the collection is empty: " + collection.Count);
-
-                return false;
-            }
-
-            return true;
+            
+            return success;
         }
-
-        public static T GetListItemAtIndex<T>(List<T> list, int i)
-        {
-            if (CollectionAndIndexChecker(list, i, true))
-            {
-                return list[i];
-            }
-
-            return default(T);
-        }
-
-        public static T GetQueueItemAtIndex<T> (Queue<T> queue, int i)
-        {
-            if (CollectionAndIndexChecker(queue, i, true))
-            {
-                T[] arrayT = queue.ToArray();
-
-                return arrayT[i];
-            }
-
-            return default(T);
-        }
-
+        
+        /// <summary>
+        /// Create a list with only 1 (the given) element in it
+        /// </summary>
+        /// <param name="item"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>A list with count = 1</returns>
         public static List<T> ListOfOne<T>(T item)
         {
             return new List<T> { item };
@@ -85,7 +116,7 @@ namespace NikosAssets.Helpers
         /// <summary>
         /// Increment or decrement (and cycle around) correctly respecting the length of a collection
         /// </summary>
-        /// <param name="increment">increment otherwise decrement</param>
+        /// <param name="increment">increment, otherwise decrement</param>
         /// <param name="pointer">the current index to increase or decrease</param>
         /// <param name="lengthOfCollection">the length to loop around</param>
         /// <returns>
@@ -123,7 +154,7 @@ namespace NikosAssets.Helpers
         /// </summary>
         /// <param name="collection"></param>
         /// <typeparam name="T"></typeparam>
-        public static void LogCollection<T>(Collection<T> collection) where T : UnityEngine.Object
+        public static void LogCollection<T>(ICollection<T> collection)
         {
             foreach (T t in collection)
             {
@@ -132,6 +163,94 @@ namespace NikosAssets.Helpers
                 else
                     Debug.Log(t.ToString());
             }
+        }
+        
+        /// <summary>
+        /// Checks if the given <see cref="ICollection"/> is null or empty
+        /// </summary>
+        /// <param name="collection"></param>
+        /// <returns>true if <paramref name="collection"/> is null or empty, otherwise false</returns>
+        public static bool CollectionIsNullOrEmpty(ICollection collection)
+        {
+            return collection == null || collection.Count <= 0;
+        }
+
+        /// <summary>
+        /// Checks if the given index (<paramref name="i"/>) is in bounds of the given <see cref="ICollection"/> (<paramref name="collection"/>)
+        /// </summary>
+        /// <param name="collection"></param>
+        /// <param name="i"></param>
+        /// <param name="logError">
+        /// Log index out of bounds error?
+        /// </param>
+        /// <returns>
+        /// true, if <paramref name="i"/> is in <paramref name="collection"/>
+        /// </returns>
+        public static bool CollectionAndIndexChecker(ICollection collection, int i, bool logError = false)
+        {
+            if (collection == null)
+            {
+                if (logError)
+                    Debug.LogError("The given Collection is null");
+
+                return false;
+            }
+
+            if (i < 0 || i >= collection.Count || collection.Count <= 0)
+            {
+                if (logError)
+                    Debug.LogError("Invalid index: " + i + " or the collection is empty: " + collection.Count);
+
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Doesn't throw any Exceptions if the list is null or empty and if the index is out of bounds
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="i"></param>
+        /// <param name="logError">
+        /// Should we at least log the errors?
+        /// </param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>
+        /// default value if the list is null or empty
+        /// </returns>
+        public static T GetListItemAtIndex<T>(List<T> list, int i, bool logError = false)
+        {
+            if (CollectionAndIndexChecker(list, i, logError))
+            {
+                return list[i];
+            }
+
+            return default(T);
+        }
+
+        /// <summary>
+        /// Doesn't throw any Exceptions if the queue is null or empty and if the index is out of bounds
+        /// </summary>
+        /// <param name="queue"></param>
+        /// <param name="i"></param>
+        /// <param name="logError">
+        /// Should we at least log the errors?
+        /// </param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>
+        /// default value if the queue is null or empty
+        /// </returns>
+        public static T GetQueueItemAtIndex<T> (Queue<T> queue, int i, bool logError = false)
+        {
+            if (CollectionAndIndexChecker(queue, i, logError))
+            {
+                T[] arrayT = queue.ToArray();
+
+                return arrayT[i];
+            }
+
+            return default(T);
         }
     }
 }

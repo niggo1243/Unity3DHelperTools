@@ -5,6 +5,9 @@ using Random = UnityEngine.Random;
 
 namespace NikosAssets.Helpers
 {
+    /// <summary>
+    /// A singleton helper class to access a <see cref="StringHasher"/> globally
+    /// </summary>
     public static class StringHasherGlobal
     {
         private static StringHasher _hasher;
@@ -21,7 +24,7 @@ namespace NikosAssets.Helpers
     }
     
     /// <summary>
-    /// A helper class to map key (numbers) to existing or to be added strings
+    /// A helper class to map key (number hashes) to existing or yet to be added strings
     /// </summary>
     public class StringHasher
     {

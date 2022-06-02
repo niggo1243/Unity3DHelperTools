@@ -8,6 +8,12 @@ namespace NikosAssets.Helpers.Extensions
     /// </summary>
     public static class NavMeshAgentUtils
     {
+        /// <summary>
+        /// Gets the desired local z movement speed/ velocity of the <see cref="NavMeshAgent"/>.
+        /// Use this for animation movement blending for example.
+        /// </summary>
+        /// <param name="navMeshAgent"></param>
+        /// <returns>The desired local fwd speed</returns>
         public static float GetDesiredMovementSpeed(this NavMeshAgent navMeshAgent)
         {
             Vector3 move = navMeshAgent.desiredVelocity;
@@ -16,6 +22,12 @@ namespace NikosAssets.Helpers.Extensions
             return move.z;
         }
         
+        /// <summary>
+        /// Get the desired local y turning speed/ velocity of the <see cref="NavMeshAgent"/>.
+        /// Use this for animation movement blending for example.
+        /// </summary>
+        /// <param name="navMeshAgent"></param>
+        /// <returns>The desired local y turning speed</returns>
         public static float GetDesiredTuringSpeed(this NavMeshAgent navMeshAgent)
         {
             Transform navMeshTransform = navMeshAgent.transform;

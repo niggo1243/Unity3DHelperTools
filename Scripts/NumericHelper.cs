@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace NikosAssets.Helpers
 {
     /// <summary>
-    /// Helps with numbers
+    /// Contains some helpful math operations for <see cref="Vector3"/>s and <see cref="Quaternion"/>s (and other calculations as well)
     /// </summary>
     public static class NumericHelper
     {
@@ -15,6 +16,12 @@ namespace NikosAssets.Helpers
             //HasNegative = 3
         }
 
+        /// <summary>
+        /// A helper method useful to filter listviews for example
+        /// </summary>
+        /// <param name="amountFilter"></param>
+        /// <param name="amount"></param>
+        /// <returns></returns>
         public static bool GetAmountValidation(AmountFilter amountFilter, int amount)
         {
             switch (amountFilter)
@@ -103,6 +110,12 @@ namespace NikosAssets.Helpers
             return thisQuat;
         }
         
+        /// <summary>
+        /// Clamps the given quaternion rotation by the given Vector3 angles for each axis
+        /// </summary>
+        /// <param name="q">The rotation to clamp</param>
+        /// <param name="bounds">The x,y,z axis to clamp the rotation</param>
+        /// <returns>A clamped Quaternion rotation</returns>
         public static Quaternion ClampRotation(Quaternion q, Vector3 bounds)
         {
             q.x /= q.w;
@@ -125,6 +138,14 @@ namespace NikosAssets.Helpers
             return q;
         }
 
+        /// <summary>
+        /// Clamps the given quaternion rotation by the given Vector2 minmax angles for each axis
+        /// </summary>
+        /// <param name="q">The rotation to clamp</param>
+        /// <param name="boundsX"></param>
+        /// <param name="boundsY"></param>
+        /// <param name="boundsZ"></param>
+        /// <returns>A clamped Quaternion rotation</returns>
         public static Quaternion ClampRotation(Quaternion q, Vector2 boundsX, Vector2 boundsY, Vector2 boundsZ)
         {
             q.x /= q.w;
@@ -147,6 +168,12 @@ namespace NikosAssets.Helpers
             return q;
         }
 
+        /// <summary>
+        /// Converts the given global quat to a local one relative to the given <paramref name="forTransform"/>
+        /// </summary>
+        /// <param name="globalRotationToConvert"></param>
+        /// <param name="forTransform"></param>
+        /// <returns></returns>
         public static Quaternion ConvertGlobalToLocalRotation(Quaternion globalRotationToConvert, Transform forTransform)
         {
             Transform parent = forTransform.parent;
@@ -157,6 +184,24 @@ namespace NikosAssets.Helpers
             return Quaternion.Inverse(parent.rotation) * globalRotationToConvert;
         }
 
+        /// <summary>
+        /// Roly-poly like behaviour for a rigidbody 
+        /// </summary>
+        /// <param name="transform">
+        /// The transform associated with the <paramref name="rigidbody"/>
+        /// </param>
+        /// <param name="rigidbody">
+        /// The <see cref="Rigidbody"/> we want to align
+        /// </param>
+        /// <param name="direction">
+        /// The direction to align to
+        /// </param>
+        /// <param name="alignmentSpeed">
+        /// How fast should the rigidbody jump up
+        /// </param>
+        /// <param name="alignmentDamping">
+        /// The lower this value, the more the rigidbody can overshoot
+        /// </param>
         public static void CalculateTorqueRotationAlignment(Transform transform, Rigidbody rigidbody, Vector3 direction,
             float alignmentSpeed, float alignmentDamping)
         {
@@ -306,11 +351,18 @@ namespace NikosAssets.Helpers
             
             return verticalAngle < verticalMaxAngle && horizontalAngle < horizontalMaxAngle;
         }
-        
-        public static float VectorFacingDotResult(Vector3 dir, Vector3 directionToCheck)
+
+        /// <summary>
+        /// Returns a <see cref="Vector4"/> division for each value of the given vectors
+        /// </summary>
+        /// <param name="dividend"></param>
+        /// <param name="divisor"></param>
+        /// <returns>
+        /// The item by item divided <see cref="Vector4"/>
+        /// </returns>
+        public static Vector4 Divide2Vectors(Vector4 dividend, Vector4 divisor)
         {
-            dir = dir.normalized;
-            return Vector3.Dot(dir, directionToCheck);
+            return new Vector4(dividend.x / divisor.x, dividend.y / divisor.y, dividend.z / divisor.z, dividend.w / divisor.w);
         }
         
         /// <summary>
@@ -325,5 +377,44 @@ namespace NikosAssets.Helpers
         {
             return new Vector3(dividend.x / divisor.x, dividend.y / divisor.y, dividend.z / divisor.z);
         }
+        
+        /// <summary>
+        /// Returns a <see cref="Vector2"/> division for each value of the given vectors
+        /// </summary>
+        /// <param name="dividend"></param>
+        /// <param name="divisor"></param>
+        /// <returns>
+        /// The item by item divided <see cref="Vector2"/>
+        /// </returns>
+        public static Vector2 Divide2Vectors(Vector2 dividend, Vector2 divisor)
+        {
+            return new Vector2(dividend.x / divisor.x, dividend.y / divisor.y);
+        }
+
+        #region Obsolete Methods
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dir"></param>
+        /// <param name="directionToCheck"></param>
+        /// <returns>
+        /// Returns the dot float result, indicating if the Vector <paramref name="dir"/> is facing the <paramref name="directionToCheck"/> Vector.
+        /// <example>
+        /// dot = 1     => Is Not Facing ("100%" Opposite direction)
+        /// dot = .5f   => Is not Facing
+        /// dot == 0    => Is Perpendicular
+        /// dot = -.5f  => Is Facing
+        /// dot = -1    => Is Facing directly "100%"
+        /// </example>
+        /// </returns>
+        [Obsolete("This method is redundant and will be removed in the future")]
+        public static float VectorFacingDotResult(Vector3 dir, Vector3 directionToCheck)
+        {
+            dir = dir.normalized;
+            return Vector3.Dot(dir, directionToCheck);
+        }
+
+        #endregion
     }
 }

@@ -3,21 +3,41 @@ using UnityEngine;
 
 namespace NikosAssets.Helpers
 {
+    /// <summary>
+    /// Looks at the <see cref="target"/> with clamped euler values (if setup)
+    /// </summary>
     public class LookAtTargetMono : BaseNotesMono
     {
-        [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_SETTINGS)]
-        public Transform target = default;
-
+        /// <summary>
+        /// The target to look at
+        /// </summary>
         [SerializeField]
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_SETTINGS)]
+        [Tooltip("The target to look at")]
+        protected Transform target = default;
+
+        /// <summary>
+        /// Ignore this axis angle
+        /// </summary>
+        [SerializeField]
+        [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_SETTINGS)]
+        [Tooltip("Ignore this axis angle")]
         protected bool keepEulerX, keepEulerY, keepEulerZ;
 
+        /// <summary>
+        /// Align the look rotation of this transform to the <see cref="target"/>'s local up <see cref="Vector3"/>
+        /// </summary>
         [SerializeField]
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_SETTINGS)]
+        [Tooltip("Align the look rotation of this transform to the target's local up vector")]
         protected bool alignWithTargetsUp;
 
+        /// <summary>
+        /// Offset the final applied rotation
+        /// </summary>
         [SerializeField]
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_SETTINGS)]
+        [Tooltip("Offset the final applied rotation")]
         protected Vector3 eulerOffset = default;
 
         protected virtual void Update()
