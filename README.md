@@ -109,69 +109,69 @@ You can find example Scenes under "Assets/NikosAssets/U3DHelperTools/Samples/Sce
 ### MonoBehaviours
 - Keep the Scene view in focus after pressing the play button:
   
-![Image](Assets/NikosAssets/U3DHelperTools/Documentation/KeepSceneViewInFocus.PNG)
+![Image](https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/KeepSceneViewInFocus.PNG)
 
 - Look at a target with special settings and constraints:
   
-![Image](Assets/NikosAssets/U3DHelperTools/Documentation/LookAt_Example.gif)
+![Image](https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/LookAt_Example.gif)
 
 - Alarm clock event emitter:
   
-![Image](Assets/NikosAssets/U3DHelperTools/Documentation/AlarmClock.PNG)
+![Image](https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/AlarmClock.PNG)
 
 - A generic list/ destination container helper class, emitting events when the list changes:
 
-![Image](Assets/NikosAssets/U3DHelperTools/Documentation/DestinationContainer.PNG)
+![Image](https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/DestinationContainer.PNG)
 
 - An async Scene loader helper class, also emitting events:
   
-![Image](Assets/NikosAssets/U3DHelperTools/Documentation/AsyncSceneLoader.PNG)
+![Image](https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/AsyncSceneLoader.PNG)
 
 ### Non-MonoBehaviours but here wrapped in sample MonoBehaviour classes 
 
 - EditorUtilitiesHelper, generate scripts and open a project only file picker:
 
-![Image](Assets/NikosAssets/U3DHelperTools/Documentation/EditorUtilities_Example.PNG)
+![Image](https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/EditorUtilities_Example.PNG)
 
 - GUIHelper, to draw lines and boxes, in addition to the AlternatingListStyleHelper class:
 
-![Image](Assets/NikosAssets/U3DHelperTools/Documentation/GUIHelper_Example.PNG)
+![Image](https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/GUIHelper_Example.PNG)
 
 Following picture from the <a href="https://assetstore.unity.com/packages/tools/ai/aimalgam-218556">AiMalgam</a> asset (Control Panel):
 
-![Image](Assets/NikosAssets/U3DHelperTools/Documentation/GUIHelper_AiMalgam_ColorBoxAndList.PNG)
+![Image](https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/GUIHelper_AiMalgam_ColorBoxAndList.PNG)
 
 - Various extension classes for object cloning, strings, NavmeshAgents, and Coroutines:
 
-![Image](Assets/NikosAssets/U3DHelperTools/Documentation/Extensions_Example.PNG)
+![Image](https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/Extensions_Example.PNG)
 
 - Help with Vector, Rigidbody and Quaternion calculations (and other math stuff):
 
-![Image](Assets/NikosAssets/U3DHelperTools/Documentation/NumericHelper_Example.PNG)
+![Image](https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/NumericHelper_Example.PNG)
 
-![Image](Assets/NikosAssets/U3DHelperTools/Documentation/RolyPoly_Example.gif)
+![Image](https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/RolyPoly_Example.gif)
 
 - Help with targeting transforms by distance:
 
-![Image](Assets/NikosAssets/U3DHelperTools/Documentation/TargetingHelper_Example.PNG)
+![Image](https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/TargetingHelper_Example.PNG)
 
 - Generating random points in the 3D environment:
 
-![Image](Assets/NikosAssets/U3DHelperTools/Documentation/RandomPointsHelper_Example.PNG)
+![Image](https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/RandomPointsHelper_Example.PNG)
 
-![Image](Assets/NikosAssets/U3DHelperTools/Documentation/RandomPoints_Example.gif)
+![Image](https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/RandomPoints_Example.gif)
 
 - Mapping strings to hashes:
 
-![Image](Assets/NikosAssets/U3DHelperTools/Documentation/StringHasher_Example.PNG)
+![Image](https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/StringHasher_Example.PNG)
 
 - Offering some helpful methods for collections generally:
 
-![Image](Assets/NikosAssets/U3DHelperTools/Documentation/CollectionHelper_Example.PNG)
+![Image](https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/CollectionHelper_Example.PNG)
 
 - Handy methods to retrieve type informations via reflection calls:
 
-![Image](Assets/NikosAssets/U3DHelperTools/Documentation/ReflectionHelper_Example.PNG)
+![Image](https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/ReflectionHelper_Example.PNG)
 
 
 
