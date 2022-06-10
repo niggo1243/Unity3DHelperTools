@@ -13,29 +13,29 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#a14a266c15a487067e000c6758715dad9"><param name="Name" value="CalculateTorqueRotationAlignment"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_timing_helper.html#a6ed010d88d87b0565ebd394008ea5671"><param name="Name" value="CheckAgainstDateTime"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_timing_helper.html#aa1e9ccabbd980e1e0d1aa01838f71bd0"><param name="Name" value="CheckAgainstRunningTime"></OBJECT>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_timing_helper.html#a203ccf23f559c4c2f772fb61cd472199"><param name="Name" value="CheckDateTime"></OBJECT>
-  <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_timing_helper.html#a203ccf23f559c4c2f772fb61cd472199"><param name="Name" value="NikosAssets::Helpers::TimingHelper"></OBJECT>
-  </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_timing_helper.html#af02d124d388233d143e4821fbedbc5ea"><param name="Name" value="CheckDateTime"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_timing_helper.html#af02d124d388233d143e4821fbedbc5ea"><param name="Name" value="NikosAssets::Helpers::TimingHelper"></OBJECT>
   </UL>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_timing_helper.html#ac4f0b0b085976733c2f0a32e8ea330b0"><param name="Name" value="CheckRunningTime"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_timing_helper.html#a203ccf23f559c4c2f772fb61cd472199"><param name="Name" value="CheckDateTime"></OBJECT>
   <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_timing_helper.html#ac4f0b0b085976733c2f0a32e8ea330b0"><param name="Name" value="NikosAssets::Helpers::TimingHelper"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_timing_helper.html#a203ccf23f559c4c2f772fb61cd472199"><param name="Name" value="NikosAssets::Helpers::TimingHelper"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_timing_helper.html#a69842871bc545e3e0fc184f2c75679c7"><param name="Name" value="CheckRunningTime"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_timing_helper.html#a69842871bc545e3e0fc184f2c75679c7"><param name="Name" value="NikosAssets::Helpers::TimingHelper"></OBJECT>
   </UL>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#a3438f94dbf63d25f658953b8712c1c0d"><param name="Name" value="ClampRotation"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_timing_helper.html#ac4f0b0b085976733c2f0a32e8ea330b0"><param name="Name" value="CheckRunningTime"></OBJECT>
   <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#a3438f94dbf63d25f658953b8712c1c0d"><param name="Name" value="NikosAssets::Helpers::NumericHelper"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_timing_helper.html#ac4f0b0b085976733c2f0a32e8ea330b0"><param name="Name" value="NikosAssets::Helpers::TimingHelper"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#a95f879dfa8646b4b1ca3a945177729b9"><param name="Name" value="ClampRotation"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#a95f879dfa8646b4b1ca3a945177729b9"><param name="Name" value="NikosAssets::Helpers::NumericHelper"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#a3438f94dbf63d25f658953b8712c1c0d"><param name="Name" value="ClampRotation"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#a3438f94dbf63d25f658953b8712c1c0d"><param name="Name" value="NikosAssets::Helpers::NumericHelper"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_timing_helper.html#ab0bdcf5467a1475cffe67ddb4d6daef3"><param name="Name" value="Clone"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_extensions_1_1_object_utils.html#a8965ac61d58b9a6e8006a0e54e084405"><param name="Name" value="CloneScriptableObject&lt; T &gt;"></OBJECT>
@@ -55,44 +55,44 @@
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#a63e8b8e76207db42d4420c0b2052b5af"><param name="Name" value="NikosAssets::Helpers::NumericHelper"></OBJECT>
   </UL>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#abd201a11b626c48a9e6b11d57c2ccfc5"><param name="Name" value="Divide2Vectors"></OBJECT>
-  <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#abd201a11b626c48a9e6b11d57c2ccfc5"><param name="Name" value="NikosAssets::Helpers::NumericHelper"></OBJECT>
-  </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#a5b18964b77163c9c16947d67079fef8f"><param name="Name" value="Divide2Vectors"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#a5b18964b77163c9c16947d67079fef8f"><param name="Name" value="NikosAssets::Helpers::NumericHelper"></OBJECT>
   </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#abd201a11b626c48a9e6b11d57c2ccfc5"><param name="Name" value="Divide2Vectors"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#abd201a11b626c48a9e6b11d57c2ccfc5"><param name="Name" value="NikosAssets::Helpers::NumericHelper"></OBJECT>
+  </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_helper.html#a77a13313d5567af1f3d93e63f7410ba2"><param name="Name" value="DrawColorBox"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_helper.html#a41de4acd1ea09ed74596c937bdba769f"><param name="Name" value="DrawLineHorizontalCentered"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_helper.html#a9e0ca961c77d9cf670c4536ad2a9d5f9"><param name="Name" value="DrawLineVerticalCentered"></OBJECT>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html#aae4224d87035338720036178b67c3798"><param name="Name" value="FindAllDerivedTypes"></OBJECT>
-  <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html#aae4224d87035338720036178b67c3798"><param name="Name" value="NikosAssets::Helpers::ReflectionHelper"></OBJECT>
-  </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html#ab93801d2144c8077f29754921f84d940"><param name="Name" value="FindAllDerivedTypes"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html#ab93801d2144c8077f29754921f84d940"><param name="Name" value="NikosAssets::Helpers::ReflectionHelper"></OBJECT>
   </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html#aae4224d87035338720036178b67c3798"><param name="Name" value="FindAllDerivedTypes"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html#aae4224d87035338720036178b67c3798"><param name="Name" value="NikosAssets::Helpers::ReflectionHelper"></OBJECT>
+  </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html#a318d2ca2ba4996d81c83d9306979b8d9"><param name="Name" value="FindAllDerivedTypesAcrossAllAssemblies"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html#a302eb98bbb62c4684e85d23c7c9ea712"><param name="Name" value="FindChildOfAncestor"></OBJECT>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html#ab3127d89a56f8b8f453c91cc227acedc"><param name="Name" value="FindDirectChildrenOfType"></OBJECT>
-  <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html#ab3127d89a56f8b8f453c91cc227acedc"><param name="Name" value="NikosAssets::Helpers::ReflectionHelper"></OBJECT>
-  </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html#ac1d897002eb7d2804d3aad9bed732a18"><param name="Name" value="FindDirectChildrenOfType"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html#ac1d897002eb7d2804d3aad9bed732a18"><param name="Name" value="NikosAssets::Helpers::ReflectionHelper"></OBJECT>
   </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html#ab3127d89a56f8b8f453c91cc227acedc"><param name="Name" value="FindDirectChildrenOfType"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html#ab3127d89a56f8b8f453c91cc227acedc"><param name="Name" value="NikosAssets::Helpers::ReflectionHelper"></OBJECT>
+  </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html#afab7cad180d10b9e084177bb368c0a71"><param name="Name" value="FindDirectChildrenOfTypeAcrossAllAssemblies"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html#a6a7c812d11f01dfe2200d277963440d6"><param name="Name" value="FindGenericTypeOfParentClassAtIndex"></OBJECT>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html#aa59b4f95e721f8fff9269d1e49f4fefb"><param name="Name" value="FindInterfaces"></OBJECT>
-  <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html#aa59b4f95e721f8fff9269d1e49f4fefb"><param name="Name" value="NikosAssets::Helpers::ReflectionHelper"></OBJECT>
-  </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html#a19b3d84c23a213175300fa1ef6c48e35"><param name="Name" value="FindInterfaces"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html#a19b3d84c23a213175300fa1ef6c48e35"><param name="Name" value="NikosAssets::Helpers::ReflectionHelper"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html#aa59b4f95e721f8fff9269d1e49f4fefb"><param name="Name" value="FindInterfaces"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html#aa59b4f95e721f8fff9269d1e49f4fefb"><param name="Name" value="NikosAssets::Helpers::ReflectionHelper"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html#aa68c6638fad1b4a377b4626e70a3f9f2"><param name="Name" value="FindInterfacesAcrossAllAssemblies"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#ae62df378ba7d1ca0b0df5704f2c96711"><param name="Name" value="GetAmountValidation"></OBJECT>
@@ -112,51 +112,51 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_collection_helper.html#abf8b470af9daf2fb314762d4696994f9"><param name="Name" value="GetQueueItemAtIndex&lt; T &gt;"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_targeting_helper.html#a1ffdc3bd7607fd0d01acaebecd7d6966"><param name="Name" value="GetRandomComp&lt; T &gt;"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_random_points_helper.html#a88d52b8e3b4d50621a7a8f2ab3111f3b"><param name="Name" value="GetRandomPointInSphere"></OBJECT>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_random_points_helper.html#a8e2a6012fbad87da681a25740304dd43"><param name="Name" value="GetRandomPointInSphereArea"></OBJECT>
-  <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_random_points_helper.html#a8e2a6012fbad87da681a25740304dd43"><param name="Name" value="NikosAssets::Helpers::RandomPointsHelper"></OBJECT>
-  </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_random_points_helper.html#a187d806d8c31debecc6480f2faf31711"><param name="Name" value="GetRandomPointInSphereArea"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_random_points_helper.html#a187d806d8c31debecc6480f2faf31711"><param name="Name" value="NikosAssets::Helpers::RandomPointsHelper"></OBJECT>
   </UL>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_random_points_helper.html#a0690651efe9e264786dfd100eb05a9b2"><param name="Name" value="GetRandomPointOnStraightLine"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_random_points_helper.html#a8e2a6012fbad87da681a25740304dd43"><param name="Name" value="GetRandomPointInSphereArea"></OBJECT>
   <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_random_points_helper.html#a0690651efe9e264786dfd100eb05a9b2"><param name="Name" value="NikosAssets::Helpers::RandomPointsHelper"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_random_points_helper.html#a8e2a6012fbad87da681a25740304dd43"><param name="Name" value="NikosAssets::Helpers::RandomPointsHelper"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_random_points_helper.html#ae48b4e9e08ec66b0753858e6829b2752"><param name="Name" value="GetRandomPointOnStraightLine"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_random_points_helper.html#ae48b4e9e08ec66b0753858e6829b2752"><param name="Name" value="NikosAssets::Helpers::RandomPointsHelper"></OBJECT>
   </UL>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_random_points_helper.html#afaa8a420152dd62a320e4e5f41cfe996"><param name="Name" value="GetRandomUnitPointInSphereArea"></OBJECT>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_extensions_1_1_string_utils.html#ab85857be960f5764956b23ebfa4b7d9a"><param name="Name" value="GetUInt64Hash"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_random_points_helper.html#a0690651efe9e264786dfd100eb05a9b2"><param name="Name" value="GetRandomPointOnStraightLine"></OBJECT>
   <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_extensions_1_1_string_utils.html#ab85857be960f5764956b23ebfa4b7d9a"><param name="Name" value="NikosAssets::Helpers::Extensions::StringUtils"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_random_points_helper.html#a0690651efe9e264786dfd100eb05a9b2"><param name="Name" value="NikosAssets::Helpers::RandomPointsHelper"></OBJECT>
   </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_random_points_helper.html#afaa8a420152dd62a320e4e5f41cfe996"><param name="Name" value="GetRandomUnitPointInSphereArea"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_extensions_1_1_string_utils.html#a1a2ff5cf748a04205ec243e7840806de"><param name="Name" value="GetUInt64Hash"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_extensions_1_1_string_utils.html#a1a2ff5cf748a04205ec243e7840806de"><param name="Name" value="NikosAssets::Helpers::Extensions::StringUtils"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_extensions_1_1_string_utils.html#ab85857be960f5764956b23ebfa4b7d9a"><param name="Name" value="GetUInt64Hash"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_extensions_1_1_string_utils.html#ab85857be960f5764956b23ebfa4b7d9a"><param name="Name" value="NikosAssets::Helpers::Extensions::StringUtils"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_alternating_list_style_helper.html#a445b14df0ce760b185aa73527a4d759d"><param name="Name" value="GetWrappingStyle"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_timing_helper.html#ab41e034ff342c5a5613772808f57bd2ea6a7e73161603d87b26a8eac49dab0a9c"><param name="Name" value="Hours"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_timing_helper.html#a88aa8b11c70a174f994f6411ca922d70"><param name="Name" value="Init"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_alternating_list_style_helper.html#a69aac2fd6bce2d14a28bf82195163e19"><param name="Name" value="InitStyles"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_timing_helper.html#ab41e034ff342c5a5613772808f57bd2ea54828f327f31abd59f2f459c0247756d"><param name="Name" value="Instant"></OBJECT>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#a40123a5e0af1fc7ea17d1d4f4177f1ee"><param name="Name" value="IsInAreaDist"></OBJECT>
-  <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#a40123a5e0af1fc7ea17d1d4f4177f1ee"><param name="Name" value="NikosAssets::Helpers::NumericHelper"></OBJECT>
-  </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#abf927c4f126c0ab46924481a0d821f98"><param name="Name" value="IsInAreaDist"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#abf927c4f126c0ab46924481a0d821f98"><param name="Name" value="NikosAssets::Helpers::NumericHelper"></OBJECT>
   </UL>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#a53f4880f5d7a06189ac428d5d99faf2e"><param name="Name" value="IsInAreaDistSquared"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#a40123a5e0af1fc7ea17d1d4f4177f1ee"><param name="Name" value="IsInAreaDist"></OBJECT>
   <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#a53f4880f5d7a06189ac428d5d99faf2e"><param name="Name" value="NikosAssets::Helpers::NumericHelper"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#a40123a5e0af1fc7ea17d1d4f4177f1ee"><param name="Name" value="NikosAssets::Helpers::NumericHelper"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#a59d0480dc76715f0a543613b343621a4"><param name="Name" value="IsInAreaDistSquared"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#a59d0480dc76715f0a543613b343621a4"><param name="Name" value="NikosAssets::Helpers::NumericHelper"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#a53f4880f5d7a06189ac428d5d99faf2e"><param name="Name" value="IsInAreaDistSquared"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#a53f4880f5d7a06189ac428d5d99faf2e"><param name="Name" value="NikosAssets::Helpers::NumericHelper"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#ab0e3e1a3e9d21374e5a942918dc4a4cb"><param name="Name" value="IsInViewArea3D"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#a65917110279ba6fee45115400477435f"><param name="Name" value="IsInViewHorAndVertBounds"></OBJECT>
@@ -335,6 +335,7 @@
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_helper.html#addc061dafe653cd3464a378bcce68ef8"><param name="Name" value="WhiteTexBorder1PX"></OBJECT>
   </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_editor_1_1_unity_guid_regenerator.html"><param name="Name" value="NikosAssets::Helpers::Editor::UnityGuidRegenerator"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="namespace_nikos_assets_1_1_helpers_1_1_extensions.html"><param name="Name" value="NikosAssets::Helpers::Extensions"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_extensions_1_1_coroutine_utils.html"><param name="Name" value="NikosAssets::Helpers::Extensions::CoroutineUtils"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_extensions_1_1_coroutine_utils.html"><param name="Name" value="NikosAssets::Helpers::Extensions::CoroutineUtils"></OBJECT>
@@ -422,15 +423,15 @@
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html"><param name="Name" value="NikosAssets::Helpers::NumericHelper"></OBJECT>
   <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#a63e8b8e76207db42d4420c0b2052b5af"><param name="Name" value="Divide2Vectors"></OBJECT>
-  </UL>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html"><param name="Name" value="NikosAssets::Helpers::NumericHelper"></OBJECT>
-  <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#a5b18964b77163c9c16947d67079fef8f"><param name="Name" value="Divide2Vectors"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html"><param name="Name" value="NikosAssets::Helpers::NumericHelper"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#abd201a11b626c48a9e6b11d57c2ccfc5"><param name="Name" value="Divide2Vectors"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html"><param name="Name" value="NikosAssets::Helpers::NumericHelper"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#a63e8b8e76207db42d4420c0b2052b5af"><param name="Name" value="Divide2Vectors"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html"><param name="Name" value="NikosAssets::Helpers::NumericHelper"></OBJECT>
   <UL>
@@ -442,11 +443,11 @@
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html"><param name="Name" value="NikosAssets::Helpers::NumericHelper"></OBJECT>
   <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#abf927c4f126c0ab46924481a0d821f98"><param name="Name" value="IsInAreaDist"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#a40123a5e0af1fc7ea17d1d4f4177f1ee"><param name="Name" value="IsInAreaDist"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html"><param name="Name" value="NikosAssets::Helpers::NumericHelper"></OBJECT>
   <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#a40123a5e0af1fc7ea17d1d4f4177f1ee"><param name="Name" value="IsInAreaDist"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html#abf927c4f126c0ab46924481a0d821f98"><param name="Name" value="IsInAreaDist"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_numeric_helper.html"><param name="Name" value="NikosAssets::Helpers::NumericHelper"></OBJECT>
   <UL>
@@ -496,11 +497,11 @@
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_random_points_helper.html"><param name="Name" value="NikosAssets::Helpers::RandomPointsHelper"></OBJECT>
   <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_random_points_helper.html#a0690651efe9e264786dfd100eb05a9b2"><param name="Name" value="GetRandomPointOnStraightLine"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_random_points_helper.html#ae48b4e9e08ec66b0753858e6829b2752"><param name="Name" value="GetRandomPointOnStraightLine"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_random_points_helper.html"><param name="Name" value="NikosAssets::Helpers::RandomPointsHelper"></OBJECT>
   <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_random_points_helper.html#ae48b4e9e08ec66b0753858e6829b2752"><param name="Name" value="GetRandomPointOnStraightLine"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_random_points_helper.html#a0690651efe9e264786dfd100eb05a9b2"><param name="Name" value="GetRandomPointOnStraightLine"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_random_points_helper.html"><param name="Name" value="NikosAssets::Helpers::RandomPointsHelper"></OBJECT>
   <UL>
@@ -541,11 +542,11 @@
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html"><param name="Name" value="NikosAssets::Helpers::ReflectionHelper"></OBJECT>
   <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html#ac1d897002eb7d2804d3aad9bed732a18"><param name="Name" value="FindDirectChildrenOfType"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html#ab3127d89a56f8b8f453c91cc227acedc"><param name="Name" value="FindDirectChildrenOfType"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html"><param name="Name" value="NikosAssets::Helpers::ReflectionHelper"></OBJECT>
   <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html#ab3127d89a56f8b8f453c91cc227acedc"><param name="Name" value="FindDirectChildrenOfType"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html#ac1d897002eb7d2804d3aad9bed732a18"><param name="Name" value="FindDirectChildrenOfType"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html"><param name="Name" value="NikosAssets::Helpers::ReflectionHelper"></OBJECT>
   <UL>
@@ -557,11 +558,11 @@
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html"><param name="Name" value="NikosAssets::Helpers::ReflectionHelper"></OBJECT>
   <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html#aa59b4f95e721f8fff9269d1e49f4fefb"><param name="Name" value="FindInterfaces"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html#a19b3d84c23a213175300fa1ef6c48e35"><param name="Name" value="FindInterfaces"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html"><param name="Name" value="NikosAssets::Helpers::ReflectionHelper"></OBJECT>
   <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html#a19b3d84c23a213175300fa1ef6c48e35"><param name="Name" value="FindInterfaces"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html#aa59b4f95e721f8fff9269d1e49f4fefb"><param name="Name" value="FindInterfaces"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_reflection_helper.html"><param name="Name" value="NikosAssets::Helpers::ReflectionHelper"></OBJECT>
   <UL>

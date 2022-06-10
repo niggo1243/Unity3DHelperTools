@@ -6,10 +6,10 @@ Default Window=main
 Default topic=index.html
 Index file=index.hhk
 Language=0x409 English (United States)
-Title=Unity3DHelperTools
+Title=Helper Scripts Collection
 
 [WINDOWS]
-main="Unity3DHelperTools","index.hhc","index.hhk","index.html","index.html",,,,,0x23520,,0x10387e,,,,,,,,0
+main="Helper Scripts Collection","index.hhc","index.hhk","index.html","index.html",,,,,0x23520,,0x10387e,,,,,,,,0
 
 [FILES]
 annotated.html
@@ -31,6 +31,8 @@ class_nikos_assets_1_1_helpers_1_1_editor_1_1_editor_utilities_helper-members.ht
 class_nikos_assets_1_1_helpers_1_1_editor_1_1_editor_utilities_helper.html
 class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_helper-members.html
 class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_helper.html
+class_nikos_assets_1_1_helpers_1_1_editor_1_1_unity_guid_regenerator-members.html
+class_nikos_assets_1_1_helpers_1_1_editor_1_1_unity_guid_regenerator.html
 class_nikos_assets_1_1_helpers_1_1_extensions_1_1_coroutine_utils-members.html
 class_nikos_assets_1_1_helpers_1_1_extensions_1_1_coroutine_utils.html
 class_nikos_assets_1_1_helpers_1_1_extensions_1_1_nav_mesh_agent_utils-members.html

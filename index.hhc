@@ -29,6 +29,9 @@
             <LI><OBJECT type="text/sitemap"><param name="Name" value="ColorBoxStyle"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_helper.html#adbf30020a162f919c8780bb12dda2154"><param name="ImageNumber" value="11"></OBJECT>
             <LI><OBJECT type="text/sitemap"><param name="Name" value="WhiteTexBorder1PX"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_helper.html#addc061dafe653cd3464a378bcce68ef8"><param name="ImageNumber" value="11"></OBJECT>
             </UL>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="UnityGuidRegenerator"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_editor_1_1_unity_guid_regenerator.html"><param name="ImageNumber" value="1"></OBJECT>
+            <UL>
+            </UL>
           </UL>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="Extensions"><param name="Local" value="namespace_nikos_assets_1_1_helpers_1_1_extensions.html"><param name="ImageNumber" value="1"></OBJECT>
           <UL>
@@ -269,6 +272,7 @@
       <LI><OBJECT type="text/sitemap"><param name="Name" value="NikosAssets.Helpers.OnDestinationListChangedUnityEvent"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_on_destination_list_changed_unity_event.html"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="NikosAssets.Helpers.SceneLoadedUnityEvent"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_scene_loaded_unity_event.html"><param name="ImageNumber" value="11"></OBJECT>
       </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="NikosAssets.Helpers.Editor.UnityGuidRegenerator"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_editor_1_1_unity_guid_regenerator.html"><param name="ImageNumber" value="11"></OBJECT>
     </UL>
   <LI><OBJECT type="text/sitemap"><param name="Name" value="Class Members"><param name="Local" value="functions.html"><param name="ImageNumber" value="1"></OBJECT>
     <UL>
