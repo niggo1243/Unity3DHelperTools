@@ -1,7 +1,7 @@
 {
   "name": "com.nikosassets.u3dhelpertools",
   "displayName": "Unity3DHelperTools",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "unity": "2019.4",
   "description": "This open-source package contains a collection of handy scripts like math algorithms (E.g. Vector & Quaternion helpers) for the Unity3D runtime environment and the Editor as well",
   "keywords": [ "utility", "inspector", "editor", "algorithms", "helpers", "common" ],

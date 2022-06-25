@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace NikosAssets.Helpers.Samples
 {
     public class EditorUtilitiesSample : BaseNotesMono
     {
+        [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_SETTINGS)]
+        public string fileNameToReplace = "_RENAME_TEST_1";
+        
+        [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_SETTINGS)]
+        public string desiredFileName = "_RENAME_TEST_2";
+        
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_DESCRIPTIONS)]
         public string pathChosen = "Assets/";
 
@@ -15,6 +21,9 @@ namespace NikosAssets.Helpers.Samples
         
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_DESCRIPTIONS)]
         public string scriptMethodName = "CallMe";
+
+        [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_DESCRIPTIONS)]
+        public Object referenceForGUIDRegen;
         
         #if UNITY_EDITOR
         
@@ -42,6 +51,25 @@ namespace NikosAssets.Helpers.Samples
 
             Editor.EditorUtilitiesHelper.CreateScript(pathChosen + scriptClassAndFileName + ".cs",
                 "SampleScriptCreationTemplate", replaceMarkingsInTemplate);
+        }
+
+        [Button("Log files from chosen path recursive")]
+        public void LogFilesFromChosenPathRecursive()
+        {
+            CollectionHelper.LogCollection(Editor.EditorUtilitiesHelper.GetFiles(pathChosen));
+        }
+
+        [Button("Rename Files at chosen path")]
+        public void RenameFilesAtChosenPath()
+        {
+            Editor.EditorUtilitiesHelper.RenameFilesRecursive(pathChosen, 
+                fileNameToReplace, desiredFileName);
+        }
+
+        [Button("Regenerate GUIDs recursive and keep the file references at the chosen path")]
+        public void RegenerateGUIDsAtChosenPathRecursive()
+        {
+            Editor.GUIDHelper.RegenerateGuids(pathChosen, true);
         }
         
         #endif

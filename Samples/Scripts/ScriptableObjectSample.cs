@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 namespace NikosAssets.Helpers.Samples
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Tests/" + nameof(ScriptableObjectSample), fileName = nameof(ScriptableObjectSample))]
     public class ScriptableObjectSample : BaseNotesSO
     {
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_SETTINGS)]
