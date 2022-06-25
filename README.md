@@ -6,7 +6,7 @@ Checkout the [Features](#features) section below for more information about the 
 
 ## Support
 
-Since I am developing and maintaining this asset package in my spare time, feel free to <a href="https://paypal.me/NikosProjects">support me</a> or by checking out my other <a href="https://assetstore.unity.com/publishers/52812">published assets</a>.
+Since I am developing and maintaining this asset package in my spare time, feel free to support me <a href="https://paypal.me/NikosProjects">via paypal</a>, <a href="https://www.buymeacoffee.com/nikosprojects">buy me a coffee</a> or check out my other <a href="https://assetstore.unity.com/publishers/52812">published assets</a>.
 
 ## Documentation
 
@@ -89,7 +89,7 @@ Or alternatively (without git urls):
     ], 
     "dependencies" 
     {
-        "com.nikosassets.u3dhelpertools": "1.1.0"
+        "com.nikosassets.u3dhelpertools": "1.2.0"
     }
 }
 ```
@@ -129,9 +129,13 @@ You can find example Scenes under "Assets/NikosAssets/U3DHelperTools/Samples/Sce
 
 ### Non-MonoBehaviours but here wrapped in sample MonoBehaviour classes 
 
-- EditorUtilitiesHelper, generate scripts and open a project only file picker:
+- EditorUtilitiesHelper, copy or regenerate GUIDs, rename files or generate scripts and open a project only file picker:
 
 ![Image](https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/EditorUtilities_Example.PNG)
+
+Also available via the toolbar:
+
+![Image](https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/Editor_Toolbar_Helpers.PNG)
 
 - GUIHelper, to draw lines and boxes, in addition to the AlternatingListStyleHelper class:
 

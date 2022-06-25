@@ -213,7 +213,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameNote: A helper that only works and compiles in the Editor
   descriptionNote: "You can pick a folder path and generate a script based on the
-    available fields. \nSee the code how to use it!\n\nAlso note the IsPlaying Logs.
+    available fields. \nAlso you can rename or regenrate GUIDs of files at chosen
+    path recursively!\nSee the code how to use it!\n\nAlso note the IsPlaying Logs.
     For that, please select the 'ScriptableObjectSample' in the\nSamples/Resources/
     folder and see what it logs upon entering and exiting playmode!\nThis can help
     you to avoid errors in the UnityEditor, \nwhen dealing with ScriptableObject

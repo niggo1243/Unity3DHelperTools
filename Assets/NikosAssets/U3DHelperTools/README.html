@@ -2,17 +2,17 @@
 <p>This open-source package contains a collection of handy scripts like math algorithms (E.g. Vector &amp; Quaternion helpers) for the Unity3D runtime environment and the Editor as well.</p>
 <p>Checkout the <a href="#features">Features</a> section below for more information about the specific use cases and available helper scripts.</p>
 <h2 id="support">Support</h2>
-<p>Since I am developing and maintaining this asset package in my spare time, feel free to <a href="https://paypal.me/NikosProjects">support me</a> or by checking out my other <a href="https://assetstore.unity.com/publishers/52812">published assets</a>.</p>
+<p>Since I am developing and maintaining this asset package in my spare time, feel free to support me <a href="https://paypal.me/NikosProjects">via paypal</a>, <a href="https://www.buymeacoffee.com/nikosprojects">buy me a coffee</a> or check out my other <a href="https://assetstore.unity.com/publishers/52812">published assets</a>.</p>
 <h2 id="documentation">Documentation</h2>
 <p>See the API doc <a href="https://niggo1243.github.io/Unity3DHelperTools/annotated.html">here</a></p>
 <h2 id="setup">Setup</h2>
 <h3 id="unity-package-dependency">Unity Package Dependency</h3>
-<p>To add this toolkit as a package dependency to your Unity project, 
-locate your manifest file in &quot;Package/manifest.json&quot;.</p>
-<p>First you need to add the &quot;scopedRegistry&quot; information to the manifest 
-in order to resolve dependencies used by this toolkit.</p>
+<p>To add this toolkit as a package dependency to your Unity project,
+    locate your manifest file in &quot;Package/manifest.json&quot;.</p>
+<p>First you need to add the &quot;scopedRegistry&quot; information to the manifest
+    in order to resolve dependencies used by this toolkit.</p>
 <p>The current dependency is a fork with performance improvements (<a href="https://github.com/niggo1243/NaughtyAttributes">https://github.com/niggo1243/NaughtyAttributes</a>) of the original open-source project NaughtyAttributes by dbrizov:
-<a href="https://github.com/dbrizov/NaughtyAttributes">https://github.com/dbrizov/NaughtyAttributes</a></p>
+    <a href="https://github.com/dbrizov/NaughtyAttributes">https://github.com/dbrizov/NaughtyAttributes</a></p>
 <p>Add this snipped somewhere adjacent to the &quot;dependencies&quot; section in the manifest.json:</p>
 <pre><code><span class="hljs-string">"scopedRegistries"</span>: 
 [
@@ -65,7 +65,7 @@ in order to resolve dependencies used by this toolkit.</p>
     ], 
     <span class="hljs-string">"dependencies"</span> 
     {
-        <span class="hljs-string">"com.nikosassets.u3dhelpertools"</span>: <span class="hljs-string">"1.1.0"</span>
+        <span class="hljs-string">"com.nikosassets.u3dhelpertools"</span>: <span class="hljs-string">"1.2.0"</span>
     }
 }
 </code></pre><h3 id="unity-project">Unity Project</h3>
@@ -75,63 +75,65 @@ in order to resolve dependencies used by this toolkit.</p>
 <p>You can find example Scenes under &quot;Assets/NikosAssets/U3DHelperTools/Samples/Scenes&quot;</p>
 <h3 id="monobehaviours">MonoBehaviours</h3>
 <ul>
-<li>Keep the Scene view in focus after pressing the play button:</li>
+    <li>Keep the Scene view in focus after pressing the play button:</li>
 </ul>
 <p><img src="https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/KeepSceneViewInFocus.PNG" alt="Image"></p>
 <ul>
-<li>Look at a target with special settings and constraints:</li>
+    <li>Look at a target with special settings and constraints:</li>
 </ul>
 <p><img src="https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/LookAt_Example.gif" alt="Image"></p>
 <ul>
-<li>Alarm clock event emitter:</li>
+    <li>Alarm clock event emitter:</li>
 </ul>
 <p><img src="https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/AlarmClock.PNG" alt="Image"></p>
 <ul>
-<li>A generic list/ destination container helper class, emitting events when the list changes:</li>
+    <li>A generic list/ destination container helper class, emitting events when the list changes:</li>
 </ul>
 <p><img src="https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/DestinationContainer.PNG" alt="Image"></p>
 <ul>
-<li>An async Scene loader helper class, also emitting events:</li>
+    <li>An async Scene loader helper class, also emitting events:</li>
 </ul>
 <p><img src="https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/AsyncSceneLoader.PNG" alt="Image"></p>
 <h3 id="non-monobehaviours-but-here-wrapped-in-sample-monobehaviour-classes">Non-MonoBehaviours but here wrapped in sample MonoBehaviour classes</h3>
 <ul>
-<li>EditorUtilitiesHelper, generate scripts and open a project only file picker:</li>
+    <li>EditorUtilitiesHelper, copy or regenerate GUIDs, rename files or generate scripts and open a project only file picker:</li>
 </ul>
 <p><img src="https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/EditorUtilities_Example.PNG" alt="Image"></p>
+<p>Also available via the toolbar:</p>
+<p><img src="https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/Editor_Toolbar_Helpers.PNG" alt="Image"></p>
 <ul>
-<li>GUIHelper, to draw lines and boxes, in addition to the AlternatingListStyleHelper class:</li>
+    <li>GUIHelper, to draw lines and boxes, in addition to the AlternatingListStyleHelper class:</li>
 </ul>
 <p><img src="https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/GUIHelper_Example.PNG" alt="Image"></p>
 <p>Following picture from the <a href="https://assetstore.unity.com/packages/tools/ai/aimalgam-218556">AiMalgam</a> asset (Control Panel):</p>
 <p><img src="https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/GUIHelper_AiMalgam_ColorBoxAndList.PNG" alt="Image"></p>
 <ul>
-<li>Various extension classes for object cloning, strings, NavmeshAgents, and Coroutines:</li>
+    <li>Various extension classes for object cloning, strings, NavmeshAgents, and Coroutines:</li>
 </ul>
 <p><img src="https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/Extensions_Example.PNG" alt="Image"></p>
 <ul>
-<li>Help with Vector, Rigidbody and Quaternion calculations (and other math stuff):</li>
+    <li>Help with Vector, Rigidbody and Quaternion calculations (and other math stuff):</li>
 </ul>
 <p><img src="https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/NumericHelper_Example.PNG" alt="Image"></p>
 <p><img src="https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/RolyPoly_Example.gif" alt="Image"></p>
 <ul>
-<li>Help with targeting transforms by distance:</li>
+    <li>Help with targeting transforms by distance:</li>
 </ul>
 <p><img src="https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/TargetingHelper_Example.PNG" alt="Image"></p>
 <ul>
-<li>Generating random points in the 3D environment:</li>
+    <li>Generating random points in the 3D environment:</li>
 </ul>
 <p><img src="https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/RandomPointsHelper_Example.PNG" alt="Image"></p>
 <p><img src="https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/RandomPoints_Example.gif" alt="Image"></p>
 <ul>
-<li>Mapping strings to hashes:</li>
+    <li>Mapping strings to hashes:</li>
 </ul>
 <p><img src="https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/StringHasher_Example.PNG" alt="Image"></p>
 <ul>
-<li>Offering some helpful methods for collections generally:</li>
+    <li>Offering some helpful methods for collections generally:</li>
 </ul>
 <p><img src="https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/CollectionHelper_Example.PNG" alt="Image"></p>
 <ul>
-<li>Handy methods to retrieve type informations via reflection calls:</li>
+    <li>Handy methods to retrieve type informations via reflection calls:</li>
 </ul>
 <p><img src="https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/ReflectionHelper_Example.PNG" alt="Image"></p>
