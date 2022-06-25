@@ -218,9 +218,13 @@ MonoBehaviour:
     folder and see what it logs upon entering and exiting playmode!\nThis can help
     you to avoid errors in the UnityEditor, \nwhen dealing with ScriptableObject
     events."
-  pathChosen: Assets/NikosAssets/U3DHelperTools/Samples/Scripts/
+  fileNameToReplace: _RENAME_TEST_1
+  desiredFileName: _RENAME_TEST_2
+  pathChosen: Assets/NikosAssets/U3DHelperTools/Samples/Resources/
   scriptClassAndFileName: GeneratedScriptTest2
   scriptMethodName: CallMe
+  referenceForGUIDRegen: {fileID: 11400000, guid: 93648d093bd94ee0a11b878fadad15fe,
+    type: 2}
 --- !u!1 &1365719700
 GameObject:
   m_ObjectHideFlags: 0
