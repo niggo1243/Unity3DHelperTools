@@ -16,9 +16,21 @@
           <UL>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="EditorUtilitiesHelper"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_editor_1_1_editor_utilities_helper.html"><param name="ImageNumber" value="1"></OBJECT>
             <UL>
-            <LI><OBJECT type="text/sitemap"><param name="Name" value="CreateScript"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_editor_1_1_editor_utilities_helper.html#a091a322c29904f8bf35df476e86044fb"><param name="ImageNumber" value="11"></OBJECT>
+            <LI><OBJECT type="text/sitemap"><param name="Name" value="CreateScript"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_editor_1_1_editor_utilities_helper.html#a069ee4b916f47965970bde8415956263"><param name="ImageNumber" value="11"></OBJECT>
+            <LI><OBJECT type="text/sitemap"><param name="Name" value="GetFiles"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_editor_1_1_editor_utilities_helper.html#ae59fde8752934f3f95f05454901e0632"><param name="ImageNumber" value="11"></OBJECT>
+            <LI><OBJECT type="text/sitemap"><param name="Name" value="PickFolderAndRegenerateGUIDs"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_editor_1_1_editor_utilities_helper.html#a36f64e44245b9301172506ab4e8f9283"><param name="ImageNumber" value="11"></OBJECT>
             <LI><OBJECT type="text/sitemap"><param name="Name" value="PickFolderInsideProject"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_editor_1_1_editor_utilities_helper.html#a8087ce1407dae00c8f12af62dc1dfc1e"><param name="ImageNumber" value="11"></OBJECT>
+            <LI><OBJECT type="text/sitemap"><param name="Name" value="RenameFilesRecursive"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_editor_1_1_editor_utilities_helper.html#a74a781fc2a44cdb6e518cf674c4092d0"><param name="ImageNumber" value="11"></OBJECT>
             <LI><OBJECT type="text/sitemap"><param name="Name" value="ApplicationIsPlayingAccurate"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_editor_1_1_editor_utilities_helper.html#a59aa125925ae09396a6613ddcda11171"><param name="ImageNumber" value="11"></OBJECT>
+            </UL>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="GUIDHelper"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html"><param name="ImageNumber" value="1"></OBJECT>
+            <UL>
+            <LI><OBJECT type="text/sitemap"><param name="Name" value="ApplyGUIDsFrom"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#a92d142b0a43c6af8a51646b26122b9bc"><param name="ImageNumber" value="11"></OBJECT>
+            <LI><OBJECT type="text/sitemap"><param name="Name" value="GetGuidsFromFileContents"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#acdc716691c5ac68de751aaae9c797fdc"><param name="ImageNumber" value="11"></OBJECT>
+            <LI><OBJECT type="text/sitemap"><param name="Name" value="IsGuid"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#aaef57667a4a188e1e229967f2dc45d43"><param name="ImageNumber" value="11"></OBJECT>
+            <LI><OBJECT type="text/sitemap"><param name="Name" value="RegenerateGuids"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#a60990828744fd89c93ad6b6c299a7329"><param name="ImageNumber" value="11"></OBJECT>
+            <LI><OBJECT type="text/sitemap"><param name="Name" value="SetGuids"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#a5e7fc9633dc035c8254facc8283bd08f"><param name="ImageNumber" value="11"></OBJECT>
+            <LI><OBJECT type="text/sitemap"><param name="Name" value="DefaultNonBinaryUnityFileExtensions"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#a8b9cfe4b62ef0d807f6fca92503d140c"><param name="ImageNumber" value="11"></OBJECT>
             </UL>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="GUIHelper"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_helper.html"><param name="ImageNumber" value="1"></OBJECT>
             <UL>
@@ -233,6 +245,7 @@
       </UL>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="NikosAssets.Helpers.Extensions.CoroutineUtils"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_extensions_1_1_coroutine_utils.html"><param name="ImageNumber" value="11"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="NikosAssets.Helpers.Editor.EditorUtilitiesHelper"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_editor_1_1_editor_utilities_helper.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="NikosAssets.Helpers.Editor.GUIDHelper"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html"><param name="ImageNumber" value="11"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="NikosAssets.Helpers.Editor.GUIHelper"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_helper.html"><param name="ImageNumber" value="11"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="NikosAssets.Helpers.HelperConstants"><param name="Local" value="class_nikos_assets_1_1_helpers_1_1_helper_constants.html"><param name="ImageNumber" value="11"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="ICloneable"><param name="ImageNumber" value="1"></OBJECT>

@@ -18,7 +18,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Helper Scripts Collection<span id="projectnumber">&#160;1.1.0</span>
+   <div id="projectname">Helper Scripts Collection<span id="projectnumber">&#160;1.2.0</span>
    </div>
    <div id="projectbrief">API documentation for the helper scripts compatible with Unity3D</div>
   </td>
@@ -60,9 +60,18 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a8087ce1407dae00c8f12af62dc1dfc1e"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_editor_utilities_helper.html#a8087ce1407dae00c8f12af62dc1dfc1e">PickFolderInsideProject</a> (string folderPickerTitle, string desiredPath, string localProjectPathOnAbort)</td></tr>
 <tr class="memdesc:a8087ce1407dae00c8f12af62dc1dfc1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restrict the returning path to be within this Unity project  <a href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_editor_utilities_helper.html#a8087ce1407dae00c8f12af62dc1dfc1e">More...</a><br /></td></tr>
 <tr class="separator:a8087ce1407dae00c8f12af62dc1dfc1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a091a322c29904f8bf35df476e86044fb"><td class="memItemLeft" align="right" valign="top">static Object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_editor_utilities_helper.html#a091a322c29904f8bf35df476e86044fb">CreateScript</a> (string pathName, string templateFileName, Dictionary&lt; string, string &gt; replaceContentsDict)</td></tr>
-<tr class="memdesc:a091a322c29904f8bf35df476e86044fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a script using a (.txt) template file, replacing its contents with the key value pairs in <em>replaceContentsDict</em>   <a href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_editor_utilities_helper.html#a091a322c29904f8bf35df476e86044fb">More...</a><br /></td></tr>
-<tr class="separator:a091a322c29904f8bf35df476e86044fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a069ee4b916f47965970bde8415956263"><td class="memItemLeft" align="right" valign="top">static Object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_editor_utilities_helper.html#a069ee4b916f47965970bde8415956263">CreateScript</a> (string localFilePath, string templateFileName, Dictionary&lt; string, string &gt; replaceContentsDict)</td></tr>
+<tr class="memdesc:a069ee4b916f47965970bde8415956263"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a script using a (.txt) template file, replacing its contents with the key value pairs in <em>replaceContentsDict</em>   <a href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_editor_utilities_helper.html#a069ee4b916f47965970bde8415956263">More...</a><br /></td></tr>
+<tr class="separator:a069ee4b916f47965970bde8415956263"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36f64e44245b9301172506ab4e8f9283"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_editor_utilities_helper.html#a36f64e44245b9301172506ab4e8f9283">PickFolderAndRegenerateGUIDs</a> (bool recursive)</td></tr>
+<tr class="memdesc:a36f64e44245b9301172506ab4e8f9283"><td class="mdescLeft">&#160;</td><td class="mdescRight">Regenerate GUIDs of the files found from the picked folder and keep all file references within this project  <a href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_editor_utilities_helper.html#a36f64e44245b9301172506ab4e8f9283">More...</a><br /></td></tr>
+<tr class="separator:a36f64e44245b9301172506ab4e8f9283"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae59fde8752934f3f95f05454901e0632"><td class="memItemLeft" align="right" valign="top">static List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_editor_utilities_helper.html#ae59fde8752934f3f95f05454901e0632">GetFiles</a> (string localRootPath, bool recursive=true, string[] forExtensions=null, string containsName=&quot;&quot;)</td></tr>
+<tr class="memdesc:ae59fde8752934f3f95f05454901e0632"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get files at the given <em>localRootPath</em>   <a href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_editor_utilities_helper.html#ae59fde8752934f3f95f05454901e0632">More...</a><br /></td></tr>
+<tr class="separator:ae59fde8752934f3f95f05454901e0632"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74a781fc2a44cdb6e518cf674c4092d0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_editor_utilities_helper.html#a74a781fc2a44cdb6e518cf674c4092d0">RenameFilesRecursive</a> (string localRootPath, string oldFileNamePart, string newFileNamePart, bool recursive=true, string[] forExtensions=null)</td></tr>
+<tr class="memdesc:a74a781fc2a44cdb6e518cf674c4092d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renames the files at the given local path and keeps all references (same GUIDs)  <a href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_editor_utilities_helper.html#a74a781fc2a44cdb6e518cf674c4092d0">More...</a><br /></td></tr>
+<tr class="separator:a74a781fc2a44cdb6e518cf674c4092d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
@@ -74,8 +83,8 @@ static bool&#160;</td><td class="memItemRight" valign="bottom"><b>ApplicationIsP
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A helper class for <a class="el" href="namespace_nikos_assets_1_1_helpers_1_1_editor.html">Editor</a> only usage </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a091a322c29904f8bf35df476e86044fb" name="a091a322c29904f8bf35df476e86044fb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a091a322c29904f8bf35df476e86044fb">&#9670;&nbsp;</a></span>CreateScript()</h2>
+<a id="a069ee4b916f47965970bde8415956263" name="a069ee4b916f47965970bde8415956263"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a069ee4b916f47965970bde8415956263">&#9670;&nbsp;</a></span>CreateScript()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -87,7 +96,7 @@ static bool&#160;</td><td class="memItemRight" valign="bottom"><b>ApplicationIsP
           <td class="memname">static Object NikosAssets.Helpers.Editor.EditorUtilitiesHelper.CreateScript </td>
           <td>(</td>
           <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>pathName</em>, </td>
+          <td class="paramname"><em>localFilePath</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -117,7 +126,7 @@ static bool&#160;</td><td class="memItemRight" valign="bottom"><b>ApplicationIsP
 <p>Create a script using a (.txt) template file, replacing its contents with the key value pairs in <em>replaceContentsDict</em>  </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pathName</td><td>The script creation path (must include ".cs" or any other desired fileEnding suffix) </td></tr>
+    <tr><td class="paramname">localFilePath</td><td>The script creation path (must include ".cs" or any other desired fileEnding suffix) </td></tr>
     <tr><td class="paramname">templateFileName</td><td>The template file to convert </td></tr>
     <tr><td class="paramname">replaceContentsDict</td><td>What contents to replace in the template for the script file conversion? </td></tr>
   </table>
@@ -125,6 +134,100 @@ static bool&#160;</td><td class="memItemRight" valign="bottom"><b>ApplicationIsP
 </dl>
 <p>key: "#CLASSNAME#", value: "HelloWorldClass" </p>
 <dl class="section return"><dt>Returns</dt><dd>The created script file </dd></dl>
+
+</div>
+</div>
+<a id="ae59fde8752934f3f95f05454901e0632" name="ae59fde8752934f3f95f05454901e0632"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae59fde8752934f3f95f05454901e0632">&#9670;&nbsp;</a></span>GetFiles()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static List&lt; string &gt; NikosAssets.Helpers.Editor.EditorUtilitiesHelper.GetFiles </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>localRootPath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>recursive</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string[]&#160;</td>
+          <td class="paramname"><em>forExtensions</em> = <code>null</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>containsName</em> = <code>&quot;&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get files at the given <em>localRootPath</em>  </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">localRootPath</td><td>The local project path to start gathering the files </td></tr>
+    <tr><td class="paramname">recursive</td><td>Go further into sub folders? </td></tr>
+    <tr><td class="paramname">forExtensions</td><td>Only gather files with the given extensions, for example ".cs, .mat, .asset" </td></tr>
+    <tr><td class="paramname">containsName</td><td>Only for files that contain the given string, for example "_albedo" </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A list of filePaths (strings) </dd></dl>
+
+</div>
+</div>
+<a id="a36f64e44245b9301172506ab4e8f9283" name="a36f64e44245b9301172506ab4e8f9283"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36f64e44245b9301172506ab4e8f9283">&#9670;&nbsp;</a></span>PickFolderAndRegenerateGUIDs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void NikosAssets.Helpers.Editor.EditorUtilitiesHelper.PickFolderAndRegenerateGUIDs </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>recursive</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Regenerate GUIDs of the files found from the picked folder and keep all file references within this project </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">recursive</td><td>Go into sub folders as well? </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -177,7 +280,74 @@ static bool&#160;</td><td class="memItemRight" valign="bottom"><b>ApplicationIsP
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The picked project path on success, otherwise logs errors and returns "Assets/" as default path or if aborted, returns <em>localProjectPathOnAbort</em>  </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The picked LOCAL project path on success, otherwise logs errors and returns "Assets/" as default path or if aborted, returns <em>localProjectPathOnAbort</em>  </dd></dl>
+
+</div>
+</div>
+<a id="a74a781fc2a44cdb6e518cf674c4092d0" name="a74a781fc2a44cdb6e518cf674c4092d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74a781fc2a44cdb6e518cf674c4092d0">&#9670;&nbsp;</a></span>RenameFilesRecursive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void NikosAssets.Helpers.Editor.EditorUtilitiesHelper.RenameFilesRecursive </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>localRootPath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>oldFileNamePart</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>newFileNamePart</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>recursive</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string[]&#160;</td>
+          <td class="paramname"><em>forExtensions</em> = <code>null</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Renames the files at the given local path and keeps all references (same GUIDs) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">localRootPath</td><td>The local path to start the search </td></tr>
+    <tr><td class="paramname">oldFileNamePart</td><td>The part of the files we want to rename </td></tr>
+    <tr><td class="paramname">newFileNamePart</td><td>This will replace <em>oldFileNamePart</em>  of each found file </td></tr>
+    <tr><td class="paramname">recursive</td><td>Should we go into sub folders? </td></tr>
+    <tr><td class="paramname">forExtensions</td><td>Only for specific file types? </td></tr>
+  </table>
+  </dd>
+</dl>
+<p>.mat, .asset </p>
 
 </div>
 </div>
