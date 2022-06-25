@@ -131,7 +131,7 @@ You can find example Scenes under "Assets/NikosAssets/U3DHelperTools/Samples/Sce
 
 - EditorUtilitiesHelper, copy or regenerate GUIDs, rename files or generate scripts and open a project only file picker:
 
-![Image](https://github.com/niggo1243/Unity3DHelperTools/raw/master/Assets/NikosAssets/U3DHelperTools/Documentation/EditorUtilities_Example.PNG)
+![Image](https://raw.githubusercontent.com/niggo1243/Unity3DHelperTools/c09dec59d4029cba63a88cc1a452d66d726efe0d/Assets/NikosAssets/U3DHelperTools/Documentation/EditorUtilities_Example.PNG)
 
 Also available via the toolbar:
 
