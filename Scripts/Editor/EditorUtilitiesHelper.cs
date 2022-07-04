@@ -189,6 +189,13 @@ namespace NikosAssets.Helpers.Editor
             return allFilesPaths;
         }
 
+        [Obsolete("This method will be replaced by \"RenameFiles()\"")]
+        public static void RenameFilesRecursive(string localRootPath, string oldFileNamePart, string newFileNamePart, 
+            bool recursive = true, string[] forExtensions = null)
+        {
+            RenameFiles(localRootPath, oldFileNamePart, newFileNamePart, recursive, forExtensions);
+        }
+        
         /// <summary>
         /// Renames the files at the given local path and keeps all references (same GUIDs)
         /// </summary>
@@ -210,7 +217,7 @@ namespace NikosAssets.Helpers.Editor
         /// .mat, .asset
         /// </example>
         /// </param>
-        public static void RenameFilesRecursive(string localRootPath, string oldFileNamePart, string newFileNamePart, 
+        public static void RenameFiles(string localRootPath, string oldFileNamePart, string newFileNamePart, 
             bool recursive = true, string[] forExtensions = null)
         {
             // Get the list of working files
@@ -238,6 +245,62 @@ namespace NikosAssets.Helpers.Editor
             });
             
             AssetDatabase.Refresh();
+        }
+
+        /// <summary>
+        /// Replace local files found at <paramref name="localRootPath"/> by matching files found in <paramref name="globalPath"/>
+        /// </summary>
+        /// <param name="localRootPath">
+        /// The local path to start the search
+        /// </param>
+        /// <param name="globalPath">
+        /// The global path to read the files from that match the local file names and finally also replace them
+        /// </param>
+        /// <param name="recursive">
+        /// Search in sub-folders as well?
+        /// </param>
+        /// <param name="forExtensions">
+        /// Only for specific file types?
+        /// <example>
+        /// .mat, .asset
+        /// </example>
+        /// </param>
+        /// <param name="containsName">
+        /// Filter by name (contains, not equals)
+        /// </param>
+        public static void ReplaceFiles(string localRootPath, string globalPath, bool recursive, string[] forExtensions = null, string containsName = "")
+        {
+            List<string> filesToReplace = GetFiles(localRootPath, recursive, forExtensions, containsName);
+
+            try
+            {
+                AssetDatabase.StartAssetEditing();
+                for (var i = 0; i < filesToReplace.Count; i++)
+                {
+                    var localFilePath = filesToReplace[i];
+                    EditorUtility.DisplayProgressBar("Replacing files", localFilePath,
+                        i / (float) filesToReplace.Count);
+
+                    foreach (string file in Directory.GetFiles(globalPath, Path.GetFileName(localFilePath),
+                        SearchOption.AllDirectories))
+                    {
+                        File.Delete(localFilePath);
+                        File.Copy(file, localFilePath);
+                        break;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e.Message);
+            }
+            finally
+            {
+                AssetDatabase.StopAssetEditing();
+                EditorUtility.ClearProgressBar();
+                AssetDatabase.SaveAssets();
+                AssetDatabase.Refresh();
+            }
         }
 
         #region Menu Items
@@ -279,7 +342,22 @@ namespace NikosAssets.Helpers.Editor
                     EditorUtility.OpenFolderPanel("Read GUIDs from folder", "Assets/", ""));
             }
         }
-        
+
+        [MenuItem("Tools/Helpers/ReplaceFilesOfPickedFolders/Recursive")]
+        private static void ReplaceFilesByPickedFoldersRecursive()
+        {
+            if (EditorUtility.DisplayDialog("Replace files recursive",
+                "The first folder picker is for files to replace in this project and the second one is to find the overwriting files." +
+                "\nAfter that the process of file replacement will begin. " +
+                "\n\nMake a backup of your project beforehand!",
+                "Replace files recursive", "Cancel"))
+            {
+                ReplaceFiles(PickFolderInsideProject("Replace files in this project", 
+                    "Assets/", null), 
+                    EditorUtility.OpenFolderPanel("Files to read", "Assets/", ""), 
+                    true);
+            }
+        }
 
         #endregion
     }
