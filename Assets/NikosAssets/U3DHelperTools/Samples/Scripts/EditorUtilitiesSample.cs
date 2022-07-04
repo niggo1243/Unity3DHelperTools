@@ -62,7 +62,7 @@ namespace NikosAssets.Helpers.Samples
         [Button("Rename Files at chosen path")]
         public void RenameFilesAtChosenPath()
         {
-            Editor.EditorUtilitiesHelper.RenameFilesRecursive(pathChosen, 
+            Editor.EditorUtilitiesHelper.RenameFiles(pathChosen, 
                 fileNameToReplace, desiredFileName);
         }
 

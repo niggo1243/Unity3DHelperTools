@@ -162,7 +162,7 @@ namespace NikosAssets.Helpers.Editor
                 AssetDatabase.Refresh();
             }
         }
-        
+
         /// <summary>
         /// Search and apply GUIDs form another project for files with the same name in this project.
         /// Every GUID change will be traced in every other Unity file, so no references will be lost!
@@ -208,56 +208,66 @@ namespace NikosAssets.Helpers.Editor
             Dictionary<string, string> guidOldToNewMap = new Dictionary<string, string>();
             Dictionary<string, List<string>> guidsInFileMap = new Dictionary<string, List<string>>();
 
-            // Traverse all files, remember which GUIDs are in which files and generate new GUIDs
-            for (int i = 0; i < allFilesPaths.Count; i++)
+            try
             {
-                string filePath = allFilesPaths[i];
-                string fileNameLocal = Path.GetFileName(filePath);
-
-                EditorUtility.DisplayProgressBar("Scanning Assets folder", localPathToApply,
-                    i / (float) allFilesPaths.Count);
-                string contents = File.ReadAllText(filePath);
-                List<string> guids = GetGuidsFromFileContents(contents);
-                
-                //can we add this file to the guidOldToNewMap?
-                if (IsAcceptedMetaFile(localPathToApply, filePath, recursive, ignoreFolderAssets, whiteListExtensions))
+                // Traverse all files, remember which GUIDs are in which files and generate new GUIDs
+                for (int i = 0; i < allFilesPaths.Count; i++)
                 {
-                    int matchingGlobalFilePathIndex =
-                        allGlobalFilesToRead.FindIndex(gp => Path.GetFileName(gp).Equals(fileNameLocal));
+                    string filePath = allFilesPaths[i];
+                    string fileNameLocal = Path.GetFileName(filePath);
 
-                    if (matchingGlobalFilePathIndex < 0) continue;
+                    EditorUtility.DisplayProgressBar("Scanning Assets folder", localPathToApply,
+                        i / (float) allFilesPaths.Count);
+                    string contents = File.ReadAllText(filePath);
+                    List<string> guids = GetGuidsFromFileContents(contents);
 
-                    string matchingGlobalPath = allGlobalFilesToRead[matchingGlobalFilePathIndex];
-                    allGlobalFilesToRead.RemoveAt(matchingGlobalFilePathIndex);
-
-                    string readFileContents = File.ReadAllText(matchingGlobalPath);
-                    List<string> guidsReadGlobal = GetGuidsFromFileContents(readFileContents);
-                    string replaceGuid = guidsReadGlobal.First();
-
-                    string oldGuid = guids.First();
-
-                    // Generate and save new GUID if we haven't added it before
-                    if (!guidOldToNewMap.ContainsKey(oldGuid))
+                    //can we add this file to the guidOldToNewMap?
+                    if (IsAcceptedMetaFile(localPathToApply, filePath, recursive, ignoreFolderAssets,
+                        whiteListExtensions))
                     {
-                        guidOldToNewMap.Add(oldGuid, replaceGuid);
+                        int matchingGlobalFilePathIndex =
+                            allGlobalFilesToRead.FindIndex(gp => Path.GetFileName(gp).Equals(fileNameLocal));
+
+                        if (matchingGlobalFilePathIndex < 0) continue;
+
+                        string matchingGlobalPath = allGlobalFilesToRead[matchingGlobalFilePathIndex];
+                        allGlobalFilesToRead.RemoveAt(matchingGlobalFilePathIndex);
+
+                        string readFileContents = File.ReadAllText(matchingGlobalPath);
+                        List<string> guidsReadGlobal = GetGuidsFromFileContents(readFileContents);
+                        string replaceGuid = guidsReadGlobal.First();
+
+                        string oldGuid = guids.First();
+
+                        // Generate and save new GUID if we haven't added it before
+                        if (!guidOldToNewMap.ContainsKey(oldGuid))
+                        {
+                            guidOldToNewMap.Add(oldGuid, replaceGuid);
+                        }
                     }
-                }
 
-                //for .meta and all other file extensions
-                //store all global files, since we may have not have yet found all owned old guids, so we filter later
-                foreach (string oldGuid in guids)
-                {
-                    if (!guidsInFileMap.ContainsKey(filePath))
-                        guidsInFileMap[filePath] = new List<string>();
-
-                    if (!guidsInFileMap[filePath].Contains(oldGuid))
+                    //for .meta and all other file extensions
+                    //store all global files, since we may have not have yet found all owned old guids, so we filter later
+                    foreach (string oldGuid in guids)
                     {
-                        guidsInFileMap[filePath].Add(oldGuid);
+                        if (!guidsInFileMap.ContainsKey(filePath))
+                            guidsInFileMap[filePath] = new List<string>();
+
+                        if (!guidsInFileMap[filePath].Contains(oldGuid))
+                        {
+                            guidsInFileMap[filePath].Add(oldGuid);
+                        }
                     }
                 }
             }
-
-            SetGuids(guidsInFileMap, guidOldToNewMap, logChangedAssets);
+            catch (Exception e)
+            {
+                Debug.LogError(e.Message);
+            }
+            finally
+            {
+                SetGuids(guidsInFileMap, guidOldToNewMap, logChangedAssets);
+            }
         }
 
         /// <summary>
@@ -294,42 +304,51 @@ namespace NikosAssets.Helpers.Editor
             Dictionary<string, List<string>> guidsInFileMap = new Dictionary<string, List<string>>();
 
             // Traverse all files, remember which GUIDs are in which files and generate new GUIDs
-            for (int i = 0; i < allFilesPaths.Count; i++)
+            try
             {
-                string filePath = allFilesPaths[i];
-
-                EditorUtility.DisplayProgressBar("Scanning Assets folder", localPath,
-                    i / (float) allFilesPaths.Count);
-                string contents = File.ReadAllText(filePath);
-                List<string> guids = GetGuidsFromFileContents(contents);
-                
-                //can we add this file to the guidOldToNewMap?
-                if (IsAcceptedMetaFile(localPath, filePath, recursive, ignoreFolderAssets, whiteListExtensions))
+                for (int i = 0; i < allFilesPaths.Count; i++)
                 {
-                    string oldGuid = guids.First();
-                    // Generate and save new GUID if we haven't added it before
-                    if (!guidOldToNewMap.ContainsKey(oldGuid))
+                    string filePath = allFilesPaths[i];
+
+                    EditorUtility.DisplayProgressBar("Scanning Assets folder", localPath,
+                        i / (float) allFilesPaths.Count);
+                    string contents = File.ReadAllText(filePath);
+                    List<string> guids = GetGuidsFromFileContents(contents);
+
+                    //can we add this file to the guidOldToNewMap?
+                    if (IsAcceptedMetaFile(localPath, filePath, recursive, ignoreFolderAssets, whiteListExtensions))
                     {
-                        string newGuid = Guid.NewGuid().ToString("N");
-                        guidOldToNewMap.Add(oldGuid, newGuid);
+                        string oldGuid = guids.First();
+                        // Generate and save new GUID if we haven't added it before
+                        if (!guidOldToNewMap.ContainsKey(oldGuid))
+                        {
+                            string newGuid = Guid.NewGuid().ToString("N");
+                            guidOldToNewMap.Add(oldGuid, newGuid);
+                        }
                     }
-                }
 
-                //for .meta and all other file extensions
-                //store all global files, since we may have not have yet found all owned old guids, so we filter later
-                foreach (string oldGuid in guids)
-                {
-                    if (!guidsInFileMap.ContainsKey(filePath))
-                        guidsInFileMap[filePath] = new List<string>();
-
-                    if (!guidsInFileMap[filePath].Contains(oldGuid))
+                    //for .meta and all other file extensions
+                    //store all global files, since we may have not have yet found all owned old guids, so we filter later
+                    foreach (string oldGuid in guids)
                     {
-                        guidsInFileMap[filePath].Add(oldGuid);
+                        if (!guidsInFileMap.ContainsKey(filePath))
+                            guidsInFileMap[filePath] = new List<string>();
+
+                        if (!guidsInFileMap[filePath].Contains(oldGuid))
+                        {
+                            guidsInFileMap[filePath].Add(oldGuid);
+                        }
                     }
                 }
             }
-
-            SetGuids(guidsInFileMap, guidOldToNewMap, logChangedAssets);
+            catch (Exception e)
+            {
+                Debug.LogError(e.Message);
+            }
+            finally
+            {
+                SetGuids(guidsInFileMap, guidOldToNewMap, logChangedAssets);
+            }
         }
 
         /// <summary>
