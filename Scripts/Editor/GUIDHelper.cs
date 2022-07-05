@@ -15,17 +15,41 @@ namespace NikosAssets.Helpers.Editor
     public static class GUIDHelper
     {
         /// <summary>
-        /// Unity files that contain GUID (references)
+        /// Unity files that contain GUID (references), feel free to add unlisted ones
         /// </summary>
-        public static readonly string[] DefaultNonBinaryUnityFileExtensions =
+        public static List<string> DefaultNonBinaryUnityFileExtensions = new List<string>()
         {
             "*.meta",
             "*.mat",
-            "*.anim",
             "*.prefab",
             "*.unity",
             "*.asset",
-            "*.controller"
+            "*.manifest",
+            "*.inputactions",
+            "*.anim",
+            "*.controller",
+            "*.overrideController",
+            "*.mask",
+            "*.flare",
+            "*.brush",
+            "*.preset",
+            "*.mixer",
+            "*.asmdef",
+            "*.asmref",
+            "*.shadervariants",
+            "*.shadergraph",
+            "*.vfx",
+            "*.renderTexture",
+            "*.cubemap",
+            "*.fontsettings",
+            "*.spriteatlas",
+            "*.guiskin",
+            "*.physicMaterial",
+            "*.physicMaterial2D",
+            "*.signal",
+            "*.terrainlayer",
+            "*.playable",
+            "*.wlt"
         };
         
         /// <summary>
@@ -141,6 +165,11 @@ namespace NikosAssets.Helpers.Editor
                             Debug.Log("replacing GUID in: " + filePath);
 
                         contents = contents.Replace("guid: " + oldGuid, "guid: " + newGuid);
+                        contents = contents.Replace("guid:" + oldGuid, "guid:" + newGuid);
+
+                        //asmdef specific
+                        contents = contents.Replace("GUID: " + oldGuid, "GUID: " + newGuid);
+                        contents = contents.Replace("GUID:" + oldGuid, "GUID:" + newGuid);
                     }
 
                     File.WriteAllText(filePath + ".temp", contents);
@@ -193,7 +222,7 @@ namespace NikosAssets.Helpers.Editor
             string[] whiteListExtensions = null)
         {
             // Get the list of working files
-            List<string> allFilesPaths = EditorUtilitiesHelper.GetFiles("", true, DefaultNonBinaryUnityFileExtensions);
+            List<string> allFilesPaths = EditorUtilitiesHelper.GetFiles("", true, DefaultNonBinaryUnityFileExtensions.ToArray());
             List<string> allGlobalFilesToRead = new List<string>();
             foreach (string extension in DefaultNonBinaryUnityFileExtensions)
             {
@@ -297,7 +326,7 @@ namespace NikosAssets.Helpers.Editor
             string[] whiteListExtensions = null)
         {
             // Get the list of working files
-            List<string> allFilesPaths = EditorUtilitiesHelper.GetFiles("", true, DefaultNonBinaryUnityFileExtensions);
+            List<string> allFilesPaths = EditorUtilitiesHelper.GetFiles("", true, DefaultNonBinaryUnityFileExtensions.ToArray());
 
             // Create dictionary to hold old-to-new GUID map
             Dictionary<string, string> guidOldToNewMap = new Dictionary<string, string>();
