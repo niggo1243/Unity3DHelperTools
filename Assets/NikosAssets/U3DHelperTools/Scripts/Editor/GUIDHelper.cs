@@ -93,9 +93,9 @@ namespace NikosAssets.Helpers.Editor
         private static bool IsAcceptedMetaFile(string isInLocalDirectory, string filePath, bool recursive, 
             AcceptedMetaFiles acceptedMetaFiles, string[] whiteListExtensions)
         {
-            string directory = Path.GetDirectoryName(filePath).Replace(@"\", "/") + "/";
-
             if (!Path.GetExtension(filePath).Equals(".meta")) return false;
+            
+            string directory = Path.GetDirectoryName(filePath).Replace(@"\", "/") + "/";
 
             //any meta file
             bool isAccepted = true;
@@ -409,18 +409,31 @@ namespace NikosAssets.Helpers.Editor
             }
         }
 
+        public static List<string> GetGuidsFromFileContents(string fileContents)
+        {
+            List<string> guids = new List<string>();
+
+            //also checks for "GUID: ", "GUID:", "guid: "
+            string fileContentsSimple = fileContents.ToLower().Replace(" ", "");
+            guids.AddRange(GetGuidsFromFileContents(fileContentsSimple, "guid:"));
+
+            return guids;
+        }
+        
         /// <summary>
         /// Return found GUIDs of the given file contents (text/ string)
         /// </summary>
         /// <param name="fileContents">
         /// The string contents of a file
         /// </param>
+        /// <param name="guidStart">
+        /// Search for the GUID prefix
+        /// </param>
         /// <returns>
         /// A list of found GUID strings
         /// </returns>
-        public static List<string> GetGuidsFromFileContents(string fileContents)
+        public static List<string> GetGuidsFromFileContents(string fileContents, string guidStart)
         {
-            const string guidStart = "guid: ";
             const int guidLength = 32;
             int textLength = fileContents.Length;
             int guidStartLength = guidStart.Length;

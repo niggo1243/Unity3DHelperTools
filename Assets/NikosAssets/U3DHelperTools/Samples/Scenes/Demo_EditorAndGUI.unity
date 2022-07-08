@@ -221,6 +221,8 @@ MonoBehaviour:
     events."
   fileNameToReplace: _RENAME_TEST_2
   desiredFileName: _RENAME_TEST_1
+  regenGuidsRecursive: 1
+  acceptedMetaFilesForGuidRegen: 0
   pathChosen: Assets/NikosAssets/U3DHelperTools/Samples/Resources/
   scriptClassAndFileName: GeneratedScriptTest2
   scriptMethodName: CallMe
