@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using NaughtyAttributes;
-using NikosAssets.Helpers.Editor;
 using UnityEngine;
 
 namespace NikosAssets.Helpers.Samples
@@ -17,7 +16,7 @@ namespace NikosAssets.Helpers.Samples
             #if UNITY_EDITOR
             Editor.GUIDHelper.RegenerateGuids(Editor.EditorUtilitiesHelper.PickFolderInsideProject("Regen GUIDS", 
                 "Assets/", "Assets/"), true, 
-                GUIDHelper.AcceptedMetaFiles.Any, true, new []{".asset"});
+                Editor.GUIDHelper.AcceptedMetaFiles.Any, true, new []{".asset"});
             #endif
         }
     }

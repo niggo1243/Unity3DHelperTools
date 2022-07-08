@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using NaughtyAttributes;
-using NikosAssets.Helpers.Editor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -10,35 +9,39 @@ namespace NikosAssets.Helpers.Samples
     {
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_SETTINGS)]
         public string fileNameToReplace = "_RENAME_TEST_1";
-        
+
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_SETTINGS)]
         public string desiredFileName = "_RENAME_TEST_2";
 
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_SETTINGS)]
         public bool regenGuidsRecursive = true;
-        
+
+#if UNITY_EDITOR
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_SETTINGS)]
-        public GUIDHelper.AcceptedMetaFiles acceptedMetaFilesForGuidRegen = GUIDHelper.AcceptedMetaFiles.Any;
-        
+        public Editor.GUIDHelper.AcceptedMetaFiles acceptedMetaFilesForGuidRegen =
+            Editor.GUIDHelper.AcceptedMetaFiles.Any;
+#endif
+
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_DESCRIPTIONS)]
         public string pathChosen = "Assets/";
 
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_DESCRIPTIONS)]
         public string scriptClassAndFileName = "GeneratedScriptTest";
-        
+
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_DESCRIPTIONS)]
         public string scriptMethodName = "CallMe";
 
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_DESCRIPTIONS)]
         public Object referenceForGUIDRegen;
-        
-        #if UNITY_EDITOR
-        
+
+#if UNITY_EDITOR
+
         private void OnDestroy()
         {
             Debug.Log(this.name + " Mono Destroy: ");
             Debug.Log("Application.isPlaying: " + Application.isPlaying);
-            Debug.Log("EditorUtilitiesHelper.ApplicationIsPlayingAccurate: " + Editor.EditorUtilitiesHelper.ApplicationIsPlayingAccurate);
+            Debug.Log("EditorUtilitiesHelper.ApplicationIsPlayingAccurate: " +
+                      Editor.EditorUtilitiesHelper.ApplicationIsPlayingAccurate);
         }
 
         [Button("Pick and save Folder path inside this project")]
@@ -69,7 +72,7 @@ namespace NikosAssets.Helpers.Samples
         [Button("Rename Files at chosen path")]
         public void RenameFilesAtChosenPath()
         {
-            Editor.EditorUtilitiesHelper.RenameFiles(pathChosen, 
+            Editor.EditorUtilitiesHelper.RenameFiles(pathChosen,
                 fileNameToReplace, desiredFileName);
         }
 
@@ -78,7 +81,6 @@ namespace NikosAssets.Helpers.Samples
         {
             Editor.GUIDHelper.RegenerateGuids(pathChosen, regenGuidsRecursive, acceptedMetaFilesForGuidRegen);
         }
-        
-        #endif
+#endif
     }
 }
