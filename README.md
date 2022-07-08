@@ -89,7 +89,7 @@ Or alternatively (without git urls):
     ], 
     "dependencies" 
     {
-        "com.nikosassets.u3dhelpertools": "1.3.0"
+        "com.nikosassets.u3dhelpertools": "1.3.1"
     }
 }
 ```
