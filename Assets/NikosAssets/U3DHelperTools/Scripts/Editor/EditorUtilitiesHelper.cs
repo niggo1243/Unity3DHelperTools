@@ -129,7 +129,10 @@ namespace NikosAssets.Helpers.Editor
         /// <param name="recursive">
         /// Go into sub folders as well?
         /// </param>
-        public static void PickFolderAndRegenerateGUIDs(bool recursive)
+        /// <param name="acceptedMetaFiles">
+        /// Only Regen GUIDs for files or folders or both?
+        /// </param>
+        public static void PickFolderAndRegenerateGUIDs(bool recursive, GUIDHelper.AcceptedMetaFiles acceptedMetaFiles)
         {
             string path = PickFolderInsideProject("Regenerate GUIDs in folder", "Assets/", null);
 
@@ -139,7 +142,7 @@ namespace NikosAssets.Helpers.Editor
                 return;
             }
             
-            GUIDHelper.RegenerateGuids(path, recursive);
+            GUIDHelper.RegenerateGuids(path, recursive, acceptedMetaFiles);
         }
 
         /// <summary>
@@ -313,7 +316,7 @@ namespace NikosAssets.Helpers.Editor
                 "\n\nMake a backup of your project beforehand!",
                 "Regenerate GUIDs recursive", "Cancel"))
             {
-                PickFolderAndRegenerateGUIDs(true);
+                PickFolderAndRegenerateGUIDs(true, GUIDHelper.AcceptedMetaFiles.Any);
             }
         }
         
@@ -325,7 +328,7 @@ namespace NikosAssets.Helpers.Editor
                 "\n\nMake a backup of your project beforehand!",
                 "Regenerate GUIDs non-recursive", "Cancel"))
             {
-                PickFolderAndRegenerateGUIDs(false);
+                PickFolderAndRegenerateGUIDs(false, GUIDHelper.AcceptedMetaFiles.Any);
             }
         }
         

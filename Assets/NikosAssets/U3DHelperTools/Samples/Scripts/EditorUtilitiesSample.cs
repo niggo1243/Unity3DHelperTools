@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using NaughtyAttributes;
+using NikosAssets.Helpers.Editor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -12,6 +13,12 @@ namespace NikosAssets.Helpers.Samples
         
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_SETTINGS)]
         public string desiredFileName = "_RENAME_TEST_2";
+
+        [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_SETTINGS)]
+        public bool regenGuidsRecursive = true;
+        
+        [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_SETTINGS)]
+        public GUIDHelper.AcceptedMetaFiles acceptedMetaFilesForGuidRegen = GUIDHelper.AcceptedMetaFiles.Any;
         
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_DESCRIPTIONS)]
         public string pathChosen = "Assets/";
@@ -69,7 +76,7 @@ namespace NikosAssets.Helpers.Samples
         [Button("Regenerate GUIDs recursive and keep the file references at the chosen path")]
         public void RegenerateGUIDsAtChosenPathRecursive()
         {
-            Editor.GUIDHelper.RegenerateGuids(pathChosen, true);
+            Editor.GUIDHelper.RegenerateGuids(pathChosen, regenGuidsRecursive, acceptedMetaFilesForGuidRegen);
         }
         
         #endif
