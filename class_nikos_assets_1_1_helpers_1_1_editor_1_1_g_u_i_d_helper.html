@@ -18,7 +18,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Helper Scripts Collection<span id="projectnumber">&#160;1.2.0</span>
+   <div id="projectname">Helper Scripts Collection<span id="projectnumber">&#160;1.3.1</span>
    </div>
    <div id="projectbrief">API documentation for the helper scripts compatible with Unity3D</div>
   </td>
@@ -45,6 +45,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper-members.html">List of all members</a>  </div>
@@ -55,6 +56,14 @@ $(function() {
 <p>A helper class to regenerate file GUIDs while keeping their references in other files (Scenes, Assets, etc.). Inspired by <a href="https://github.com/nvjob/unityguidregenerator/blob/master/Assets/Editor/UnityGuidRegenerator.cs">this repo</a>  
  <a href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#details">More...</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a939e5ecda809d9f8aa4fd6bc5feebe16"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#a939e5ecda809d9f8aa4fd6bc5feebe16">AcceptedMetaFiles</a> { <a class="el" href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#a939e5ecda809d9f8aa4fd6bc5feebe16aed36a1ef76a59ee3f15180e0441188ad">Any</a> = 0
+, <a class="el" href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#a939e5ecda809d9f8aa4fd6bc5feebe16a1e71568f1df9da60aeffb12bbebb802f">IgnoreFolders</a> = 1
+, <a class="el" href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#a939e5ecda809d9f8aa4fd6bc5feebe16a556f8213bfc8ad11b69782fb3ffacae7">IgnoreFiles</a> = 2
+ }</td></tr>
+<tr class="separator:a939e5ecda809d9f8aa4fd6bc5feebe16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:aaef57667a4a188e1e229967f2dc45d43"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#aaef57667a4a188e1e229967f2dc45d43">IsGuid</a> (string guid)</td></tr>
@@ -63,27 +72,54 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a5e7fc9633dc035c8254facc8283bd08f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#a5e7fc9633dc035c8254facc8283bd08f">SetGuids</a> (Dictionary&lt; string, List&lt; string &gt; &gt; guidsInFileMap, Dictionary&lt; string, string &gt; guidOldToNewMap, bool logChangedAssets=false)</td></tr>
 <tr class="memdesc:a5e7fc9633dc035c8254facc8283bd08f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replaces every GUID defined in <em>guidOldToNewMap</em>  in a file found in <em>guidsInFileMap</em> , keeping the file references intact  <a href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#a5e7fc9633dc035c8254facc8283bd08f">More...</a><br /></td></tr>
 <tr class="separator:a5e7fc9633dc035c8254facc8283bd08f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a92d142b0a43c6af8a51646b26122b9bc"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#a92d142b0a43c6af8a51646b26122b9bc">ApplyGUIDsFrom</a> (string localPathToApply, string globalPathToRead, bool recursive=true, bool ignoreFolderAssets=true, bool logChangedAssets=false, string[] whiteListExtensions=null)</td></tr>
-<tr class="memdesc:a92d142b0a43c6af8a51646b26122b9bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search and apply GUIDs form another project for files with the same name in this project. Every GUID change will be traced in every other Unity file, so no references will be lost! Can be used for recovery or package (update) consistency  <a href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#a92d142b0a43c6af8a51646b26122b9bc">More...</a><br /></td></tr>
-<tr class="separator:a92d142b0a43c6af8a51646b26122b9bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60990828744fd89c93ad6b6c299a7329"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#a60990828744fd89c93ad6b6c299a7329">RegenerateGuids</a> (string localPath, bool recursive=true, bool ignoreFolderAssets=true, bool logChangedAssets=false, string[] whiteListExtensions=null)</td></tr>
-<tr class="memdesc:a60990828744fd89c93ad6b6c299a7329"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates new random GUIDs for every found file in the given local path. Every GUID change will be traced in every other Unity file, so no references will be lost  <a href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#a60990828744fd89c93ad6b6c299a7329">More...</a><br /></td></tr>
-<tr class="separator:a60990828744fd89c93ad6b6c299a7329"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acdc716691c5ac68de751aaae9c797fdc"><td class="memItemLeft" align="right" valign="top">static List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#acdc716691c5ac68de751aaae9c797fdc">GetGuidsFromFileContents</a> (string fileContents)</td></tr>
-<tr class="memdesc:acdc716691c5ac68de751aaae9c797fdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return found GUIDs of the given file contents (text/ string)  <a href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#acdc716691c5ac68de751aaae9c797fdc">More...</a><br /></td></tr>
+<tr class="memitem:a5104a4c8f884256f097d735e2c3eeb1f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#a5104a4c8f884256f097d735e2c3eeb1f">ApplyGUIDsFrom</a> (string localPathToApply, string globalPathToRead, bool recursive=true, <a class="el" href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#a939e5ecda809d9f8aa4fd6bc5feebe16">AcceptedMetaFiles</a> acceptedMetaFiles=<a class="el" href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#a939e5ecda809d9f8aa4fd6bc5feebe16a1e71568f1df9da60aeffb12bbebb802f">AcceptedMetaFiles.IgnoreFolders</a>, bool logChangedAssets=false, string[] whiteListExtensions=null)</td></tr>
+<tr class="memdesc:a5104a4c8f884256f097d735e2c3eeb1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search and apply GUIDs form another project for files with the same name in this project. Every GUID change will be traced in every other Unity file, so no references will be lost! Can be used for recovery or package (update) consistency  <a href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#a5104a4c8f884256f097d735e2c3eeb1f">More...</a><br /></td></tr>
+<tr class="separator:a5104a4c8f884256f097d735e2c3eeb1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bf5f6151231bc28ed568199642184db"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#a5bf5f6151231bc28ed568199642184db">RegenerateGuids</a> (string localPath, bool recursive=true, <a class="el" href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#a939e5ecda809d9f8aa4fd6bc5feebe16">AcceptedMetaFiles</a> acceptedMetaFiles=<a class="el" href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#a939e5ecda809d9f8aa4fd6bc5feebe16aed36a1ef76a59ee3f15180e0441188ad">AcceptedMetaFiles.Any</a>, bool logChangedAssets=false, string[] whiteListExtensions=null)</td></tr>
+<tr class="memdesc:a5bf5f6151231bc28ed568199642184db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates new random GUIDs for every found file in the given local path. Every GUID change will be traced in every other Unity file, so no references will be lost  <a href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#a5bf5f6151231bc28ed568199642184db">More...</a><br /></td></tr>
+<tr class="separator:a5bf5f6151231bc28ed568199642184db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdc716691c5ac68de751aaae9c797fdc"><td class="memItemLeft" align="right" valign="top"><a id="acdc716691c5ac68de751aaae9c797fdc" name="acdc716691c5ac68de751aaae9c797fdc"></a>
+static List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GetGuidsFromFileContents</b> (string fileContents)</td></tr>
 <tr class="separator:acdc716691c5ac68de751aaae9c797fdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b0436bc22ea20b8e77fe6d4c33a1eb1"><td class="memItemLeft" align="right" valign="top">static List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#a7b0436bc22ea20b8e77fe6d4c33a1eb1">GetGuidsFromFileContents</a> (string fileContents, string guidStart)</td></tr>
+<tr class="memdesc:a7b0436bc22ea20b8e77fe6d4c33a1eb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return found GUIDs of the given file contents (text/ string)  <a href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#a7b0436bc22ea20b8e77fe6d4c33a1eb1">More...</a><br /></td></tr>
+<tr class="separator:a7b0436bc22ea20b8e77fe6d4c33a1eb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a8b9cfe4b62ef0d807f6fca92503d140c"><td class="memItemLeft" align="right" valign="top">static readonly string[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#a8b9cfe4b62ef0d807f6fca92503d140c">DefaultNonBinaryUnityFileExtensions</a></td></tr>
-<tr class="memdesc:a8b9cfe4b62ef0d807f6fca92503d140c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unity files that contain GUID (references)  <a href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#a8b9cfe4b62ef0d807f6fca92503d140c">More...</a><br /></td></tr>
-<tr class="separator:a8b9cfe4b62ef0d807f6fca92503d140c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adea3052c6247a17032211dc5c7f5ca8d"><td class="memItemLeft" align="right" valign="top"><a id="adea3052c6247a17032211dc5c7f5ca8d" name="adea3052c6247a17032211dc5c7f5ca8d"></a>
+static List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>DefaultNonBinaryUnityFileExtensions</b></td></tr>
+<tr class="memdesc:adea3052c6247a17032211dc5c7f5ca8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unity files that contain GUID (references), feel free to add unlisted ones <br /></td></tr>
+<tr class="separator:adea3052c6247a17032211dc5c7f5ca8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A helper class to regenerate file GUIDs while keeping their references in other files (Scenes, Assets, etc.). Inspired by <a href="https://github.com/nvjob/unityguidregenerator/blob/master/Assets/Editor/UnityGuidRegenerator.cs">this repo</a> </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a92d142b0a43c6af8a51646b26122b9bc" name="a92d142b0a43c6af8a51646b26122b9bc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a92d142b0a43c6af8a51646b26122b9bc">&#9670;&nbsp;</a></span>ApplyGUIDsFrom()</h2>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="a939e5ecda809d9f8aa4fd6bc5feebe16" name="a939e5ecda809d9f8aa4fd6bc5feebe16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a939e5ecda809d9f8aa4fd6bc5feebe16">&#9670;&nbsp;</a></span>AcceptedMetaFiles</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#a939e5ecda809d9f8aa4fd6bc5feebe16">NikosAssets.Helpers.Editor.GUIDHelper.AcceptedMetaFiles</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a939e5ecda809d9f8aa4fd6bc5feebe16aed36a1ef76a59ee3f15180e0441188ad" name="a939e5ecda809d9f8aa4fd6bc5feebe16aed36a1ef76a59ee3f15180e0441188ad"></a>Any&#160;</td><td class="fielddoc"><p >Any file or folder asset </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a939e5ecda809d9f8aa4fd6bc5feebe16a1e71568f1df9da60aeffb12bbebb802f" name="a939e5ecda809d9f8aa4fd6bc5feebe16a1e71568f1df9da60aeffb12bbebb802f"></a>IgnoreFolders&#160;</td><td class="fielddoc"><p >Only search for files and ignore folder meta assets </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a939e5ecda809d9f8aa4fd6bc5feebe16a556f8213bfc8ad11b69782fb3ffacae7" name="a939e5ecda809d9f8aa4fd6bc5feebe16a556f8213bfc8ad11b69782fb3ffacae7"></a>IgnoreFiles&#160;</td><td class="fielddoc"><p >Only search for folder meta assets and ignore files </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5104a4c8f884256f097d735e2c3eeb1f" name="a5104a4c8f884256f097d735e2c3eeb1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5104a4c8f884256f097d735e2c3eeb1f">&#9670;&nbsp;</a></span>ApplyGUIDsFrom()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -112,8 +148,8 @@ Static Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>ignoreFolderAssets</em> = <code>true</code>, </td>
+          <td class="paramtype"><a class="el" href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#a939e5ecda809d9f8aa4fd6bc5feebe16">AcceptedMetaFiles</a>&#160;</td>
+          <td class="paramname"><em>acceptedMetaFiles</em> = <code><a class="el" href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#a939e5ecda809d9f8aa4fd6bc5feebe16a1e71568f1df9da60aeffb12bbebb802f">AcceptedMetaFiles.IgnoreFolders</a></code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -146,7 +182,7 @@ Static Public Attributes</h2></td></tr>
     <tr><td class="paramname">localPathToApply</td><td>The local project path where the GUIDs will be applied to </td></tr>
     <tr><td class="paramname">globalPathToRead</td><td>The global path to read the files from that match the local file names and finally extract the GUIDs from </td></tr>
     <tr><td class="paramname">recursive</td><td>Should we search for files inside other found folders of the <em>localPathToApply</em> ? </td></tr>
-    <tr><td class="paramname">ignoreFolderAssets</td><td>Should we apply GUIDs to folder .meta files? </td></tr>
+    <tr><td class="paramname">acceptedMetaFiles</td><td>Should we accept only folders or only file assets or both? </td></tr>
     <tr><td class="paramname">logChangedAssets</td><td>Should we log the changed assets? </td></tr>
     <tr><td class="paramname">whiteListExtensions</td><td>If null, no filter is applied, otherwise only the pre defined assets (no .meta definition required). </td></tr>
   </table>
@@ -155,8 +191,8 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="acdc716691c5ac68de751aaae9c797fdc" name="acdc716691c5ac68de751aaae9c797fdc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acdc716691c5ac68de751aaae9c797fdc">&#9670;&nbsp;</a></span>GetGuidsFromFileContents()</h2>
+<a id="a7b0436bc22ea20b8e77fe6d4c33a1eb1" name="a7b0436bc22ea20b8e77fe6d4c33a1eb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b0436bc22ea20b8e77fe6d4c33a1eb1">&#9670;&nbsp;</a></span>GetGuidsFromFileContents()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -168,8 +204,18 @@ Static Public Attributes</h2></td></tr>
           <td class="memname">static List&lt; string &gt; NikosAssets.Helpers.Editor.GUIDHelper.GetGuidsFromFileContents </td>
           <td>(</td>
           <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>fileContents</em></td><td>)</td>
+          <td class="paramname"><em>fileContents</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>guidStart</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -183,6 +229,7 @@ Static Public Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">fileContents</td><td>The string contents of a file </td></tr>
+    <tr><td class="paramname">guidStart</td><td>Search for the GUID prefix </td></tr>
   </table>
   </dd>
 </dl>
@@ -225,8 +272,8 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a60990828744fd89c93ad6b6c299a7329" name="a60990828744fd89c93ad6b6c299a7329"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a60990828744fd89c93ad6b6c299a7329">&#9670;&nbsp;</a></span>RegenerateGuids()</h2>
+<a id="a5bf5f6151231bc28ed568199642184db" name="a5bf5f6151231bc28ed568199642184db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bf5f6151231bc28ed568199642184db">&#9670;&nbsp;</a></span>RegenerateGuids()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -249,8 +296,8 @@ Static Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>ignoreFolderAssets</em> = <code>true</code>, </td>
+          <td class="paramtype"><a class="el" href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#a939e5ecda809d9f8aa4fd6bc5feebe16">AcceptedMetaFiles</a>&#160;</td>
+          <td class="paramname"><em>acceptedMetaFiles</em> = <code><a class="el" href="class_nikos_assets_1_1_helpers_1_1_editor_1_1_g_u_i_d_helper.html#a939e5ecda809d9f8aa4fd6bc5feebe16aed36a1ef76a59ee3f15180e0441188ad">AcceptedMetaFiles.Any</a></code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -282,7 +329,7 @@ Static Public Attributes</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">localPath</td><td>The local project path </td></tr>
     <tr><td class="paramname">recursive</td><td>Should we search for files inside other found folders of the <em>localPath</em> ? </td></tr>
-    <tr><td class="paramname">ignoreFolderAssets</td><td>Should we generate new GUIDs for folder .meta files? </td></tr>
+    <tr><td class="paramname">acceptedMetaFiles</td><td>Should we accept only folders or only file assets or both? </td></tr>
     <tr><td class="paramname">logChangedAssets</td><td>Should we log the changed assets? </td></tr>
     <tr><td class="paramname">whiteListExtensions</td><td>If null, no filter is applied, otherwise only the pre defined assets (no .meta definition required). </td></tr>
   </table>
@@ -340,41 +387,6 @@ Static Public Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a8b9cfe4b62ef0d807f6fca92503d140c" name="a8b9cfe4b62ef0d807f6fca92503d140c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8b9cfe4b62ef0d807f6fca92503d140c">&#9670;&nbsp;</a></span>DefaultNonBinaryUnityFileExtensions</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly string [] NikosAssets.Helpers.Editor.GUIDHelper.DefaultNonBinaryUnityFileExtensions</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">        {</div>
-<div class="line">            <span class="stringliteral">&quot;*.meta&quot;</span>,</div>
-<div class="line">            <span class="stringliteral">&quot;*.mat&quot;</span>,</div>
-<div class="line">            <span class="stringliteral">&quot;*.anim&quot;</span>,</div>
-<div class="line">            <span class="stringliteral">&quot;*.prefab&quot;</span>,</div>
-<div class="line">            <span class="stringliteral">&quot;*.unity&quot;</span>,</div>
-<div class="line">            <span class="stringliteral">&quot;*.asset&quot;</span>,</div>
-<div class="line">            <span class="stringliteral">&quot;*.controller&quot;</span></div>
-<div class="line">        }</div>
-</div><!-- fragment -->
-<p>Unity files that contain GUID (references) </p>
 
 </div>
 </div>
