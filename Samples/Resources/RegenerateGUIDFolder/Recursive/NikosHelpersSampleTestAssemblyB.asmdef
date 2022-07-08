@@ -1,0 +1,17 @@
+{
+    "name": "NikosHelpersSampleTestAssembly",
+    "references": [
+        "GUID:8defb84a4b37da54580d6848b395ecb8"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

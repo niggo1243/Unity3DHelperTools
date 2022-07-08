@@ -14,6 +14,22 @@ namespace NikosAssets.Helpers.Editor
     /// </summary>
     public static class GUIDHelper
     {
+        public enum AcceptedMetaFiles
+        {
+            /// <summary>
+            /// Any file or folder asset
+            /// </summary>
+            Any = 0,
+            /// <summary>
+            /// Only search for files and ignore folder meta assets
+            /// </summary>
+            IgnoreFolders = 1,
+            /// <summary>
+            /// Only search for folder meta assets and ignore files
+            /// </summary>
+            IgnoreFiles = 2
+        }
+        
         /// <summary>
         /// Unity files that contain GUID (references), feel free to add unlisted ones
         /// </summary>
@@ -64,8 +80,8 @@ namespace NikosAssets.Helpers.Editor
         /// <param name="recursive">
         /// Can the asset be in a sub directory of <paramref name="isInLocalDirectory"/>?
         /// </param>
-        /// <param name="ignoreFolderAssets">
-        /// Can the owner GUID be a folder asset (folder + .meta)?
+        /// <param name="acceptedMetaFiles">
+        /// Should we accept only folders or only file assets or both?
         /// </param>
         /// <param name="whiteListExtensions">
         /// Must include extensions like (.mat, .cs) or accept all file types.
@@ -74,15 +90,28 @@ namespace NikosAssets.Helpers.Editor
         /// <returns>
         /// If the given file at <paramref name="filePath"/> is a GUID owner (meta) file (true or false)
         /// </returns>
-        private static bool IsAcceptedMetaFile(string isInLocalDirectory, string filePath, bool recursive, bool ignoreFolderAssets, string[] whiteListExtensions)
+        private static bool IsAcceptedMetaFile(string isInLocalDirectory, string filePath, bool recursive, 
+            AcceptedMetaFiles acceptedMetaFiles, string[] whiteListExtensions)
         {
+            if (!Path.GetExtension(filePath).Equals(".meta")) return false;
+            
             string directory = Path.GetDirectoryName(filePath).Replace(@"\", "/") + "/";
 
-            // First GUID in .meta file is always the GUID of the asset itself
-            // We must only replace GUIDs for Resources present in Assets.
+            //any meta file
+            bool isAccepted = true;
+            string fileOrFolder = filePath.Substring(0, filePath.Length - 5);
+            switch (acceptedMetaFiles)
+            {
+                case AcceptedMetaFiles.IgnoreFolders:
+                    isAccepted = File.Exists(fileOrFolder);
+                    break;
+                case AcceptedMetaFiles.IgnoreFiles:
+                    isAccepted = Directory.Exists(fileOrFolder);
+                    break;
+            }
+            
             return 
-                (Path.GetExtension(filePath) == ".meta" 
-                 && (!ignoreFolderAssets || filePath.Count(fp => fp == '.') > 1)
+                (isAccepted
                  &&
                  (
                      //not recursive means that the directory ends with the localAssetPath
@@ -206,8 +235,8 @@ namespace NikosAssets.Helpers.Editor
         /// <param name="recursive">
         /// Should we search for files inside other found folders of the <paramref name="localPathToApply"/>?
         /// </param>
-        /// <param name="ignoreFolderAssets">
-        /// Should we apply GUIDs to folder .meta files?
+        /// <param name="acceptedMetaFiles">
+        /// Should we accept only folders or only file assets or both?
         /// </param>
         /// <param name="logChangedAssets">
         /// Should we log the changed assets?
@@ -217,7 +246,7 @@ namespace NikosAssets.Helpers.Editor
         /// </param>
         public static void ApplyGUIDsFrom(string localPathToApply, string globalPathToRead,
             bool recursive = true,
-            bool ignoreFolderAssets = true,
+            AcceptedMetaFiles acceptedMetaFiles = AcceptedMetaFiles.IgnoreFolders,
             bool logChangedAssets = false,
             string[] whiteListExtensions = null)
         {
@@ -251,7 +280,7 @@ namespace NikosAssets.Helpers.Editor
                     List<string> guids = GetGuidsFromFileContents(contents);
 
                     //can we add this file to the guidOldToNewMap?
-                    if (IsAcceptedMetaFile(localPathToApply, filePath, recursive, ignoreFolderAssets,
+                    if (IsAcceptedMetaFile(localPathToApply, filePath, recursive, acceptedMetaFiles,
                         whiteListExtensions))
                     {
                         int matchingGlobalFilePathIndex =
@@ -309,8 +338,8 @@ namespace NikosAssets.Helpers.Editor
         /// <param name="recursive">
         /// Should we search for files inside other found folders of the <paramref name="localPath"/>?
         /// </param>
-        /// <param name="ignoreFolderAssets">
-        /// Should we generate new GUIDs for folder .meta files?
+        /// <param name="acceptedMetaFiles">
+        /// Should we accept only folders or only file assets or both?
         /// </param>
         /// <param name="logChangedAssets">
         /// Should we log the changed assets?
@@ -321,7 +350,7 @@ namespace NikosAssets.Helpers.Editor
         public static void RegenerateGuids(
             string localPath,
             bool recursive = true,
-            bool ignoreFolderAssets = true,
+            AcceptedMetaFiles acceptedMetaFiles = AcceptedMetaFiles.Any,
             bool logChangedAssets = false,
             string[] whiteListExtensions = null)
         {
@@ -345,7 +374,7 @@ namespace NikosAssets.Helpers.Editor
                     List<string> guids = GetGuidsFromFileContents(contents);
 
                     //can we add this file to the guidOldToNewMap?
-                    if (IsAcceptedMetaFile(localPath, filePath, recursive, ignoreFolderAssets, whiteListExtensions))
+                    if (IsAcceptedMetaFile(localPath, filePath, recursive, acceptedMetaFiles, whiteListExtensions))
                     {
                         string oldGuid = guids.First();
                         // Generate and save new GUID if we haven't added it before
@@ -380,18 +409,31 @@ namespace NikosAssets.Helpers.Editor
             }
         }
 
+        public static List<string> GetGuidsFromFileContents(string fileContents)
+        {
+            List<string> guids = new List<string>();
+
+            //also checks for "GUID: ", "GUID:", "guid: "
+            string fileContentsSimple = fileContents.ToLower().Replace(" ", "");
+            guids.AddRange(GetGuidsFromFileContents(fileContentsSimple, "guid:"));
+
+            return guids;
+        }
+        
         /// <summary>
         /// Return found GUIDs of the given file contents (text/ string)
         /// </summary>
         /// <param name="fileContents">
         /// The string contents of a file
         /// </param>
+        /// <param name="guidStart">
+        /// Search for the GUID prefix
+        /// </param>
         /// <returns>
         /// A list of found GUID strings
         /// </returns>
-        public static List<string> GetGuidsFromFileContents(string fileContents)
+        public static List<string> GetGuidsFromFileContents(string fileContents, string guidStart)
         {
-            const string guidStart = "guid: ";
             const int guidLength = 32;
             int textLength = fileContents.Length;
             int guidStartLength = guidStart.Length;
