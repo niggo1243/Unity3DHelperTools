@@ -2,6 +2,7 @@
 
 using UnityEngine;
 using NaughtyAttributes;
+using UnityEngine.Serialization;
 
 namespace NikosAssets.Helpers
 {
@@ -28,53 +29,78 @@ namespace NikosAssets.Helpers
         /// <summary>
         /// The blend in and out time
         /// </summary>
+        [FormerlySerializedAs("blendTime")]
         [ShowIf(nameof(blendOverTime))]
         [Tooltip("The blend in and out time")]
         [AllowNesting]
-        public float blendTime = 1;
+        public float blendSpeed = 1;
 
-        public virtual float Blend(float currentValue, float targetValue, float deltaTime = 1)
+        public static float Blend(float currentValue, float targetValue, 
+            bool lerp, bool blendOverTime, float blendSpeed, float deltaTime = 1)
         {
             if (!blendOverTime) return targetValue;
             
-            return this.lerp
+            return lerp
                 ?
-                Mathf.Lerp(currentValue, targetValue, this.blendTime * deltaTime)
+                Mathf.Lerp(currentValue, targetValue, blendSpeed * deltaTime)
                 :
-                Mathf.MoveTowards(currentValue, targetValue, this.blendTime * deltaTime);
+                Mathf.MoveTowards(currentValue, targetValue, blendSpeed * deltaTime);
+        }
+        
+        public static Vector2 Blend(Vector2 currentValue, Vector2 targetValue, 
+            bool lerp, bool blendOverTime, float blendSpeed, float deltaTime = 1)
+        {
+            if (!blendOverTime) return targetValue;
+            
+            return lerp
+                ?
+                Vector2.Lerp(currentValue, targetValue, blendSpeed * deltaTime)
+                :
+                Vector2.MoveTowards(currentValue, targetValue, blendSpeed * deltaTime);
+        }
+
+        public static Vector3 Blend(Vector3 currentValue, Vector3 targetValue, 
+            bool lerp, bool blendOverTime, float blendSpeed, float deltaTime = 1)
+        {
+            if (!blendOverTime) return targetValue;
+            
+            return lerp
+                ?
+                Vector3.Lerp(currentValue, targetValue, blendSpeed * deltaTime)
+                :
+                Vector3.MoveTowards(currentValue, targetValue, blendSpeed * deltaTime);
+        }
+        
+        public static Vector4 Blend(Vector4 currentValue, Vector4 targetValue, 
+            bool lerp, bool blendOverTime, float blendSpeed, float deltaTime = 1)
+        {
+            if (!blendOverTime) return targetValue;
+            
+            return lerp
+                ?
+                Vector4.Lerp(currentValue, targetValue, blendSpeed * deltaTime)
+                :
+                Vector4.MoveTowards(currentValue, targetValue, blendSpeed * deltaTime);
+        }
+        
+        public virtual float Blend(float currentValue, float targetValue, float deltaTime = 1)
+        {
+            return Blend(currentValue, targetValue, lerp, blendOverTime, blendSpeed, deltaTime);
         }
         
         public virtual Vector2 Blend(Vector2 currentValue, Vector2 targetValue, float deltaTime = 1)
         {
-            if (!blendOverTime) return targetValue;
-            
-            return this.lerp
-                ?
-                Vector2.Lerp(currentValue, targetValue, this.blendTime * deltaTime)
-                :
-                Vector2.MoveTowards(currentValue, targetValue, this.blendTime * deltaTime);
+            return Blend(currentValue, targetValue, lerp, blendOverTime, blendSpeed, deltaTime);
         }
         
         public virtual Vector3 Blend(Vector3 currentValue, Vector3 targetValue, float deltaTime = 1)
         {
-            if (!blendOverTime) return targetValue;
-            
-            return this.lerp
-                ?
-                Vector3.Lerp(currentValue, targetValue, this.blendTime * deltaTime)
-                :
-                Vector3.MoveTowards(currentValue, targetValue, this.blendTime * deltaTime);
+            return Blend(currentValue, targetValue, lerp, blendOverTime, blendSpeed, deltaTime);
         }
-        
+
         public virtual Vector4 Blend(Vector4 currentValue, Vector4 targetValue, float deltaTime = 1)
         {
-            if (!blendOverTime) return targetValue;
-            
-            return this.lerp
-                ?
-                Vector4.Lerp(currentValue, targetValue, this.blendTime * deltaTime)
-                :
-                Vector4.MoveTowards(currentValue, targetValue, this.blendTime * deltaTime);
+            return Blend(currentValue, targetValue, lerp, blendOverTime, blendSpeed, deltaTime);
         }
     }
 }

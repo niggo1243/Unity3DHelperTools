@@ -305,10 +305,38 @@ namespace NikosAssets.Helpers.Editor
                 AssetDatabase.Refresh();
             }
         }
+        
+        public static Quaternion GetSceneViewRotation()
+        {
+            return SceneView.lastActiveSceneView.rotation;
+        }
+        
+        public static Vector3 GetSceneViewEulerAngles()
+        {
+            return GetSceneViewRotation().eulerAngles;
+        }
+        
+        public static Vector3 GetSceneViewPosition()
+        {
+            Matrix4x4 camMatrix = SceneView.lastActiveSceneView.camera.cameraToWorldMatrix;
+            return new Vector3(camMatrix.m03, camMatrix.m13, camMatrix.m23);
+        }
+        
+        public static float GetDistanceBetweenSceneViewAndSelected()
+        {
+            return Vector3.Distance(GetSceneViewPosition(), Selection.activeTransform.position);
+        }
+
+        public static string GetAbsoluteProjectPath()
+        {
+            string dataPath = Application.dataPath;
+            int lastSlash = dataPath.LastIndexOf('/') + 1;
+            return dataPath.Remove(lastSlash, dataPath.Length - lastSlash);
+        }
 
         #region Menu Items
 
-        [MenuItem("Tools/Helpers/RegenerateGUIDsOfPickedFolder/Recursive")]
+        [MenuItem("Tools/" + nameof(NikosAssets) + "/" + nameof(Helpers) + "/RegenerateGUIDsOfPickedFolder/Recursive")]
         private static void RegenerateGUIDsRecursive()
         {
             if (EditorUtility.DisplayDialog("GUIDs regeneration recursive",
@@ -320,7 +348,7 @@ namespace NikosAssets.Helpers.Editor
             }
         }
         
-        [MenuItem("Tools/Helpers/RegenerateGUIDsOfPickedFolder/NonRecursive")]
+        [MenuItem("Tools/" + nameof(NikosAssets) + "/" + nameof(Helpers) + "/RegenerateGUIDsOfPickedFolder/NonRecursive")]
         private static void RegenerateGUIDsNonRecursive()
         {
             if (EditorUtility.DisplayDialog("GUIDs regeneration non-recursive",
@@ -332,7 +360,7 @@ namespace NikosAssets.Helpers.Editor
             }
         }
         
-        [MenuItem("Tools/Helpers/ApplyGUIDsOfPickedFolders/Recursive")]
+        [MenuItem("Tools/" + nameof(NikosAssets) + "/" + nameof(Helpers) + "/ApplyGUIDsOfPickedFolders/Recursive")]
         private static void ApplyGUIDsRecursive()
         {
             if (EditorUtility.DisplayDialog("GUIDs replacement recursive",
@@ -346,7 +374,7 @@ namespace NikosAssets.Helpers.Editor
             }
         }
 
-        [MenuItem("Tools/Helpers/ReplaceFilesOfPickedFolders/Recursive")]
+        [MenuItem("Tools/" + nameof(NikosAssets) + "/" + nameof(Helpers) + "/ReplaceFilesByPickedFolders/Recursive")]
         private static void ReplaceFilesByPickedFoldersRecursive()
         {
             if (EditorUtility.DisplayDialog("Replace files recursive",
@@ -360,6 +388,32 @@ namespace NikosAssets.Helpers.Editor
                     EditorUtility.OpenFolderPanel("Files to read", "Assets/", ""), 
                     true);
             }
+        }
+        
+        [MenuItem("Tools/" + nameof(NikosAssets) + "/" + nameof(Helpers) + "/" + nameof(LogAbsoluteProjectPath))]
+        private static void LogAbsoluteProjectPath()
+        {
+            Debug.Log(GetAbsoluteProjectPath());
+        }
+
+        [MenuItem("Tools/" + nameof(NikosAssets) + "/" + nameof(Helpers) + "/SceneView/" + nameof(LogSceneViewEulerAngles))]
+        private static void LogSceneViewEulerAngles()
+        {
+            Debug.Log($"The scene view's global eulerAngles are '{GetSceneViewEulerAngles()}'");
+        }
+        
+        [MenuItem("Tools/" + nameof(NikosAssets) + "/" + nameof(Helpers) + "/SceneView/" + nameof(LogSceneViewPosition))]
+        private static void LogSceneViewPosition()
+        {
+            Debug.Log($"The scene view's global position is '{GetSceneViewPosition()}'");
+        }
+
+        [MenuItem("Tools/" + nameof(NikosAssets) + "/" + nameof(Helpers) + "/SceneView/" + nameof(LogPositionBetweenSceneViewAndSelected))]
+        private static void LogPositionBetweenSceneViewAndSelected()
+        {
+            float distance = Vector3.Distance(GetSceneViewPosition(), Selection.activeTransform.position);
+            Debug.Log($"The global distance between the scene view and the selected GameObject " +
+                      $"'{Selection.activeGameObject.name}' is '{distance}'");
         }
 
         #endregion

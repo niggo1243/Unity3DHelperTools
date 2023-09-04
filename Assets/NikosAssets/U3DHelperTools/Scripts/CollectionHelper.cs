@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using NikosAssets.Helpers.Interfaces;
 using UnityEngine;
 
 namespace NikosAssets.Helpers
@@ -18,6 +19,17 @@ namespace NikosAssets.Helpers
             MatchAtLeastOne = 1,
             MatchAll = 2,
             MatchAllIncludingAmount = 3
+        }
+        
+        public static void ShuffleList<T>(List<T> collection)
+        {
+            for (int i = 0; i < collection.Count; i++)
+            {
+                T temp = collection[i];
+                int randomIndex = UnityEngine.Random.Range(i, collection.Count);
+                collection[i] = collection[randomIndex];
+                collection[randomIndex] = temp;
+            }
         }
 
         /// <summary>
@@ -251,6 +263,20 @@ namespace NikosAssets.Helpers
             }
 
             return default(T);
+        }
+
+        public static ChanceType GetRandomChanceWinnerFromList<ChanceType>(List<ChanceType> list) where ChanceType : IChance
+        {
+            List<ChanceType> tempList = list.FindAll(item => NumericHelper.RandomChanceSuccess01(item.Chance));
+            if (tempList.Count < 1) return default(ChanceType);
+
+            return tempList[Random.Range(0, tempList.Count)];
+        }
+        
+        public static T GetRandomWinnerFromList<T>(List<T> list)
+        {
+            if (list.Count < 1) return default(T);
+            return list[Random.Range(0, list.Count)];
         }
     }
 }

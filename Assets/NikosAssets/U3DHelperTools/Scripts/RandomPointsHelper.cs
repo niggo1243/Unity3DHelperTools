@@ -171,9 +171,9 @@ namespace NikosAssets.Helpers
 
         /// <summary>
         /// Try to get the closest point on a surface with the accepted <paramref name="layerMasks"/> based
-        /// on the starting <paramref name="airPoint"/>, the <paramref name="shootDir"/> and the <paramref name="maxDist"/>
+        /// on the starting <paramref name="startingAndShootRayPoint"/>, the <paramref name="shootDir"/> and the <paramref name="maxDist"/>
         /// </summary>
-        /// <param name="airPoint">
+        /// <param name="startingAndShootRayPoint">
         /// The floating starting point
         /// </param>
         /// <param name="shootDir">
@@ -186,9 +186,9 @@ namespace NikosAssets.Helpers
         /// What colliders are accepted?
         /// </param>
         /// <returns>
-        /// If no surface found, the <paramref name="airPoint"/>, otherwise a surface hit <see cref="Vector3"/> point
+        /// If no surface found, the <paramref name="startingAndShootRayPoint"/>, otherwise a surface hit <see cref="Vector3"/> point
         /// </returns>
-        public static Vector3 GetClosestPointOnSurface(Vector3 airPoint, Vector3 shootDir,
+        public static Vector3 GetClosestPointOnSurface(Vector3 startingAndShootRayPoint, Vector3 shootDir,
             float maxDist = 50, params string[] layerMasks)
         {
             layerMasks = layerMasks == null || layerMasks.Length < 1
@@ -196,25 +196,22 @@ namespace NikosAssets.Helpers
                 : layerMasks;
 
             int layerMaskInt = LayerMask.GetMask(layerMasks);
-            Physics.Raycast(airPoint, shootDir, out RaycastHit raycastHit, maxDist, layerMaskInt);
+            Physics.Raycast(startingAndShootRayPoint, shootDir, out RaycastHit raycastHit, maxDist, layerMaskInt);
 
             if (raycastHit.collider == null)
             {
                 Debug.LogWarning("missed surface");
-                Debug.DrawLine(airPoint, airPoint + shootDir * maxDist, Color.black, 3);
+                Debug.DrawLine(startingAndShootRayPoint, startingAndShootRayPoint + shootDir * maxDist, Color.black, 3);
 
-                return airPoint;
+                return startingAndShootRayPoint;
             }
 
             return raycastHit.point;
         }
         
         #endregion
-
-        #region Obsolete Methods
-
-        [Obsolete("This method will be replaced by the static GetClosestPointOnSurface() method")]
-        public static Vector3 GetRandomPointOnSurface(Vector3 airPoint, Vector3 offsetAirPoint, Vector3 shootDir, 
+        
+        public static Vector3 GetRandomPointOnSurface(Vector3 startingPoint, Vector3 shootRayPoint, Vector3 shootDir, 
             float maxDist = 50, params string[] layerMasks)
         {
             layerMasks = layerMasks == null || layerMasks.Length < 1 
@@ -225,7 +222,7 @@ namespace NikosAssets.Helpers
 
             //Debug.DrawRay(offsetAirPoint, airPoint - offsetAirPoint, Color.blue, 3);
 
-            Physics.Raycast(offsetAirPoint, shootDir, out RaycastHit raycastHit, maxDist, layerMaskInt);
+            Physics.Raycast(shootRayPoint, shootDir, out RaycastHit raycastHit, maxDist, layerMaskInt);
 
             //Debug.DrawRay(offsetAirPoint, shootDir * maxDist, Color.black, 3);
             
@@ -234,9 +231,9 @@ namespace NikosAssets.Helpers
             if (raycastHit.collider == null)
             {
                 Debug.LogWarning("missed surface");
-                Debug.DrawLine(offsetAirPoint, offsetAirPoint + shootDir * maxDist, Color.black, 3);
+                Debug.DrawLine(shootRayPoint, shootRayPoint + shootDir * maxDist, Color.black, 3);
 
-                return airPoint;
+                return startingPoint;
             }
             else
             {
@@ -245,18 +242,8 @@ namespace NikosAssets.Helpers
                 return raycastHit.point;
             }
         }
-        
-        [Obsolete("This method is redundant and will be removed")]
-        public static Vector3 GetClosestPointOnNavmesh(Vector3 pointSomewhere, float searchRadiusOfPoint = 5, int navMeshArea = -1)
-        {
-            if (NavMesh.SamplePosition(pointSomewhere, out NavMeshHit navMeshHit, searchRadiusOfPoint, navMeshArea))
-            {
-                return navMeshHit.position;
-            }
 
-            return pointSomewhere;
-        }
-
+        #region Obsolete Methods
         #endregion
     }
 }

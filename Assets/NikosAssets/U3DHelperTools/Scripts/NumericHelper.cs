@@ -1,4 +1,5 @@
 ﻿using System;
+using NikosAssets.Helpers.Extensions;
 using UnityEngine;
 
 namespace NikosAssets.Helpers
@@ -14,6 +15,20 @@ namespace NikosAssets.Helpers
             HasNone = 1,
             HasSome = 2,
             //HasNegative = 3
+        }
+        
+        public static float Snap(float currentValue, float desiredValue, float snapSize, float snapTolerance = .5f)
+        {
+            float valueDiff = desiredValue - currentValue;
+            if (Mathf.Abs(valueDiff) < (snapSize * snapTolerance))
+                return currentValue;
+                    
+            return Snap(desiredValue, snapSize);
+        }
+        
+        public static float Snap(float currentValue, float snapSize)
+        {
+            return (snapSize * Mathf.RoundToInt(currentValue / snapSize));
         }
 
         /// <summary>
@@ -91,6 +106,27 @@ namespace NikosAssets.Helpers
         {
             float rand = UnityEngine.Random.Range(0f, 1f);
             return !(rand > chance01);
+        }
+
+        public static float GetRandomFloatFromMinMaxVector(Vector2 minMax)
+        {
+            return UnityEngine.Random.Range(minMax.x, minMax.y);
+        }
+        
+        public static Quaternion ReflectRotation(Quaternion source, Vector3 normal)
+        {
+            return Quaternion.LookRotation(Vector3.Reflect(source * Vector3.forward, normal), Vector3.Reflect(source * Vector3.up, normal));
+        }
+        
+        public static Quaternion GetDesiredRotation(Transform transform, Transform target, bool alignWithTargetsUp)
+        {
+            Quaternion rot = LookAt(target.position, transform.position, Vector3.zero);
+            if (alignWithTargetsUp)
+            {
+                rot = Quaternion.LookRotation(rot * Vector3.forward, target.up);
+            }
+
+            return rot;
         }
 
         /// <summary>
@@ -351,33 +387,30 @@ namespace NikosAssets.Helpers
             
             return verticalAngle < verticalMaxAngle && horizontalAngle < horizontalMaxAngle;
         }
+        
+        public static bool IsALookingAtB(Transform a, Vector3 bPos, float withinViewAngle)
+        {
+            return IsInViewArea3D(a.position, a.forward, bPos, withinViewAngle);
+        }
+        
+        public static bool IsALookingAtBSameHeight(Transform a, Vector3 bPos, float withinViewAngle)
+        {
+            Vector3 aPos = a.position;
+            return IsInViewArea3D(aPos, a.forward, 
+                //set position of a to be the same height as b, so that the angle is always valid when looking in the right dir
+                bPos.GetWithNewY(aPos.y), withinViewAngle);
+        }
 
-        /// <summary>
-        /// Returns a <see cref="Vector4"/> division for each value of the given vectors
-        /// </summary>
-        /// <param name="dividend"></param>
-        /// <param name="divisor"></param>
-        /// <returns>
-        /// The item by item divided <see cref="Vector4"/>
-        /// </returns>
-        public static Vector4 Divide2Vectors(Vector4 dividend, Vector4 divisor)
+        public static int PositiveOrNegative(float value)
         {
-            return new Vector4(dividend.x / divisor.x, dividend.y / divisor.y, dividend.z / divisor.z, dividend.w / divisor.w);
+            if (value < 0)
+                return -1;
+
+            return 1;
         }
-        
-        /// <summary>
-        /// Returns a <see cref="Vector3"/> division for each value of the given vectors
-        /// </summary>
-        /// <param name="dividend"></param>
-        /// <param name="divisor"></param>
-        /// <returns>
-        /// The item by item divided <see cref="Vector3"/>
-        /// </returns>
-        public static Vector3 Divide2Vectors(Vector3 dividend, Vector3 divisor)
-        {
-            return new Vector3(dividend.x / divisor.x, dividend.y / divisor.y, dividend.z / divisor.z);
-        }
-        
+
+        #region Obsolete Methods
+
         /// <summary>
         /// Returns a <see cref="Vector2"/> division for each value of the given vectors
         /// </summary>
@@ -386,35 +419,40 @@ namespace NikosAssets.Helpers
         /// <returns>
         /// The item by item divided <see cref="Vector2"/>
         /// </returns>
+        [Obsolete("Method has moved to Extensions.VectorUtils.Divide(...) and will be deleted here in future updates")]
         public static Vector2 Divide2Vectors(Vector2 dividend, Vector2 divisor)
         {
-            return new Vector2(dividend.x / divisor.x, dividend.y / divisor.y);
+            return dividend.Divide(divisor);
         }
-
-        #region Obsolete Methods
 
         /// <summary>
-        /// 
+        /// Returns a <see cref="Vector3"/> division for each value of the given vectors
         /// </summary>
-        /// <param name="dir"></param>
-        /// <param name="directionToCheck"></param>
+        /// <param name="dividend"></param>
+        /// <param name="divisor"></param>
         /// <returns>
-        /// Returns the dot float result, indicating if the Vector <paramref name="dir"/> is facing the <paramref name="directionToCheck"/> Vector.
-        /// <example>
-        /// dot = 1     => Is Not Facing ("100%" Opposite direction)
-        /// dot = .5f   => Is not Facing
-        /// dot == 0    => Is Perpendicular
-        /// dot = -.5f  => Is Facing
-        /// dot = -1    => Is Facing directly "100%"
-        /// </example>
+        /// The item by item divided <see cref="Vector3"/>
         /// </returns>
-        [Obsolete("This method is redundant and will be removed in the future")]
-        public static float VectorFacingDotResult(Vector3 dir, Vector3 directionToCheck)
+        [Obsolete("Method has moved to Extensions.VectorUtils.Divide(...) and will be deleted here in future updates")]
+        public static Vector3 Divide2Vectors(Vector3 dividend, Vector3 divisor)
         {
-            dir = dir.normalized;
-            return Vector3.Dot(dir, directionToCheck);
+            return dividend.Divide(divisor);
         }
-
+        
+        /// <summary>
+        /// Returns a <see cref="Vector4"/> division for each value of the given vectors
+        /// </summary>
+        /// <param name="dividend"></param>
+        /// <param name="divisor"></param>
+        /// <returns>
+        /// The item by item divided <see cref="Vector4"/>
+        /// </returns>
+        [Obsolete("Method has moved to Extensions.VectorUtils.Divide(...) and will be deleted here in future updates")]
+        public static Vector4 Divide2Vectors(Vector4 dividend, Vector4 divisor)
+        {
+            return dividend.Divide(divisor);
+        }
+        
         #endregion
     }
 }

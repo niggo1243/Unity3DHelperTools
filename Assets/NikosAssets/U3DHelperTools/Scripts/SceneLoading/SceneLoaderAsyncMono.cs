@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-namespace NikosAssets.Helpers
+namespace NikosAssets.Helpers.SceneLoading
 {
     [Serializable]
     public class SceneLoadedUnityEvent : UnityEvent<Scene>
