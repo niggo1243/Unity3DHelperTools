@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NikosAssets.Helpers.ScriptableObjectWrappers
 {
-    public abstract class BaseSOW<T> : BaseNotesSO
+    public abstract class BaseSOW<T> : BaseSOWWrapper
     {
         [SerializeField]
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_SETTINGS)]

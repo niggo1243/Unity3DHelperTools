@@ -192,13 +192,6 @@ namespace NikosAssets.Helpers.Editor
             return allFilesPaths;
         }
 
-        [Obsolete("This method will be replaced by \"RenameFiles()\"")]
-        public static void RenameFilesRecursive(string localRootPath, string oldFileNamePart, string newFileNamePart, 
-            bool recursive = true, string[] forExtensions = null)
-        {
-            RenameFiles(localRootPath, oldFileNamePart, newFileNamePart, recursive, forExtensions);
-        }
-        
         /// <summary>
         /// Renames the files at the given local path and keeps all references (same GUIDs)
         /// </summary>
@@ -306,27 +299,48 @@ namespace NikosAssets.Helpers.Editor
             }
         }
         
+        /// <summary>
+        /// Gets the last known scene view camera rotation (not from a camera component)
+        /// </summary>
+        /// <returns>The rotation as a <see cref="Quaternion"/></returns>
         public static Quaternion GetSceneViewRotation()
         {
             return SceneView.lastActiveSceneView.rotation;
         }
         
+        /// <summary>
+        /// Gets the last known scene view camera rotation (not from a camera component)
+        /// </summary>
+        /// <returns>The rotation as a <see cref="Vector3"/> (eulerAngles)</returns>
         public static Vector3 GetSceneViewEulerAngles()
         {
             return GetSceneViewRotation().eulerAngles;
         }
         
+        /// <summary>
+        /// Gets the last known scene view camera global position (not from a camera component)
+        /// </summary>
+        /// <returns>The global position as a <see cref="Vector3"/></returns>
         public static Vector3 GetSceneViewPosition()
         {
             Matrix4x4 camMatrix = SceneView.lastActiveSceneView.camera.cameraToWorldMatrix;
             return new Vector3(camMatrix.m03, camMatrix.m13, camMatrix.m23);
         }
         
+        /// <summary>
+        /// Gets the distance between the last known scene view camera (not from a camera component)
+        /// and the current active selected transform in the scene hierarchy
+        /// </summary>
+        /// <returns>The distance as a float</returns>
         public static float GetDistanceBetweenSceneViewAndSelected()
         {
             return Vector3.Distance(GetSceneViewPosition(), Selection.activeTransform.position);
         }
 
+        /// <summary>
+        /// Get the global path to this unity project without the "Assets/" path
+        /// </summary>
+        /// <returns>The global/ absolute path as a <see cref="string"/></returns>
         public static string GetAbsoluteProjectPath()
         {
             string dataPath = Application.dataPath;
@@ -336,7 +350,7 @@ namespace NikosAssets.Helpers.Editor
 
         #region Menu Items
 
-        [MenuItem("Tools/" + nameof(NikosAssets) + "/" + nameof(Helpers) + "/RegenerateGUIDsOfPickedFolder/Recursive")]
+        [MenuItem("Tools/" + nameof(NikosAssets) + "/" + nameof(Helpers) + "/Regenerate GUIDs Of Picked Folder/Recursive")]
         private static void RegenerateGUIDsRecursive()
         {
             if (EditorUtility.DisplayDialog("GUIDs regeneration recursive",
@@ -348,7 +362,7 @@ namespace NikosAssets.Helpers.Editor
             }
         }
         
-        [MenuItem("Tools/" + nameof(NikosAssets) + "/" + nameof(Helpers) + "/RegenerateGUIDsOfPickedFolder/NonRecursive")]
+        [MenuItem("Tools/" + nameof(NikosAssets) + "/" + nameof(Helpers) + "/Regenerate GUIDs Of Picked Folder/NonRecursive")]
         private static void RegenerateGUIDsNonRecursive()
         {
             if (EditorUtility.DisplayDialog("GUIDs regeneration non-recursive",
@@ -360,7 +374,7 @@ namespace NikosAssets.Helpers.Editor
             }
         }
         
-        [MenuItem("Tools/" + nameof(NikosAssets) + "/" + nameof(Helpers) + "/ApplyGUIDsOfPickedFolders/Recursive")]
+        [MenuItem("Tools/" + nameof(NikosAssets) + "/" + nameof(Helpers) + "/Apply GUIDs Of Picked Folders/Recursive")]
         private static void ApplyGUIDsRecursive()
         {
             if (EditorUtility.DisplayDialog("GUIDs replacement recursive",
@@ -373,8 +387,22 @@ namespace NikosAssets.Helpers.Editor
                     EditorUtility.OpenFolderPanel("Read GUIDs from folder", "Assets/", ""));
             }
         }
+        
+        [MenuItem("Tools/" + nameof(NikosAssets) + "/" + nameof(Helpers) + "/Apply GUIDs Of Picked Folders/NonRecursive")]
+        private static void ApplyGUIDsNonRecursive()
+        {
+            if (EditorUtility.DisplayDialog("GUIDs replacement non-recursive",
+                "The first folder picker is for GUIDs to replace in this project and the second one is from the other project to read the GUIDs from." +
+                "\nAfter that the process of GUID replacement will begin. " +
+                "\n\nMake a backup of your project beforehand!",
+                "Apply GUIDs non-recursive", "Cancel"))
+            {
+                GUIDHelper.ApplyGUIDsFrom(PickFolderInsideProject("Replace GUIDs in folder", "Assets/", null),
+                    EditorUtility.OpenFolderPanel("Read GUIDs from folder", "Assets/", ""), false);
+            }
+        }
 
-        [MenuItem("Tools/" + nameof(NikosAssets) + "/" + nameof(Helpers) + "/ReplaceFilesByPickedFolders/Recursive")]
+        [MenuItem("Tools/" + nameof(NikosAssets) + "/" + nameof(Helpers) + "/Replace Files By Picked Folders/Recursive")]
         private static void ReplaceFilesByPickedFoldersRecursive()
         {
             if (EditorUtility.DisplayDialog("Replace files recursive",

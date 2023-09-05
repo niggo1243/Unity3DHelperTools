@@ -400,14 +400,7 @@ namespace NikosAssets.Helpers
                 //set position of a to be the same height as b, so that the angle is always valid when looking in the right dir
                 bPos.GetWithNewY(aPos.y), withinViewAngle);
         }
-
-        public static int PositiveOrNegative(float value)
-        {
-            if (value < 0)
-                return -1;
-
-            return 1;
-        }
+        
 
         #region Obsolete Methods
 

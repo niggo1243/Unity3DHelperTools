@@ -6,12 +6,20 @@ using UnityEngine;
 
 namespace NikosAssets.Helpers.Framework
 {
+    /// <summary>
+    /// A helper wrapper class that prepares the usage and handling of color lerping of a renderer,
+    /// where the actual color lerping has to be implemented in a subclass (for example via tweens or similar)
+    /// </summary>
     public abstract class BaseLerpColorOfRendererMono : BaseNotesMono
-    { 
+    {
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_SETTINGS)]
         public Renderer rendererToChangeColor;
-        
+     
+        /// <summary>
+        /// The time it takes to lerp the color (back and forth -> ping pong)
+        /// </summary>
         [BoxGroup("PingPong " + HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_SETTINGS)]
+        [Tooltip("The time it takes to lerp the color (back and forth -> ping pong)")]
         public float pingPongColorChangeTime = .5f;
 
         protected Color _originalColor;
@@ -41,7 +49,7 @@ namespace NikosAssets.Helpers.Framework
                 rendererToChangeColor = GetComponent<Renderer>();
         }
         
-        protected virtual IEnumerator LerpColorsPingPong(Color targetColor, Color returnColor, float timeInSec, Func<bool> saveToLerpCondition = null)
+        public virtual IEnumerator LerpColorsPingPong(Color targetColor, Color returnColor, float timeInSec, Func<bool> saveToLerpCondition = null)
         {
             while (enabled && gameObject.activeInHierarchy)
             {
@@ -51,7 +59,7 @@ namespace NikosAssets.Helpers.Framework
             }
         }
 
-        protected abstract IEnumerator LerpColorIfSaveCoroutine(Color targetColor, float timeInSec, Func<bool> saveToLerpCondition = null);
+        public abstract IEnumerator LerpColorIfSaveCoroutine(Color targetColor, float timeInSec, Func<bool> saveToLerpCondition = null);
 
         public virtual bool LerpColorIfSave(Color targetColor, float timeInSec, Func<bool> saveToLerpCondition = null)
         {

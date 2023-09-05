@@ -7,15 +7,10 @@ using System.Text.RegularExpressions;
 namespace NikosAssets.Helpers.Extensions
 {
     /// <summary>
-    /// A custom string extension helper class
+    /// A string extension helper class
     /// </summary>
     public static class StringUtils
     {
-        public static string SplitCamelCase(this string input)
-        {
-            return Regex.Replace(input, "(?<=[a-z])([A-Z])", " $1", RegexOptions.Compiled);
-        }
-        
         /// <summary>
         /// Turn this string into a <see cref="ulong"/> hash using the <see cref="SHA256"/> algorithm
         /// </summary>

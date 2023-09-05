@@ -8,6 +8,9 @@ namespace NikosAssets.Helpers.AlarmClock
     [Serializable]
     public class AlarmUnityEvent : UnityEvent{}
 
+    /// <summary>
+    /// Base class for stopwatch like behaviour handling with C# event and UnityEvent support
+    /// </summary>
     public abstract class BaseAlarmClock : BaseNotesMono
     {
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_EVENTS)]
@@ -37,6 +40,9 @@ namespace NikosAssets.Helpers.AlarmClock
             Tick();
         }
 
+        /// <summary>
+        /// Call this to check if the set time of <see cref="timer"/> is up and emit events (<see cref="OnAlarm"/> and <see cref="OnAlarmUnityEvent"/>) if that is the case
+        /// </summary>
         public virtual void Tick()
         {
             if (CheckTime())
