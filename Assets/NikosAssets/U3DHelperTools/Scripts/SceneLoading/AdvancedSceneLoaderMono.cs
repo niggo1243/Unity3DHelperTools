@@ -6,10 +6,12 @@ using NikosAssets.Helpers.Extensions;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 namespace NikosAssets.Helpers.SceneLoading
 {
+    /// <summary>
+    /// A more sophisticated version of <see cref="SceneLoaderAsyncMono"/>
+    /// </summary>
     public class AdvancedSceneLoaderMono : BaseNotesMono
     {
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_EVENTS)]
@@ -20,35 +22,55 @@ namespace NikosAssets.Helpers.SceneLoading
         public Action<SceneToLoadContainer> OnSceneLoaded;
         public Action<SceneToLoadContainer> OnScenePrepared;
         
+        /// <summary>
+        /// Data class that describes how a <see cref="Scene"/> should be loaded
+        /// </summary>
         [Serializable]
         public class SceneToLoadContainer
         {
-            [FormerlySerializedAs("sceneName")]
+            /// <summary>
+            /// The <see cref="Scene"/> to load via its name
+            /// </summary>
             [Scene]
             [SerializeField]
+            [Tooltip("The Scene to load via its name")]
             protected string _sceneName;
+            /// <summary>
+            /// The <see cref="Scene"/> to load via its name
+            /// </summary>
             public string SceneName => _sceneName;
 
+            /// <summary>
+            /// If the <see cref="Scene"/> is already loaded, should we reload or skip?
+            /// </summary>
             [SerializeField]
+            [Tooltip("If the Scene is already loaded, should we reload or skip?")]
             protected bool _reloadIfActive;
+            /// <summary>
+            /// If the <see cref="Scene"/> is already loaded, should we reload or skip?
+            /// </summary>
             public bool ReloadIfActive => _reloadIfActive;
             
-            [FormerlySerializedAs("loadSceneMode")]
             [SerializeField]
             protected LoadSceneMode _loadSceneMode = LoadSceneMode.Additive;
             public LoadSceneMode LoadSceneMode => _loadSceneMode;
             
-            [FormerlySerializedAs("loadAsync")]
             [SerializeField]
             protected bool _loadAsync;
             public bool LoadAsync => _loadAsync;
             
-            [FormerlySerializedAs("activateSceneWhenLoaded")]
+            /// <summary>
+            /// Should the <see cref="Scene"/> only be preloaded?
+            /// </summary>
             [AllowNesting]
             [ShowIf(nameof(_loadAsync))]
             [SerializeField]
+            [Tooltip("Should the Scene only be preloaded?")]
             protected bool _activateSceneWhenLoaded = true;
 
+            /// <summary>
+            /// Should the <see cref="Scene"/> only be preloaded?
+            /// </summary>
             public bool ActivateSceneWhenLoaded
             {
                 get => _activateSceneWhenLoaded;
@@ -68,12 +90,19 @@ namespace NikosAssets.Helpers.SceneLoading
             public DateTime FinishedLoadingAt { get; set; } = DateTime.MinValue;
         }
 
+        /// <summary>
+        /// Setup which and how the <see cref="Scene"/>s should be loaded
+        /// </summary>
         [InfoBox("Note that if a 'loadSceneMode' is set to 'Single' and that Scene is fully loaded, \nno other Scene in this list will be loaded afterwards!", EInfoBoxType.Warning)]
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_SETTINGS)]
+        [Tooltip("Setup which and how the Scenes should be loaded")]
         public List<SceneToLoadContainer> sceneToLoadContainers = new List<SceneToLoadContainer>();
 
         protected List<SceneToLoadContainer> _asyncSceneLoaders = new List<SceneToLoadContainer>();
         
+        /// <summary>
+        /// What remaining <see cref="Scene"/>s are currently being loaded async?
+        /// </summary>
         public List<SceneToLoadContainer> GetCurrentAsyncLoadingContainers => new List<SceneToLoadContainer>(_asyncSceneLoaders);
 
         protected virtual void OnDisable()
@@ -88,6 +117,15 @@ namespace NikosAssets.Helpers.SceneLoading
             }
         }
 
+        /// <summary>
+        /// If the async loaded <see cref="Scene"/> of the <see cref="SceneToLoadContainer"/> is only preloaded (not activated), finish the loading process here 
+        /// </summary>
+        /// <param name="sceneToActivate">
+        /// The <see cref="Scene"/> load to finish
+        /// </param>
+        /// <exception cref="ApplicationException">
+        /// The <see cref="Scene"/> name was not found, either because it was never loaded or already fully finished loading
+        /// </exception>
         public virtual void ActivateAsyncSceneOnStandBy(string sceneToActivate)
         {
             SceneToLoadContainer sceneToLoadContainer = GetCurrentAsyncLoadingContainers
@@ -103,6 +141,9 @@ namespace NikosAssets.Helpers.SceneLoading
             }
         }
 
+        /// <summary>
+        /// Loads all <see cref="SceneToLoadContainer"/> and their respective <see cref="Scene"/>s found in <see cref="sceneToLoadContainers"/>
+        /// </summary>
         public virtual void LoadAll()
         {
             foreach (SceneToLoadContainer sceneToLoadContainer in sceneToLoadContainers)

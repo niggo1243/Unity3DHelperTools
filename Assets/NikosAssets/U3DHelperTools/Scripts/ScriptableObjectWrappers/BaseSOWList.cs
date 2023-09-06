@@ -2,6 +2,10 @@ using System.Collections.Generic;
 
 namespace NikosAssets.Helpers.ScriptableObjectWrappers
 {
+    /// <summary>
+    /// Wrapper class to store a List containing serializable values in a <see cref="UnityEngine.ScriptableObject"/>
+    /// </summary>
+    /// <typeparam name="ListItemType">A serializable list item value that has to be defined in the subclasses</typeparam>
     public abstract class BaseSOWList<ListItemType> : BaseSOW<List<ListItemType>>
     {
         public virtual void SetListItemAt(ListItemType listItem, int index) => GetValue()[index] = listItem;

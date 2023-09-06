@@ -56,12 +56,26 @@ namespace NikosAssets.Helpers.LookAtTarget
             _target = target;
         }
 
-        public virtual Quaternion GetDesiredRotation()
+        /// <summary>
+        /// Returns the <see cref="Quaternion"/> rotation to look at <see cref="_target"/> without applying it
+        /// </summary>
+        /// <returns><see cref="Quaternion"/></returns>
+        public virtual Quaternion GetDesiredLookAtRotation()
         {
             return NumericHelper.GetDesiredRotation(transform, _target, alignWithTargetsUp);
         }
 
-        public virtual Vector3 GetDesiredEulerAngles(Vector3 originalEulerAngles, Vector3 currentEulerAngles)
+        /// <summary>
+        /// Given the original, yet unrotated <paramref name="originalEulerAngles"/>
+        /// and the rotated (lerped or final) <paramref name="currentEulerAngles"/>,
+        /// return the eulerAngles to keep from the original (see <see cref="keepEulerX"/>, <see cref="keepEulerY"/>, <see cref="keepEulerZ"/>)
+        /// and apply from the new ones.
+        /// Finally the <see cref="eulerOffset"/> is added to the result. 
+        /// </summary>
+        /// <param name="originalEulerAngles"><see cref="Vector3"/></param>
+        /// <param name="currentEulerAngles"><see cref="Vector3"/></param>
+        /// <returns><see cref="Vector3"/></returns>
+        public virtual Vector3 GetFilteredAndAdjustedEulerAngles(Vector3 originalEulerAngles, Vector3 currentEulerAngles)
         {
             return new Vector3
                 (
@@ -72,15 +86,18 @@ namespace NikosAssets.Helpers.LookAtTarget
                 + this.eulerOffset;
         }
         
+        /// <summary>
+        /// Executes the look at behaviour
+        /// </summary>
         public virtual void Tick()
         {
             Transform tr = this.transform;
             Vector3 prevEuler = tr.eulerAngles;
 
-            tr.rotation = GetDesiredRotation();
+            tr.rotation = GetDesiredLookAtRotation();
 
             Vector3 eulerAngles = tr.eulerAngles;
-            tr.eulerAngles = GetDesiredEulerAngles(prevEuler, eulerAngles);
+            tr.eulerAngles = GetFilteredAndAdjustedEulerAngles(prevEuler, eulerAngles);
         }
         
 #if UNITY_EDITOR

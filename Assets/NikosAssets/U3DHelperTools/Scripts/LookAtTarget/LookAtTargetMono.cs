@@ -1,7 +1,7 @@
 ﻿namespace NikosAssets.Helpers.LookAtTarget
 {
     /// <summary>
-    /// Looks at the <see cref="target"/> with clamped euler values (if setup)
+    /// Looks at the target via the <see cref="Update"/> method
     /// </summary>
     public class LookAtTargetMono : BaseLookAtTargetMono
     {

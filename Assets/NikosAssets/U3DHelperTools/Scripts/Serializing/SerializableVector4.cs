@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace NikosAssets.Helpers.Serializing
 {
+    /// <summary>
+    /// A helper class to (de)serialize and save <see cref="Vector4"/> structs via json
+    /// </summary>
     [Serializable]
     public struct SerializableVector4 : IEquatable<SerializableVector4>
     {

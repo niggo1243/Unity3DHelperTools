@@ -118,12 +118,12 @@ namespace NikosAssets.Helpers
             return Quaternion.LookRotation(Vector3.Reflect(source * Vector3.forward, normal), Vector3.Reflect(source * Vector3.up, normal));
         }
         
-        public static Quaternion GetDesiredRotation(Transform transform, Transform target, bool alignWithTargetsUp)
+        public static Quaternion GetDesiredRotation(Transform from, Transform to, bool alignWithTargetsUp)
         {
-            Quaternion rot = LookAt(target.position, transform.position, Vector3.zero);
+            Quaternion rot = LookAt(to.position, from.position, Vector3.zero);
             if (alignWithTargetsUp)
             {
-                rot = Quaternion.LookRotation(rot * Vector3.forward, target.up);
+                rot = Quaternion.LookRotation(rot * Vector3.forward, to.up);
             }
 
             return rot;

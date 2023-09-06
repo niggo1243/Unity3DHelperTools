@@ -1,11 +1,13 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using NaughtyAttributes;
-using NikosAssets.Helpers.Interfaces;
 using UnityEngine;
 
 namespace NikosAssets.Helpers.Id
 {
-    public class IdListMono : BaseIdMono, IIdList
+    [CreateAssetMenu(
+        fileName = nameof(IdListSO),
+        menuName = nameof(NikosAssets) + "/" + nameof(Helpers) + "/" + nameof(Id) + "/" + nameof(IdListSO))]
+    public class IdListSO : BaseIdSO
     {
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_SETTINGS)]
         [SerializeField]

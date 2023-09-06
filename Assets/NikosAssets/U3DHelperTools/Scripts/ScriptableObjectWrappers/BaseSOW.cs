@@ -3,6 +3,10 @@ using UnityEngine;
 
 namespace NikosAssets.Helpers.ScriptableObjectWrappers
 {
+    /// <summary>
+    /// Wrapper class to store a serializable value in a <see cref="ScriptableObject"/>
+    /// </summary>
+    /// <typeparam name="T">A serializable value that has to be defined in the subclasses</typeparam>
     public abstract class BaseSOW<T> : BaseSOWWrapper
     {
         [SerializeField]
