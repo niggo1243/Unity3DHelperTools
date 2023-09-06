@@ -2,6 +2,10 @@ using UnityEngine;
 
 namespace NikosAssets.Helpers
 {
+    /// <summary>
+    /// A singleton wrapper class for <see cref="MonoBehaviour"/>s
+    /// </summary>
+    /// <typeparam name="T">The custom <see cref="MonoBehaviour"/></typeparam>
     public abstract class BaseSingletonMono<T> : BaseNotesMono
         where T : BaseSingletonMono<T>
     {

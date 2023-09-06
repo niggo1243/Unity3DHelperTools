@@ -5,7 +5,10 @@ using UnityEngine;
 
 namespace NikosAssets.Helpers.Trigger
 {
-
+    /// <summary>
+    /// Helper class that emits C# and <see cref="UnityEngine.Events.UnityEvent"/>
+    /// events when colliders with <see cref="acceptedTags"/> stay in a trigger
+    /// </summary>
     public class OnTriggerStayEventEmitter : BaseNotesMono
     {
         public event Action<Collider> OnColliderStay;

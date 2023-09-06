@@ -171,24 +171,24 @@ namespace NikosAssets.Helpers
 
         /// <summary>
         /// Try to get the closest point on a surface with the accepted <paramref name="layerMasks"/> based
-        /// on the starting <paramref name="startingAndShootRayPoint"/>, the <paramref name="shootDir"/> and the <paramref name="maxDist"/>
+        /// on the starting <paramref name="originalAndShootRayPoint"/>, the <paramref name="shootDir"/> and the <paramref name="maxDist"/>
         /// </summary>
-        /// <param name="startingAndShootRayPoint">
-        /// The floating starting point
+        /// <param name="originalAndShootRayPoint">
+        /// The original point and the point of the raycast that will search for a surface
         /// </param>
         /// <param name="shootDir">
         /// Try to hit a surface based on this dir
         /// </param>
         /// <param name="maxDist">
-        /// How far shoot we shoot?
+        /// How far should we shoot?
         /// </param>
         /// <param name="layerMasks">
         /// What colliders are accepted?
         /// </param>
         /// <returns>
-        /// If no surface found, the <paramref name="startingAndShootRayPoint"/>, otherwise a surface hit <see cref="Vector3"/> point
+        /// If no surface found, the <paramref name="originalAndShootRayPoint"/>, otherwise a surface hit <see cref="Vector3"/> point
         /// </returns>
-        public static Vector3 GetClosestPointOnSurface(Vector3 startingAndShootRayPoint, Vector3 shootDir,
+        public static Vector3 GetClosestPointOnSurface(Vector3 originalAndShootRayPoint, Vector3 shootDir,
             float maxDist = 50, params string[] layerMasks)
         {
             layerMasks = layerMasks == null || layerMasks.Length < 1
@@ -196,22 +196,42 @@ namespace NikosAssets.Helpers
                 : layerMasks;
 
             int layerMaskInt = LayerMask.GetMask(layerMasks);
-            Physics.Raycast(startingAndShootRayPoint, shootDir, out RaycastHit raycastHit, maxDist, layerMaskInt);
+            Physics.Raycast(originalAndShootRayPoint, shootDir, out RaycastHit raycastHit, maxDist, layerMaskInt);
 
             if (raycastHit.collider == null)
             {
                 Debug.LogWarning("missed surface");
-                Debug.DrawLine(startingAndShootRayPoint, startingAndShootRayPoint + shootDir * maxDist, Color.black, 3);
+                Debug.DrawLine(originalAndShootRayPoint, originalAndShootRayPoint + shootDir * maxDist, Color.black, 3);
 
-                return startingAndShootRayPoint;
+                return originalAndShootRayPoint;
             }
 
             return raycastHit.point;
         }
-        
-        #endregion
-        
-        public static Vector3 GetRandomPointOnSurface(Vector3 startingPoint, Vector3 shootRayPoint, Vector3 shootDir, 
+
+        /// <summary>
+        /// Try to get the closest point on a surface with the accepted <paramref name="layerMasks"/> based
+        /// on the starting <paramref name="shootRayPoint"/>, the <paramref name="shootDir"/> and the <paramref name="maxDist"/>
+        /// </summary>
+        /// <param name="originalPoint">
+        /// The original point
+        /// </param>
+        /// <param name="shootRayPoint">
+        /// The starting point of the raycast that will search for a surface
+        /// </param>
+        /// <param name="shootDir">
+        /// Try to hit a surface based on this dir
+        /// </param>
+        /// <param name="maxDist">
+        /// How far should we shoot?
+        /// </param>
+        /// <param name="layerMasks">
+        /// What collider layers are accepted?
+        /// </param>
+        /// <returns>
+        /// If no surface found, the <paramref name="originalPoint"/>, otherwise a surface hit <see cref="Vector3"/> point
+        /// </returns>
+        public static Vector3 GetRandomPointOnSurface(Vector3 originalPoint, Vector3 shootRayPoint, Vector3 shootDir, 
             float maxDist = 50, params string[] layerMasks)
         {
             layerMasks = layerMasks == null || layerMasks.Length < 1 
@@ -233,7 +253,7 @@ namespace NikosAssets.Helpers
                 Debug.LogWarning("missed surface");
                 Debug.DrawLine(shootRayPoint, shootRayPoint + shootDir * maxDist, Color.black, 3);
 
-                return startingPoint;
+                return originalPoint;
             }
             else
             {
@@ -242,6 +262,8 @@ namespace NikosAssets.Helpers
                 return raycastHit.point;
             }
         }
+        
+        #endregion
 
         #region Obsolete Methods
         #endregion

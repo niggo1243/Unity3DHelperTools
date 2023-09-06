@@ -21,6 +21,11 @@ namespace NikosAssets.Helpers
             MatchAllIncludingAmount = 3
         }
         
+        /// <summary>
+        /// Randomizes the item order of the given <paramref name="collection"/>
+        /// </summary>
+        /// <param name="collection">Shuffle this</param>
+        /// <typeparam name="T">The item type of the <paramref name="collection"/></typeparam>
         public static void ShuffleList<T>(List<T> collection)
         {
             for (int i = 0; i < collection.Count; i++)
@@ -265,6 +270,13 @@ namespace NikosAssets.Helpers
             return default(T);
         }
 
+        /// <summary>
+        /// Get a random winner for every <typeparamref name="ChanceType"/> list item of the given <paramref name="list"/> that has won its
+        /// <see cref="Interfaces.IChance"/>.<see cref="Interfaces.IChance.Chance"/>
+        /// </summary>
+        /// <param name="list">Contains <typeparamref name="ChanceType"/> items that must implement the <see cref="Interfaces.IChance"/> interface</param>
+        /// <typeparam name="ChanceType">Must implement the <see cref="Interfaces.IChance"/> interface</typeparam>
+        /// <returns>A random <typeparamref name="ChanceType"/> otherwise default if no winner is found</returns>
         public static ChanceType GetRandomChanceWinnerFromList<ChanceType>(List<ChanceType> list) where ChanceType : IChance
         {
             List<ChanceType> tempList = list.FindAll(item => NumericHelper.RandomChanceSuccess01(item.Chance));
@@ -273,6 +285,12 @@ namespace NikosAssets.Helpers
             return tempList[Random.Range(0, tempList.Count)];
         }
         
+        /// <summary>
+        /// Get a random list item
+        /// </summary>
+        /// <param name="list">A list with any itemtype</param>
+        /// <typeparam name="T">Some item</typeparam>
+        /// <returns>A random list item, otherwise default(<typeparamref name="T"/>)</returns>
         public static T GetRandomWinnerFromList<T>(List<T> list)
         {
             if (list.Count < 1) return default(T);

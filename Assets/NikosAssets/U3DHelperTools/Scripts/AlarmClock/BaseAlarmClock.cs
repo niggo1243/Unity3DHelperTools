@@ -1,13 +1,9 @@
 using System;
 using NaughtyAttributes;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace NikosAssets.Helpers.AlarmClock
 {
-    [Serializable]
-    public class AlarmUnityEvent : UnityEvent{}
-
     /// <summary>
     /// Base class for stopwatch like behaviour handling with C# event and UnityEvent support
     /// </summary>

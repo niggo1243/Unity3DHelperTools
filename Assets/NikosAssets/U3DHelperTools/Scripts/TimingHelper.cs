@@ -133,7 +133,7 @@ namespace NikosAssets.Helpers
             
             _milliSecondsMultiplier = _secondsMultiplier * 1000;
         }
-
+        
         public virtual void ResetTimers()
         {
             ResetRunningTime();

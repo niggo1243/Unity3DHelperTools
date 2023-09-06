@@ -180,28 +180,6 @@ namespace NikosAssets.Helpers
         }
 
         #region Obsolete Methods
-        
-        [Obsolete("This method will be replaced by 'GetCompAtAverageDist'")]
-        public static T CalcAverageComp<T>(List<T> targets, T checkAgainst) where T : Component
-        {
-            return GetCompAtAverageDist(targets, checkAgainst);
-        }
-        
-        [Obsolete("This method will be replaced by 'GetDistSquaredSum'")]
-        public static float CalcDistSquaredSum<T>(List<T> targets, T checkAgainst) where T : Component
-        {
-            return GetDistSquaredSum(targets, checkAgainst);
-        }
-
-        [Obsolete("This method will be replaced by 'GetAverageDistSquared'")]
-        public static float CalcAverageDistSquared<T>(List<T> targets, T checkAgainst) where T : Component
-        {
-            if (targets == null || targets.Count < 1)
-                return 0;
-
-            return CalcDistSquaredSum(targets, checkAgainst) / targets.Count;
-        }
-        
         #endregion
     }
 }

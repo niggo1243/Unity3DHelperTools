@@ -35,6 +35,30 @@ namespace NikosAssets.Helpers
         [AllowNesting]
         public float blendSpeed = 1;
 
+        /// <summary>
+        /// Blends the <paramref name="currentValue"/> to <paramref name="targetValue"/> if <paramref name="blendOverTime"/> is true.
+        /// </summary>
+        /// <param name="currentValue">
+        /// The starting value
+        /// </param>
+        /// <param name="targetValue">
+        /// The desired final value
+        /// </param>
+        /// <param name="lerp">
+        /// If true, use the lerp logic, otherwise move towards
+        /// </param>
+        /// <param name="blendOverTime">
+        /// If false, returns the <paramref name="targetValue"/> with no blending whatsoever
+        /// </param>
+        /// <param name="blendSpeed">
+        /// The speed to turn <paramref name="currentValue"/> into <paramref name="targetValue"/>
+        /// </param>
+        /// <param name="deltaTime">
+        /// Is multiplied with <paramref name="blendSpeed"/> during the blending
+        /// </param>
+        /// <returns>
+        /// The blended value between <paramref name="currentValue"/> and <paramref name="targetValue"/>
+        /// </returns>
         public static float Blend(float currentValue, float targetValue, 
             bool lerp, bool blendOverTime, float blendSpeed, float deltaTime = 1)
         {
@@ -47,6 +71,30 @@ namespace NikosAssets.Helpers
                 Mathf.MoveTowards(currentValue, targetValue, blendSpeed * deltaTime);
         }
         
+        /// <summary>
+        /// Blends the <paramref name="currentValue"/> to <paramref name="targetValue"/> if <paramref name="blendOverTime"/> is true.
+        /// </summary>
+        /// <param name="currentValue">
+        /// The starting value
+        /// </param>
+        /// <param name="targetValue">
+        /// The desired final value
+        /// </param>
+        /// <param name="lerp">
+        /// If true, use the lerp logic, otherwise move towards
+        /// </param>
+        /// <param name="blendOverTime">
+        /// If false, returns the <paramref name="targetValue"/> with no blending whatsoever
+        /// </param>
+        /// <param name="blendSpeed">
+        /// The speed to turn <paramref name="currentValue"/> into <paramref name="targetValue"/>
+        /// </param>
+        /// <param name="deltaTime">
+        /// Is multiplied with <paramref name="blendSpeed"/> during the blending
+        /// </param>
+        /// <returns>
+        /// The blended value between <paramref name="currentValue"/> and <paramref name="targetValue"/>
+        /// </returns>
         public static Vector2 Blend(Vector2 currentValue, Vector2 targetValue, 
             bool lerp, bool blendOverTime, float blendSpeed, float deltaTime = 1)
         {
@@ -59,6 +107,30 @@ namespace NikosAssets.Helpers
                 Vector2.MoveTowards(currentValue, targetValue, blendSpeed * deltaTime);
         }
 
+        /// <summary>
+        /// Blends the <paramref name="currentValue"/> to <paramref name="targetValue"/> if <paramref name="blendOverTime"/> is true.
+        /// </summary>
+        /// <param name="currentValue">
+        /// The starting value
+        /// </param>
+        /// <param name="targetValue">
+        /// The desired final value
+        /// </param>
+        /// <param name="lerp">
+        /// If true, use the lerp logic, otherwise move towards
+        /// </param>
+        /// <param name="blendOverTime">
+        /// If false, returns the <paramref name="targetValue"/> with no blending whatsoever
+        /// </param>
+        /// <param name="blendSpeed">
+        /// The speed to turn <paramref name="currentValue"/> into <paramref name="targetValue"/>
+        /// </param>
+        /// <param name="deltaTime">
+        /// Is multiplied with <paramref name="blendSpeed"/> during the blending
+        /// </param>
+        /// <returns>
+        /// The blended value between <paramref name="currentValue"/> and <paramref name="targetValue"/>
+        /// </returns>
         public static Vector3 Blend(Vector3 currentValue, Vector3 targetValue, 
             bool lerp, bool blendOverTime, float blendSpeed, float deltaTime = 1)
         {
@@ -71,6 +143,30 @@ namespace NikosAssets.Helpers
                 Vector3.MoveTowards(currentValue, targetValue, blendSpeed * deltaTime);
         }
         
+        /// <summary>
+        /// Blends the <paramref name="currentValue"/> to <paramref name="targetValue"/> if <paramref name="blendOverTime"/> is true.
+        /// </summary>
+        /// <param name="currentValue">
+        /// The starting value
+        /// </param>
+        /// <param name="targetValue">
+        /// The desired final value
+        /// </param>
+        /// <param name="lerp">
+        /// If true, use the lerp logic, otherwise move towards
+        /// </param>
+        /// <param name="blendOverTime">
+        /// If false, returns the <paramref name="targetValue"/> with no blending whatsoever
+        /// </param>
+        /// <param name="blendSpeed">
+        /// The speed to turn <paramref name="currentValue"/> into <paramref name="targetValue"/>
+        /// </param>
+        /// <param name="deltaTime">
+        /// Is multiplied with <paramref name="blendSpeed"/> during the blending
+        /// </param>
+        /// <returns>
+        /// The blended value between <paramref name="currentValue"/> and <paramref name="targetValue"/>
+        /// </returns>
         public static Vector4 Blend(Vector4 currentValue, Vector4 targetValue, 
             bool lerp, bool blendOverTime, float blendSpeed, float deltaTime = 1)
         {
@@ -83,21 +179,81 @@ namespace NikosAssets.Helpers
                 Vector4.MoveTowards(currentValue, targetValue, blendSpeed * deltaTime);
         }
         
+        /// <summary>
+        /// Blends the <paramref name="currentValue"/> to <paramref name="targetValue"/> if <see cref="blendOverTime"/> is true.
+        /// </summary>
+        /// <param name="currentValue">
+        /// The starting value
+        /// </param>
+        /// <param name="targetValue">
+        /// The desired final value
+        /// </param>
+        /// <param name="deltaTime">
+        /// Is multiplied with <see cref="blendSpeed"/> during the blending
+        /// </param>
+        /// <returns>
+        /// The blended value between <paramref name="currentValue"/> and <paramref name="targetValue"/>
+        /// </returns>
         public virtual float Blend(float currentValue, float targetValue, float deltaTime = 1)
         {
             return Blend(currentValue, targetValue, lerp, blendOverTime, blendSpeed, deltaTime);
         }
         
+        /// <summary>
+        /// Blends the <paramref name="currentValue"/> to <paramref name="targetValue"/> if <see cref="blendOverTime"/> is true.
+        /// </summary>
+        /// <param name="currentValue">
+        /// The starting value
+        /// </param>
+        /// <param name="targetValue">
+        /// The desired final value
+        /// </param>
+        /// <param name="deltaTime">
+        /// Is multiplied with <see cref="blendSpeed"/> during the blending
+        /// </param>
+        /// <returns>
+        /// The blended value between <paramref name="currentValue"/> and <paramref name="targetValue"/>
+        /// </returns>
         public virtual Vector2 Blend(Vector2 currentValue, Vector2 targetValue, float deltaTime = 1)
         {
             return Blend(currentValue, targetValue, lerp, blendOverTime, blendSpeed, deltaTime);
         }
         
+        /// <summary>
+        /// Blends the <paramref name="currentValue"/> to <paramref name="targetValue"/> if <see cref="blendOverTime"/> is true.
+        /// </summary>
+        /// <param name="currentValue">
+        /// The starting value
+        /// </param>
+        /// <param name="targetValue">
+        /// The desired final value
+        /// </param>
+        /// <param name="deltaTime">
+        /// Is multiplied with <see cref="blendSpeed"/> during the blending
+        /// </param>
+        /// <returns>
+        /// The blended value between <paramref name="currentValue"/> and <paramref name="targetValue"/>
+        /// </returns>
         public virtual Vector3 Blend(Vector3 currentValue, Vector3 targetValue, float deltaTime = 1)
         {
             return Blend(currentValue, targetValue, lerp, blendOverTime, blendSpeed, deltaTime);
         }
 
+        /// <summary>
+        /// Blends the <paramref name="currentValue"/> to <paramref name="targetValue"/> if <see cref="blendOverTime"/> is true.
+        /// </summary>
+        /// <param name="currentValue">
+        /// The starting value
+        /// </param>
+        /// <param name="targetValue">
+        /// The desired final value
+        /// </param>
+        /// <param name="deltaTime">
+        /// Is multiplied with <see cref="blendSpeed"/> during the blending
+        /// </param>
+        /// <returns>
+        /// The blended value between <paramref name="currentValue"/> and <paramref name="targetValue"/>
+        /// </returns>
         public virtual Vector4 Blend(Vector4 currentValue, Vector4 targetValue, float deltaTime = 1)
         {
             return Blend(currentValue, targetValue, lerp, blendOverTime, blendSpeed, deltaTime);

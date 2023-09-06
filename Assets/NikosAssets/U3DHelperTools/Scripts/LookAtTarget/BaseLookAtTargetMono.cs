@@ -62,7 +62,7 @@ namespace NikosAssets.Helpers.LookAtTarget
         /// <returns><see cref="Quaternion"/></returns>
         public virtual Quaternion GetDesiredLookAtRotation()
         {
-            return NumericHelper.GetDesiredRotation(transform, _target, alignWithTargetsUp);
+            return NumericHelper.LookAt(transform, _target, alignWithTargetsUp);
         }
 
         /// <summary>
