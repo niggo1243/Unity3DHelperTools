@@ -55,7 +55,7 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Returns the hash value for the given string <paramref name="value"/>,
+        /// Returns the hash value for the given string "<paramref name="value"/>",
         /// either an existing one or a new one using the <see cref="stringHashDictInt32"/>
         /// </summary>
         /// <param name="desiredHashKey">
@@ -111,7 +111,7 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Returns the hash value for the given string <paramref name="value"/>,
+        /// Returns the hash value for the given string "<paramref name="value"/>",
         /// either an existing one or a new one using the <see cref="stringHashDictUInt64"/>
         /// </summary>
         /// <param name="desiredHashKey">

@@ -30,13 +30,13 @@ namespace NikosAssets.Helpers
         /// The desired value we will likely snap
         /// </param>
         /// <param name="snapSize">
-        /// Snap the <paramref name="desiredValue"/> by for example ".1" or "10" or ".18"
+        /// Snap the "<paramref name="desiredValue"/>" by for example ".1" or "10" or ".18"
         /// </param>
         /// <param name="snapTolerance">
-        /// If the diff between <paramref name="currentValue"/> and <paramref name="desiredValue"/> is smaller than this,
-        /// return the <paramref name="currentValue"/>
+        /// If the diff between "<paramref name="currentValue"/>" and "<paramref name="desiredValue"/>" is smaller than this,
+        /// return the "<paramref name="currentValue"/>"
         /// </param>
-        /// <returns>The new snapped <paramref name="desiredValue"/> or the old <paramref name="currentValue"/></returns>
+        /// <returns>The new snapped "<paramref name="desiredValue"/>" or the old "<paramref name="currentValue"/>"</returns>
         public static float Snap(float currentValue, float desiredValue, float snapSize, float snapTolerance = .5f)
         {
             float valueDiff = desiredValue - currentValue;
@@ -53,10 +53,10 @@ namespace NikosAssets.Helpers
         /// The current (old) value
         /// </param>
         /// <param name="snapSize">
-        /// Snap the <paramref name="currentValue"/> by for example ".1" or "10" or ".18"
+        /// Snap the "<paramref name="currentValue"/>" by for example ".1" or "10" or ".18"
         /// </param>
-        /// <returns>The new snapped <paramref name="currentValue"/> that has at first been rounded to an int
-        /// and afterwards multiplied by <paramref name="snapSize"/></returns>
+        /// <returns>The new snapped "<paramref name="currentValue"/>" that has at first been rounded to an int
+        /// and afterwards multiplied by "<paramref name="snapSize"/>"</returns>
         public static float Snap(float currentValue, float snapSize)
         {
             return (snapSize * Mathf.RoundToInt(currentValue / snapSize));
@@ -150,7 +150,7 @@ namespace NikosAssets.Helpers
         }
         
         /// <summary>
-        /// Reflect the <paramref name="source"/> at the given <paramref name="normal"/>
+        /// Reflect the "<paramref name="source"/>" at the given "<paramref name="normal"/>"
         /// </summary>
         /// <param name="source"><see cref="Quaternion"/></param>
         /// <param name="normal"><see cref="Vector3"/></param>
@@ -161,14 +161,14 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Does the calculations to look at a given target with the <paramref name="alignWithTargetsUp"/> option
+        /// Does the calculations to look at a given target with the "<paramref name="alignWithTargetsUp"/>" option
         /// </summary>
         /// <param name="from">Starting <see cref="Transform"/></param>
         /// <param name="to">Has to look at <see cref="Transform"/></param>
         /// <param name="alignWithTargetsUp">Should the "<paramref name="from"/>" <see cref="Transform"/>
         /// align with the up normal of the "<paramref name="to"/>" <see cref="Transform"/>?</param>
         /// <returns>
-        /// The <see cref="Quaternion"/> rotation to look at the <paramref name="to"/> <see cref="Transform"/>
+        /// The <see cref="Quaternion"/> rotation to look at the "<paramref name="to"/>" <see cref="Transform"/>
         /// </returns>
         public static Quaternion LookAt(Transform from, Transform to, bool alignWithTargetsUp)
         {
@@ -188,7 +188,7 @@ namespace NikosAssets.Helpers
         /// <param name="targetPos"></param>
         /// <param name="eulerOffset"></param>
         /// <returns>
-        /// The <see cref="Quaternion"/> rotation to look at the <paramref name="targetPos"/>
+        /// The <see cref="Quaternion"/> rotation to look at the "<paramref name="targetPos"/>"
         /// </returns>
         public static Quaternion LookAt(Vector3 startingPos, Vector3 targetPos, Vector3 eulerOffset)
         {
@@ -257,7 +257,7 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Converts the given global quat to a local one relative to the given <paramref name="forTransform"/>
+        /// Converts the given global <see cref="Quaternion"/> to a local one relative to the given "<paramref name="forTransform"/>"
         /// </summary>
         /// <param name="globalRotationToConvert"></param>
         /// <param name="forTransform"></param>
@@ -276,7 +276,7 @@ namespace NikosAssets.Helpers
         /// Roly-poly like behaviour for a rigidbody 
         /// </summary>
         /// <param name="transform">
-        /// The transform associated with the <paramref name="rigidbody"/>
+        /// The transform associated with the "<paramref name="rigidbody"/>"
         /// </param>
         /// <param name="rigidbody">
         /// The <see cref="Rigidbody"/> we want to align
@@ -336,7 +336,8 @@ namespace NikosAssets.Helpers
         }
         
         /// <summary>
-        /// Is the distance between <paramref name="a"/> and <paramref name="b"/> (not squared) in the bounds of <paramref name="minMaxDistanceInclusive"/>?
+        /// Is the distance between "<paramref name="a"/>" and "<paramref name="b"/>" (not squared)
+        /// in the bounds of "<paramref name="minMaxDistanceInclusive"/>"?
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
@@ -350,7 +351,7 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Is the <paramref name="dist"/> (not squared) in the bounds of <paramref name="minMaxDistanceInclusive"/>?
+        /// Is the "<paramref name="dist"/>" (not squared) in the bounds of "<paramref name="minMaxDistanceInclusive"/>"?
         /// </summary>
         /// <param name="dist"></param>
         /// <param name="minMaxDistanceInclusive"></param>
@@ -363,7 +364,8 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Is the distance between <paramref name="a"/> and <paramref name="b"/> (squared) in the bounds of <paramref name="minMaxDistanceNotSquaredInclusive"/>?
+        /// Is the distance between "<paramref name="a"/>" and "<paramref name="b"/>" (squared)
+        /// in the bounds of "<paramref name="minMaxDistanceNotSquaredInclusive"/>"?
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
@@ -377,7 +379,7 @@ namespace NikosAssets.Helpers
         }
         
         /// <summary>
-        /// Is the <paramref name="distSquared"/> (squared) in the bounds of <paramref name="minMaxDistanceNotSquaredInclusive"/>?
+        /// Is the "<paramref name="distSquared"/>" (squared) in the bounds of "<paramref name="minMaxDistanceNotSquaredInclusive"/>"?
         /// </summary>
         /// <param name="distSquared"></param>
         /// <param name="minMaxDistanceNotSquaredInclusive"></param>
@@ -391,8 +393,8 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Checks if the (<paramref name="targetPos"/> - <paramref name="originPos"/>) Vector3 direction
-        /// is within the given <paramref name="maxAngle"/>, taking the <paramref name="originNormal"/> into account
+        /// Checks if the ("<paramref name="targetPos"/>" - "<paramref name="originPos"/>") Vector3 direction
+        /// is within the given "<paramref name="maxAngle"/>", taking the "<paramref name="originNormal"/>" into account
         /// </summary>
         /// <param name="originPos"></param>
         /// <param name="originNormal"></param>
@@ -410,7 +412,7 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Checks if the <paramref name="targetPos"/> is within the horizontal and vertical angle bounds of the origin (caster)
+        /// Checks if the "<paramref name="targetPos"/>" is within the horizontal and vertical angle bounds of the origin (caster)
         /// </summary>
         /// <param name="origin"></param>
         /// <param name="targetPos"></param>

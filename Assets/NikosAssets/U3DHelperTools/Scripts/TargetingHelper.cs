@@ -10,14 +10,14 @@ namespace NikosAssets.Helpers
     public static class TargetingHelper
     {
         /// <summary>
-        /// Sorts the passed <paramref name="targets"/> by distance checking against the <paramref name="checkAgainst"/> <see cref="Component"/>.
+        /// Sorts the passed "<paramref name="targets"/>" by distance checking against the "<paramref name="checkAgainst"/>" <see cref="Component"/>.
         /// If you dont want to sort the original list, make a copy of it.
         /// </summary>
         /// <param name="targets"></param>
         /// <param name="checkAgainst"></param>
         /// <typeparam name="T"></typeparam>
         /// <returns>
-        /// The sorted (same) list by distance to <paramref name="checkAgainst"/>.
+        /// The sorted (same) list by distance to "<paramref name="checkAgainst"/>".
         /// The same list, if only 1 element is found in the list or the list is null.
         /// </returns>
         public static List<T> GetCompsSortedByDist<T>(List<T> targets, T checkAgainst) where T : Component
@@ -32,19 +32,19 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Get the <see cref="Component"/> that is closest to the median distance to <paramref name="checkAgainst"/>.
+        /// Get the <see cref="Component"/> that is closest to the median distance to "<paramref name="checkAgainst"/>".
         /// If you dont want to sort the original list, make a copy of it.
         /// </summary>
         /// <param name="targets">
         /// The <see cref="Component"/> to pick from
         /// </param>
         /// <param name="checkAgainst">
-        /// The <see cref="Component"/> to check the <paramref name="targets"/> against
+        /// The <see cref="Component"/> to check the "<paramref name="targets"/>" against
         /// </param>
         /// <typeparam name="T"></typeparam>
         /// <returns>
         /// Null if the list is empty or null, otherwise
-        /// the <see cref="Component"/> at median distance to <paramref name="checkAgainst"/>
+        /// the <see cref="Component"/> at median distance to "<paramref name="checkAgainst"/>"
         /// </returns>
         public static T GetCompAtMedianDist<T>(List<T> targets, T checkAgainst) where T : Component
         {
@@ -56,8 +56,8 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Get the <see cref="Component"/> that is approx at the average distance to <paramref name="checkAgainst"/> relative to the other
-        /// <paramref name="targets"/>.
+        /// Get the <see cref="Component"/> that is approx at the average distance to "<paramref name="checkAgainst"/>" relative to the other
+        /// "<paramref name="targets"/>".
         /// The given list will not be sorted and remains unchanged.
         /// </summary>
         /// <param name="targets"></param>
@@ -122,7 +122,7 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Get the summed squared distance of the <paramref name="targets"/> to the <paramref name="checkAgainst"/> <see cref="Component"/>
+        /// Get the summed squared distance of the "<paramref name="targets"/>" to the "<paramref name="checkAgainst"/>" <see cref="Component"/>
         /// </summary>
         /// <param name="targets"></param>
         /// <param name="checkAgainst"></param>
@@ -141,7 +141,7 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Get the average squared distance of the <paramref name="targets"/> to the <paramref name="checkAgainst"/> <see cref="Component"/> 
+        /// Get the average squared distance of the "<paramref name="targets"/>" to the "<paramref name="checkAgainst"/>" <see cref="Component"/> 
         /// </summary>
         /// <param name="targets"></param>
         /// <param name="checkAgainst"></param>

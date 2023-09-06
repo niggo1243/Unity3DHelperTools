@@ -66,8 +66,8 @@ namespace NikosAssets.Helpers.LookAtTarget
         }
 
         /// <summary>
-        /// Given the original, yet unrotated <paramref name="originalEulerAngles"/>
-        /// and the rotated (lerped or final) <paramref name="currentEulerAngles"/>,
+        /// Given the original, yet unrotated "<paramref name="originalEulerAngles"/>"
+        /// and the rotated (lerped or final) "<paramref name="currentEulerAngles"/>",
         /// return the eulerAngles to keep from the original (see <see cref="keepEulerX"/>, <see cref="keepEulerY"/>, <see cref="keepEulerZ"/>)
         /// and apply from the new ones.
         /// Finally the <see cref="eulerOffset"/> is added to the result. 

@@ -54,7 +54,7 @@ namespace NikosAssets.Helpers
         
         /// <summary>
         /// Get a random point inside a limited sphere area based on <see cref="minAngleFromLookDir"/>, <see cref="maxAngleFromLookDir"/>,
-        /// <see cref="minMaxDistance"/> and <see cref="shiftAngleClockwise"/> for the given <paramref name="target"/>s position and orientation
+        /// <see cref="minMaxDistance"/> and <see cref="shiftAngleClockwise"/> for the given "<paramref name="target"/>s" position and orientation
         /// </summary>
         /// <param name="target"></param>
         /// <returns>A random <see cref="Vector3"/> point</returns>
@@ -65,8 +65,8 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Get a random <see cref="Vector3"/> point on a straight line based on the <paramref name="originPoint"/> and
-        /// the <paramref name="normalizedLookDirection"/> multiplied by and in bounds of <see cref="minMaxDistance"/> 
+        /// Get a random <see cref="Vector3"/> point on a straight line based on the "<paramref name="originPoint"/>" and
+        /// the "<paramref name="normalizedLookDirection"/>" multiplied by and in bounds of <see cref="minMaxDistance"/> 
         /// </summary>
         /// <param name="originPoint"></param>
         /// <param name="normalizedLookDirection"></param>
@@ -79,8 +79,8 @@ namespace NikosAssets.Helpers
         #region Public Static Methods
 
         /// <summary>
-        /// Get a random <see cref="Vector3"/> point on a straight line based on the <paramref name="originPoint"/> and
-        /// the <paramref name="normalizedLookDirection"/> multiplied by and in bounds of <paramref name="minDist"/> and <paramref name="maxDist"/>
+        /// Get a random <see cref="Vector3"/> point on a straight line based on the "<paramref name="originPoint"/>" and
+        /// the "<paramref name="normalizedLookDirection"/>" multiplied by and in bounds of "<paramref name="minDist"/>" and "<paramref name="maxDist"/>"
         /// </summary>
         /// <param name="originPoint"></param>
         /// <param name="normalizedLookDirection"></param>
@@ -170,8 +170,8 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Try to get the closest point on a surface with the accepted <paramref name="layerMasks"/> based
-        /// on the starting <paramref name="originalAndShootRayPoint"/>, the <paramref name="shootDir"/> and the <paramref name="maxDist"/>
+        /// Try to get the closest point on a surface with the accepted "<paramref name="layerMasks"/>" based
+        /// on the starting "<paramref name="originalAndShootRayPoint"/>", the "<paramref name="shootDir"/>" and the "<paramref name="maxDist"/>"
         /// </summary>
         /// <param name="originalAndShootRayPoint">
         /// The original point and the point of the raycast that will search for a surface
@@ -186,7 +186,7 @@ namespace NikosAssets.Helpers
         /// What colliders are accepted?
         /// </param>
         /// <returns>
-        /// If no surface found, the <paramref name="originalAndShootRayPoint"/>, otherwise a surface hit <see cref="Vector3"/> point
+        /// If no surface found, the "<paramref name="originalAndShootRayPoint"/>", otherwise a surface hit <see cref="Vector3"/> point
         /// </returns>
         public static Vector3 GetClosestPointOnSurface(Vector3 originalAndShootRayPoint, Vector3 shootDir,
             float maxDist = 50, params string[] layerMasks)
@@ -210,8 +210,8 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Try to get the closest point on a surface with the accepted <paramref name="layerMasks"/> based
-        /// on the starting <paramref name="shootRayPoint"/>, the <paramref name="shootDir"/> and the <paramref name="maxDist"/>
+        /// Try to get the closest point on a surface with the accepted "<paramref name="layerMasks"/>" based
+        /// on the starting "<paramref name="shootRayPoint"/>", the "<paramref name="shootDir"/>" and the "<paramref name="maxDist"/>"
         /// </summary>
         /// <param name="originalPoint">
         /// The original point
@@ -229,7 +229,7 @@ namespace NikosAssets.Helpers
         /// What collider layers are accepted?
         /// </param>
         /// <returns>
-        /// If no surface found, the <paramref name="originalPoint"/>, otherwise a surface hit <see cref="Vector3"/> point
+        /// If no surface found, the "<paramref name="originalPoint"/>", otherwise a surface hit <see cref="Vector3"/> point
         /// </returns>
         public static Vector3 GetRandomPointOnSurface(Vector3 originalPoint, Vector3 shootRayPoint, Vector3 shootDir, 
             float maxDist = 50, params string[] layerMasks)

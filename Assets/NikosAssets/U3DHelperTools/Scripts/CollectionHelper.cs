@@ -22,10 +22,10 @@ namespace NikosAssets.Helpers
         }
         
         /// <summary>
-        /// Randomizes the item order of the given <paramref name="collection"/>
+        /// Randomizes the item order of the given "<paramref name="collection"/>"
         /// </summary>
         /// <param name="collection">Shuffle this</param>
-        /// <typeparam name="T">The item type of the <paramref name="collection"/></typeparam>
+        /// <typeparam name="T">The item type of the "<paramref name="collection"/>"</typeparam>
         public static void ShuffleList<T>(List<T> collection)
         {
             for (int i = 0; i < collection.Count; i++)
@@ -38,8 +38,8 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Checks if the given <see cref="ICollection{T}"/>s match based on the desired <paramref name="matching"/> setup,
-        /// with <paramref name="colA"/> being the main collection to check (outer loop).
+        /// Checks if the given <see cref="ICollection{T}"/>s match based on the desired "<paramref name="matching"/>" setup,
+        /// with "<paramref name="colA"/>" being the main collection to check (outer loop).
         /// </summary>
         /// <param name="matching"></param>
         /// <param name="colA"></param>
@@ -167,7 +167,7 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Iterates through the <paramref name="collection"/> and calls ToString() on each item or logs "null" if item was null
+        /// Iterates through the "<paramref name="collection"/>" and calls ToString() on each item or logs "null" if item was null
         /// </summary>
         /// <param name="collection"></param>
         /// <typeparam name="T"></typeparam>
@@ -186,7 +186,7 @@ namespace NikosAssets.Helpers
         /// Checks if the given <see cref="ICollection"/> is null or empty
         /// </summary>
         /// <param name="collection"></param>
-        /// <returns>true if <paramref name="collection"/> is null or empty, otherwise false</returns>
+        /// <returns>true if "<paramref name="collection"/>" is null or empty, otherwise false</returns>
         public static bool CollectionIsNullOrEmpty(ICollection collection)
         {
             return collection == null || collection.Count <= 0;
@@ -201,7 +201,7 @@ namespace NikosAssets.Helpers
         /// Log index out of bounds error?
         /// </param>
         /// <returns>
-        /// true, if <paramref name="i"/> is in <paramref name="collection"/>
+        /// true, if "<paramref name="i"/>" is in "<paramref name="collection"/>"
         /// </returns>
         public static bool CollectionAndIndexChecker(ICollection collection, int i, bool logError = false)
         {
@@ -271,7 +271,7 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Get a random winner for every <typeparamref name="ChanceType"/> list item of the given <paramref name="list"/> that has won its
+        /// Get a random winner for every <typeparamref name="ChanceType"/> list item of the given "<paramref name="list"/>"" that has won its
         /// <see cref="Interfaces.IChance"/>.<see cref="Interfaces.IChance.Chance"/>
         /// </summary>
         /// <param name="list">Contains <typeparamref name="ChanceType"/> items that must implement the <see cref="Interfaces.IChance"/> interface</param>

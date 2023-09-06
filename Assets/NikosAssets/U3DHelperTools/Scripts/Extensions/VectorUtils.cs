@@ -168,8 +168,8 @@ namespace NikosAssets.Helpers.Extensions
         #region Multiply
 
         /// <summary>
-        /// Multiply each value of the <paramref name="b"/> <see cref="Vector2"/> with this
-        /// <paramref name="a"/> <see cref="Vector2"/> and return the result
+        /// Multiply each value of the "<paramref name="b"/>" <see cref="Vector2"/> with this
+        /// "<paramref name="a"/>" <see cref="Vector2"/> and return the result
         /// </summary>
         /// <param name="a"><see cref="Vector2"/></param>
         /// <param name="b"><see cref="Vector2"/></param>
@@ -180,8 +180,8 @@ namespace NikosAssets.Helpers.Extensions
         }
         
         /// <summary>
-        /// Multiply each value of the <paramref name="b"/> <see cref="Vector3"/> with this
-        /// <paramref name="a"/> <see cref="Vector3"/> and return the result
+        /// Multiply each value of the "<paramref name="b"/>" <see cref="Vector3"/> with this
+        /// "<paramref name="a"/>" <see cref="Vector3"/> and return the result
         /// </summary>
         /// <param name="a"><see cref="Vector3"/></param>
         /// <param name="b"><see cref="Vector3"/></param>
@@ -192,8 +192,8 @@ namespace NikosAssets.Helpers.Extensions
         }
         
         /// <summary>
-        /// Multiply each value of the <paramref name="b"/> <see cref="Vector4"/> with this
-        /// <paramref name="a"/> <see cref="Vector4"/> and return the result
+        /// Multiply each value of the "<paramref name="b"/>" <see cref="Vector4"/> with this
+        /// "<paramref name="a"/>" <see cref="Vector4"/> and return the result
         /// </summary>
         /// <param name="a"><see cref="Vector4"/></param>
         /// <param name="b"><see cref="Vector4"/></param>

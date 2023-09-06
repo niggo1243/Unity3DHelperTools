@@ -11,12 +11,12 @@ namespace NikosAssets.Helpers
     public static class ReflectionHelper
     {
         /// <summary>
-        /// Find the direct child of the desired <paramref name="ancestorToFind"/>
+        /// Find the direct child of the desired "<paramref name="ancestorToFind"/>"
         /// </summary>
         /// <param name="descendant">The (grand) child we want to move up from</param>
         /// <param name="ancestorToFind">The child of this to find</param>
         /// <returns>
-        /// null on fail, otherwise the first child <see cref="Type"/> of <paramref name="ancestorToFind"/>
+        /// null on fail, otherwise the first child <see cref="Type"/> of "<paramref name="ancestorToFind"/>"
         /// </returns>
         public static Type FindChildOfAncestor(Type descendant, Type ancestorToFind)
         {
@@ -31,7 +31,7 @@ namespace NikosAssets.Helpers
         }
         
         /// <summary>
-        /// Find a certain generic type at index <paramref name="i"/> in the <paramref name="ancestorToFind"/>
+        /// Find a certain generic type at index "<paramref name="i"/>" in the "<paramref name="ancestorToFind"/>"
         /// </summary>
         /// <param name="descendant"></param>
         /// <param name="ancestorToFind"></param>
@@ -68,7 +68,7 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Finds all from the given <paramref name="rootType"/> derived types across all assemblies in this project.
+        /// Finds all from the given "<paramref name="rootType"/>" derived types across all assemblies in this project.
         /// Note: Doesn't work with interfaces
         /// </summary>
         /// <param name="rootType"></param>
@@ -89,7 +89,7 @@ namespace NikosAssets.Helpers
         }
         
         /// <summary>
-        /// Finds all from the given <paramref name="rootType"/> derived types within the same assembly, the <paramref name="rootType"/> is in.
+        /// Finds all from the given "<paramref name="rootType"/>" derived types within the same assembly, the "<paramref name="rootType"/>" is in.
         /// Note: Doesn't work with interfaces
         /// </summary>
         /// <param name="rootType"></param>
@@ -102,7 +102,7 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Finds all from the given <paramref name="rootType"/> derived types within the given <paramref name="assembly"/>.
+        /// Finds all from the given "<paramref name="rootType"/>" derived types within the given "<paramref name="assembly"/>".
         /// Note: Doesn't work with interfaces
         /// </summary>
         /// <param name="rootType"></param>
@@ -121,7 +121,8 @@ namespace NikosAssets.Helpers
         } 
         
         /// <summary>
-        /// Finds all direct (first generation) child <see cref="Type"/>s of the given <paramref name="parentType"/> across all assemblies of this project.
+        /// Finds all direct (first generation) child <see cref="Type"/>s of the given
+        /// "<paramref name="parentType"/>" across all assemblies of this project.
         /// Note: Doesn't work with interfaces
         /// </summary>
         /// <param name="parentType"></param>
@@ -142,7 +143,7 @@ namespace NikosAssets.Helpers
         }
         
         /// <summary>
-        /// Finds all direct (first generation) child <see cref="Type"/>s of the given <paramref name="parentType"/> within its assembly.
+        /// Finds all direct (first generation) child <see cref="Type"/>s of the given "<paramref name="parentType"/>" within its assembly.
         /// Note: Doesn't work with interfaces
         /// </summary>
         /// <param name="parentType"></param>
@@ -155,7 +156,8 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Finds all direct (first generation) child <see cref="Type"/>s of the given <paramref name="parentType"/> within the given <paramref name="assembly"/>
+        /// Finds all direct (first generation) child <see cref="Type"/>s of the given "<paramref name="parentType"/>"
+        /// within the given "<paramref name="assembly"/>"
         /// Note: Doesn't work with interfaces
         /// </summary>
         /// <param name="parentType"></param>
@@ -173,7 +175,7 @@ namespace NikosAssets.Helpers
         }
         
         /// <summary>
-        /// Find "child" interfaces of the given <paramref name="parentInterface"/> that contain a limited amount of other interfaces
+        /// Find "child" interfaces of the given "<paramref name="parentInterface"/>" that contain a limited amount of other interfaces
         /// across all assemblies for this project
         /// </summary>
         /// <param name="parentInterface">
@@ -200,8 +202,8 @@ namespace NikosAssets.Helpers
         }
         
         /// <summary>
-        /// Find "child" interfaces of the given <paramref name="parentInterface"/> that contain a limited amount of other interfaces
-        /// within the <paramref name="parentInterface"/>'s assembly
+        /// Find "child" interfaces of the given "<paramref name="parentInterface"/>" that contain a limited amount of other interfaces
+        /// within the "<paramref name="parentInterface"/>'s" assembly
         /// </summary>
         /// <param name="parentInterface">
         /// The "parent" interface to start the search from
@@ -219,8 +221,8 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Find "child" interfaces of the given <paramref name="parentInterface"/> that contain a limited amount of other interfaces
-        /// within the given <paramref name="assembly"/>
+        /// Find "child" interfaces of the given "<paramref name="parentInterface"/>" that contain a limited amount of other interfaces
+        /// within the given "<paramref name="assembly"/>"
         /// </summary>
         /// <param name="parentInterface">
         /// The "parent" interface to start the search from

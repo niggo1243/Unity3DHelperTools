@@ -151,7 +151,7 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Checks if the in-game time is reached using the <paramref name="checkAgainst"/> time
+        /// Checks if the in-game time is reached using the "<paramref name="checkAgainst"/>" time
         /// </summary>
         /// <param name="checkAgainst"></param>
         /// <returns>
@@ -182,7 +182,7 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Checks if the <see cref="DateTime"/> is reached using the <paramref name="checkAgainst"/> time
+        /// Checks if the <see cref="DateTime"/> is reached using the "<paramref name="checkAgainst"/>" time
         /// </summary>
         /// <param name="checkAgainst"></param>
         /// <returns>

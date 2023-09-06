@@ -61,8 +61,8 @@ namespace NikosAssets.Helpers.Framework
         }
         
         /// <summary>
-        /// Lerp the color of the <see cref="rendererToChangeColor"/> from its current color to the <paramref name="targetColor"/>
-        /// and afterwards back to <paramref name="returnColor"/> in an infinite loop, given the <paramref name="saveToLerpCondition"/> is valid
+        /// Lerp the color of the <see cref="rendererToChangeColor"/> from its current color to the "<paramref name="targetColor"/>"
+        /// and afterwards back to "<paramref name="returnColor"/>" in an infinite loop, given the "<paramref name="saveToLerpCondition"/>" is valid
         /// </summary>
         /// <param name="targetColor">
         /// The initial <see cref="Color"/> to lerp towards
@@ -88,8 +88,8 @@ namespace NikosAssets.Helpers.Framework
         }
 
         /// <summary>
-        /// Lerp the color of the <see cref="rendererToChangeColor"/> from its current color to the <paramref name="targetColor"/>
-        /// ,given the <paramref name="saveToLerpCondition"/> is valid
+        /// Lerp the color of the <see cref="rendererToChangeColor"/> from its current color to the "<paramref name="targetColor"/>"
+        /// ,given the "<paramref name="saveToLerpCondition"/>" is valid
         /// </summary>
         /// <param name="targetColor">
         /// The <see cref="Color"/> to lerp towards
@@ -105,8 +105,8 @@ namespace NikosAssets.Helpers.Framework
 
         /// <summary>
         /// Start the Coroutine <see cref="_lerpColorPingPongCor"/> by calling <see cref="LerpColorsPingPong"/>,
-        /// which lerps the color of the <see cref="rendererToChangeColor"/> from its current color to the <paramref name="targetColor"/>
-        /// and afterwards back to <paramref name="returnColor"/> in an infinite loop, given the <paramref name="saveToLerpCondition"/> is valid
+        /// which lerps the color of the <see cref="rendererToChangeColor"/> from its current color to the "<paramref name="targetColor"/>"
+        /// and afterwards back to "<paramref name="returnColor"/>" in an infinite loop, given the "<paramref name="saveToLerpCondition"/>" is valid
         /// </summary>
         /// <param name="targetColor">
         /// The initial <see cref="Color"/> to lerp towards
@@ -128,8 +128,8 @@ namespace NikosAssets.Helpers.Framework
 
         /// <summary>
         /// Start the Coroutine <see cref="_lerpColorPingPongCor"/> by calling <see cref="LerpColorsPingPong"/> (with <see cref="pingPongColorChangeTime"/>),
-        /// which lerps the color of the <see cref="rendererToChangeColor"/> from its current color to the <paramref name="targetColor"/>
-        /// and afterwards back to <paramref name="returnColor"/> in an infinite loop, given the <paramref name="saveToLerpCondition"/> is valid
+        /// which lerps the color of the <see cref="rendererToChangeColor"/> from its current color to the "<paramref name="targetColor"/>"
+        /// and afterwards back to "<paramref name="returnColor"/>" in an infinite loop, given the "<paramref name="saveToLerpCondition"/>" is valid
         /// </summary>
         /// <param name="targetColor">
         /// The initial <see cref="Color"/> to lerp towards
@@ -154,10 +154,10 @@ namespace NikosAssets.Helpers.Framework
         }
         
         /// <summary>
-        /// Lerps the color of <see cref="rendererToChangeColor"/> towards <paramref name="targetColor"/> with the given <paramref name="timeInSec"/>
+        /// Lerps the color of <see cref="rendererToChangeColor"/> towards "<paramref name="targetColor"/>" with the given "<paramref name="timeInSec"/>"
         /// </summary>
         /// <param name="targetColor"><see cref="Color"/></param>
-        /// <param name="timeInSec">The time it takes in sec to lerp towards <paramref name="targetColor"/></param>
+        /// <param name="timeInSec">The time it takes in sec to lerp towards "<paramref name="targetColor"/>""</param>
         public abstract void LerpColor(Color targetColor, float timeInSec);
     }
 }
