@@ -78,7 +78,7 @@ namespace NikosAssets.Helpers.SceneLoading
                 {
                     _activateSceneWhenLoaded = value;
                     if (LoadSceneAsyncOperation != null)
-                        LoadSceneAsyncOperation.allowSceneActivation = _activateSceneWhenLoaded;
+                        LoadSceneAsyncOperation.allowSceneActivation = value;
                 }
             }
 
@@ -98,7 +98,7 @@ namespace NikosAssets.Helpers.SceneLoading
         [Tooltip("Setup which and how the Scenes should be loaded")]
         public List<SceneToLoadContainer> sceneToLoadContainers = new List<SceneToLoadContainer>();
 
-        protected List<SceneToLoadContainer> _asyncSceneLoaders = new List<SceneToLoadContainer>();
+        protected List<SceneToLoadContainer> _asyncSceneLoaders = new  List<SceneToLoadContainer> ();
         
         /// <summary>
         /// What remaining <see cref="Scene"/>s are currently being loaded async?
@@ -132,13 +132,18 @@ namespace NikosAssets.Helpers.SceneLoading
                 .Find(s => s.SceneName.Equals(sceneToActivate));
 
             if (sceneToLoadContainer != null)
-                sceneToLoadContainer.ActivateSceneWhenLoaded = true;
+                ActivateAsyncSceneOnStandBy(sceneToLoadContainer);
             else
             {
                 throw new ApplicationException(
                     $"Scene '{sceneToActivate} could not be activated because it was not found in the " +
                     $"{nameof(AdvancedSceneLoaderMono)} async scenes to load list!");
             }
+        }
+        
+        public virtual void ActivateAsyncSceneOnStandBy(SceneToLoadContainer sceneToLoadContainer)
+        {
+            sceneToLoadContainer.ActivateSceneWhenLoaded = true;
         }
 
         /// <summary>
@@ -161,6 +166,29 @@ namespace NikosAssets.Helpers.SceneLoading
             }
         }
 
+        public virtual SceneToLoadContainer GetSceneToLoadContainerBySceneName(string sceneName)
+        {
+            return sceneToLoadContainers.Find(container => sceneName.Equals(container.SceneName));
+        }
+
+        public virtual void Load(string sceneToLoad)
+        {
+            Load(GetSceneToLoadContainerBySceneName(sceneToLoad));
+        }
+        
+        public virtual void Load(SceneToLoadContainer sceneToLoadContainer)
+        {
+            if (sceneToLoadContainer.LoadAsync)
+                LoadAsync(sceneToLoadContainer);
+            else
+                LoadSync(sceneToLoadContainer);
+        }
+        
+        public virtual void LoadSync(string sceneToLoad)
+        {
+            LoadSync(GetSceneToLoadContainerBySceneName(sceneToLoad));
+        }
+
         public virtual void LoadSync(SceneToLoadContainer sceneToLoadContainer)
         {
             //setting the start load date
@@ -171,10 +199,14 @@ namespace NikosAssets.Helpers.SceneLoading
             SceneToLoadContainerIsLoaded(sceneToLoadContainer);
         }
         
+        public virtual void LoadAsync(string sceneToLoad)
+        {
+            LoadAsync(GetSceneToLoadContainerBySceneName(sceneToLoad));
+        }
+        
         public virtual void LoadAsync(SceneToLoadContainer sceneToLoadContainer)
         {
             sceneToLoadContainer.LoadSceneAsyncCor = StartCoroutine(IELoadAsync(sceneToLoadContainer));
-            _asyncSceneLoaders.Add(sceneToLoadContainer);
         }
 
         protected virtual void SceneToLoadContainerIsPrepared(SceneToLoadContainer sceneToLoadContainer)
@@ -197,20 +229,19 @@ namespace NikosAssets.Helpers.SceneLoading
             
             AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneToLoadContainer.SceneName, 
                 sceneToLoadContainer.LoadSceneMode);
-            asyncOperation.allowSceneActivation = sceneToLoadContainer.ActivateSceneWhenLoaded;
-
             sceneToLoadContainer.LoadSceneAsyncOperation = asyncOperation;
-
-            if (!asyncOperation.allowSceneActivation)
-            {
-                while (asyncOperation.progress < .9f)
-                {
-                    yield return new WaitForEndOfFrame();
-                }
-                
-                SceneToLoadContainerIsPrepared(sceneToLoadContainer);
-            }
+            asyncOperation.allowSceneActivation = sceneToLoadContainer.ActivateSceneWhenLoaded;
             
+            _asyncSceneLoaders.Add(sceneToLoadContainer);
+
+            while (asyncOperation.progress < .9f)
+            {
+                yield return new WaitForEndOfFrame();
+            }
+
+            if (!sceneToLoadContainer.ActivateSceneWhenLoaded)
+                SceneToLoadContainerIsPrepared(sceneToLoadContainer);
+
             yield return asyncOperation;
 
             //remove the scene from async loaders
