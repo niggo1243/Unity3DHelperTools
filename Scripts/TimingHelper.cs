@@ -133,9 +133,25 @@ namespace NikosAssets.Helpers
             
             _milliSecondsMultiplier = _secondsMultiplier * 1000;
         }
+        
+        public virtual void ResetTimers()
+        {
+            ResetRunningTime();
+            ResetDateTime();
+        }
+
+        public virtual void ResetRunningTime()
+        {
+            CheckAgainstRunningTime = Time.time;
+        }
+
+        public virtual void ResetDateTime()
+        {
+            CheckAgainstDateTime = DateTime.Now;
+        }
 
         /// <summary>
-        /// Checks if the in-game time is reached using the <paramref name="checkAgainst"/> time
+        /// Checks if the in-game time is reached using the "<paramref name="checkAgainst"/>" time
         /// </summary>
         /// <param name="checkAgainst"></param>
         /// <returns>
@@ -166,7 +182,7 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Checks if the <see cref="DateTime"/> is reached using the <paramref name="checkAgainst"/> time
+        /// Checks if the <see cref="DateTime"/> is reached using the "<paramref name="checkAgainst"/>" time
         /// </summary>
         /// <param name="checkAgainst"></param>
         /// <returns>

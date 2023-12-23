@@ -2,11 +2,12 @@
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace NikosAssets.Helpers.Extensions
 {
     /// <summary>
-    /// A custom string extension helper class
+    /// A string extension helper class
     /// </summary>
     public static class StringUtils
     {
@@ -41,13 +42,13 @@ namespace NikosAssets.Helpers.Extensions
         }
 
         /// <summary>
-        /// Crop this string and append with <paramref name="appendSymbolsOnLengthExceeded"/> if the <paramref name="maxLength"/> is exceeded
+        /// Crop this string and append with "<paramref name="appendSymbolsOnLengthExceeded"/>" if the "<paramref name="maxLength"/>" is exceeded
         /// </summary>
         /// <param name="text"></param>
         /// <param name="maxLength"></param>
         /// <param name="appendSymbolsOnLengthExceeded"></param>
         /// <returns>
-        /// The cropped and appended string, if the <paramref name="maxLength"/> was exceeded. Otherwise the same as before (input = output)
+        /// The cropped and appended string, if the "<paramref name="maxLength"/>"" was exceeded. Otherwise the same as before (input = output)
         /// </returns>
         public static string CropString(this string text, int maxLength = 40, string appendSymbolsOnLengthExceeded = "...")
         {

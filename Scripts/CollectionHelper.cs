@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using NikosAssets.Helpers.Interfaces;
 using UnityEngine;
 
 namespace NikosAssets.Helpers
@@ -19,10 +20,26 @@ namespace NikosAssets.Helpers
             MatchAll = 2,
             MatchAllIncludingAmount = 3
         }
+        
+        /// <summary>
+        /// Randomizes the item order of the given "<paramref name="collection"/>"
+        /// </summary>
+        /// <param name="collection">Shuffle this</param>
+        /// <typeparam name="T">The item type of the "<paramref name="collection"/>"</typeparam>
+        public static void ShuffleList<T>(List<T> collection)
+        {
+            for (int i = 0; i < collection.Count; i++)
+            {
+                T temp = collection[i];
+                int randomIndex = UnityEngine.Random.Range(i, collection.Count);
+                collection[i] = collection[randomIndex];
+                collection[randomIndex] = temp;
+            }
+        }
 
         /// <summary>
-        /// Checks if the given <see cref="ICollection{T}"/>s match based on the desired <paramref name="matching"/> setup,
-        /// with <paramref name="colA"/> being the main collection to check (outer loop).
+        /// Checks if the given <see cref="ICollection{T}"/>s match based on the desired "<paramref name="matching"/>" setup,
+        /// with "<paramref name="colA"/>" being the main collection to check (outer loop).
         /// </summary>
         /// <param name="matching"></param>
         /// <param name="colA"></param>
@@ -150,7 +167,7 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Iterates through the <paramref name="collection"/> and calls ToString() on each item or logs "null" if item was null
+        /// Iterates through the "<paramref name="collection"/>" and calls ToString() on each item or logs "null" if item was null
         /// </summary>
         /// <param name="collection"></param>
         /// <typeparam name="T"></typeparam>
@@ -169,7 +186,7 @@ namespace NikosAssets.Helpers
         /// Checks if the given <see cref="ICollection"/> is null or empty
         /// </summary>
         /// <param name="collection"></param>
-        /// <returns>true if <paramref name="collection"/> is null or empty, otherwise false</returns>
+        /// <returns>true if "<paramref name="collection"/>" is null or empty, otherwise false</returns>
         public static bool CollectionIsNullOrEmpty(ICollection collection)
         {
             return collection == null || collection.Count <= 0;
@@ -184,7 +201,7 @@ namespace NikosAssets.Helpers
         /// Log index out of bounds error?
         /// </param>
         /// <returns>
-        /// true, if <paramref name="i"/> is in <paramref name="collection"/>
+        /// true, if "<paramref name="i"/>" is in "<paramref name="collection"/>"
         /// </returns>
         public static bool CollectionAndIndexChecker(ICollection collection, int i, bool logError = false)
         {
@@ -251,6 +268,33 @@ namespace NikosAssets.Helpers
             }
 
             return default(T);
+        }
+
+        /// <summary>
+        /// Get a random winner for every <typeparamref name="ChanceType"/> list item of the given "<paramref name="list"/>"" that has won its
+        /// <see cref="Interfaces.IChance"/>.<see cref="Interfaces.IChance.Chance"/>
+        /// </summary>
+        /// <param name="list">Contains <typeparamref name="ChanceType"/> items that must implement the <see cref="Interfaces.IChance"/> interface</param>
+        /// <typeparam name="ChanceType">Must implement the <see cref="Interfaces.IChance"/> interface</typeparam>
+        /// <returns>A random <typeparamref name="ChanceType"/> otherwise default if no winner is found</returns>
+        public static ChanceType GetRandomChanceWinnerFromList<ChanceType>(List<ChanceType> list) where ChanceType : IChance
+        {
+            List<ChanceType> tempList = list.FindAll(item => NumericHelper.RandomChanceSuccess01(item.Chance));
+            if (tempList.Count < 1) return default(ChanceType);
+
+            return tempList[Random.Range(0, tempList.Count)];
+        }
+        
+        /// <summary>
+        /// Get a random list item
+        /// </summary>
+        /// <param name="list">A list with any itemtype</param>
+        /// <typeparam name="T">Some item</typeparam>
+        /// <returns>A random list item, otherwise default(<typeparamref name="T"/>)</returns>
+        public static T GetRandomWinnerFromList<T>(List<T> list)
+        {
+            if (list.Count < 1) return default(T);
+            return list[Random.Range(0, list.Count)];
         }
     }
 }

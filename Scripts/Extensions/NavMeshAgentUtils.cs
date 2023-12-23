@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿#if !UNITY_2022_2_OR_NEWER
+
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace NikosAssets.Helpers.Extensions
@@ -47,3 +49,5 @@ namespace NikosAssets.Helpers.Extensions
         }
     }
 }
+
+#endif

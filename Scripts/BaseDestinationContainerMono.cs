@@ -35,7 +35,7 @@ namespace NikosAssets.Helpers
         public List<ComponentType> Destinations => _destinations;
         
         /// <summary>
-        /// Adds the given type only if it is not null and either if no duplicate is found or if <paramref name="addDistinct"/> is false.
+        /// Adds the given type only if it is not null and either if no duplicate is found or if "<paramref name="addDistinct"/>" is false.
         /// Emits the <see cref="OnDestinationAddedUnityEvent"/> and <see cref="OnDestinationAdded"/> events on success.
         /// </summary>
         /// <param name="comp"></param>

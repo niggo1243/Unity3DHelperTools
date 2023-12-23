@@ -1,22 +1,17 @@
-﻿using System;
+using System;
 using NaughtyAttributes;
 using UnityEngine;
-using UnityEngine.Events;
 
-namespace NikosAssets.Helpers
+namespace NikosAssets.Helpers.AlarmClock
 {
-    [Serializable]
-    public class AlarmUnityEvent : UnityEvent{}
-    
     /// <summary>
-    /// A helper class that emits <see cref="OnAlarmUnityEvent"/> and <see cref="OnAlarm"/> events
-    /// using the <see cref="TimingHelper"/> if the time gets exceeded.
+    /// Base class for stopwatch like behaviour handling with C# event and UnityEvent support
     /// </summary>
-    public class AlarmClockMono : BaseNotesMono
+    public abstract class BaseAlarmClock : BaseNotesMono
     {
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_EVENTS)]
         public AlarmUnityEvent OnAlarmUnityEvent = new AlarmUnityEvent();
-        public event Action OnAlarm;
+        public virtual event Action OnAlarm;
         
         /// <summary>
         /// The <see cref="TimingHelper"/> to check when the <see cref="OnAlarmUnityEvent"/> and <see cref="OnAlarm"/> events should be emitted
@@ -33,19 +28,31 @@ namespace NikosAssets.Helpers
         protected virtual void Start()
         {
             timer.Init();
-            timer.CheckAgainstRunningTime = Time.time;
+            ResetTime();
         }
 
         protected virtual void Update()
         {
-            if (timer.CheckRunningTime())
+            Tick();
+        }
+
+        /// <summary>
+        /// Call this to check if the set time of <see cref="timer"/> is up and emit events (<see cref="OnAlarm"/> and <see cref="OnAlarmUnityEvent"/>) if that is the case
+        /// </summary>
+        public virtual void Tick()
+        {
+            if (CheckTime())
             {
                 // invoke the timing events
                 OnAlarm?.Invoke();
                 OnAlarmUnityEvent?.Invoke();
                 
-                timer.CheckAgainstRunningTime = Time.time;
+                ResetTime();
             }
         }
+        
+        public abstract bool CheckTime();
+
+        public abstract void ResetTime();
     }
 }

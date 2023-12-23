@@ -3,14 +3,19 @@ using System.Collections;
 using NaughtyAttributes;
 using NikosAssets.Helpers.Extensions;
 using UnityEngine;
+
+#if !UNITY_2022_2_OR_NEWER
 using UnityEngine.AI;
+#endif
 
 namespace NikosAssets.Helpers.Samples
 {
     public class ExtensionsSample : BaseNotesMono
     {
+#if !UNITY_2022_2_OR_NEWER
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_SETTINGS)]
         public NavMeshAgent navMeshAgent = default;
+#endif
         [BoxGroup(HelperConstants.ATTRIBUTE_FIELD_BOXGROUP_SETTINGS)]
         public Transform target = default;
 
@@ -39,7 +44,9 @@ namespace NikosAssets.Helpers.Samples
 
         private void Update()
         {
+#if !UNITY_2022_2_OR_NEWER
             navMeshAgent.SetDestination(target.position);
+#endif
         }
 
         [Button("Start Logger Coroutine", EButtonEnableMode.Playmode)]
@@ -63,6 +70,7 @@ namespace NikosAssets.Helpers.Samples
             }
         }
 
+#if !UNITY_2022_2_OR_NEWER
         [Button("Get NavmeshAgent Desired Mov Speed", EButtonEnableMode.Playmode)]
         public void LogDesiredNavmeshMovSpeed()
         {
@@ -74,6 +82,7 @@ namespace NikosAssets.Helpers.Samples
         {
             Debug.Log("NavMeshAgent, desired speed: " + navMeshAgent.GetDesiredTuringSpeed());
         }
+#endif
 
         [Button("Crop the too long string")]
         public void CropTooLongString()

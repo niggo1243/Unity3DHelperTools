@@ -1,4 +1,5 @@
 ﻿using System;
+using NikosAssets.Helpers.Extensions;
 using UnityEngine;
 
 namespace NikosAssets.Helpers
@@ -8,12 +9,57 @@ namespace NikosAssets.Helpers
     /// </summary>
     public static class NumericHelper
     {
+        /// <summary>
+        /// Helper enum for <see cref="NumericHelper.GetAmountValidation"/>
+        /// </summary>
         public enum AmountFilter
         {
             Irrelevant = 0,
             HasNone = 1,
             HasSome = 2,
             //HasNegative = 3
+        }
+        
+        /// <summary>
+        /// Useful for slider-like behaviour that snaps a float every <see cref="snapSize"/>
+        /// </summary>
+        /// <param name="currentValue">
+        /// The current (old) value
+        /// </param>
+        /// <param name="desiredValue">
+        /// The desired value we will likely snap
+        /// </param>
+        /// <param name="snapSize">
+        /// Snap the "<paramref name="desiredValue"/>" by for example ".1" or "10" or ".18"
+        /// </param>
+        /// <param name="snapTolerance">
+        /// If the diff between "<paramref name="currentValue"/>" and "<paramref name="desiredValue"/>" is smaller than this,
+        /// return the "<paramref name="currentValue"/>"
+        /// </param>
+        /// <returns>The new snapped "<paramref name="desiredValue"/>" or the old "<paramref name="currentValue"/>"</returns>
+        public static float Snap(float currentValue, float desiredValue, float snapSize, float snapTolerance = .5f)
+        {
+            float valueDiff = desiredValue - currentValue;
+            if (Mathf.Abs(valueDiff) < (snapSize * snapTolerance))
+                return currentValue;
+                    
+            return Snap(desiredValue, snapSize);
+        }
+        
+        /// <summary>
+        /// Useful for slider-like behaviour that snaps a float every <see cref="snapSize"/>
+        /// </summary>
+        /// <param name="currentValue">
+        /// The current (old) value
+        /// </param>
+        /// <param name="snapSize">
+        /// Snap the "<paramref name="currentValue"/>" by for example ".1" or "10" or ".18"
+        /// </param>
+        /// <returns>The new snapped "<paramref name="currentValue"/>" that has at first been rounded to an int
+        /// and afterwards multiplied by "<paramref name="snapSize"/>"</returns>
+        public static float Snap(float currentValue, float snapSize)
+        {
+            return (snapSize * Mathf.RoundToInt(currentValue / snapSize));
         }
 
         /// <summary>
@@ -94,13 +140,55 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
+        /// Returns a value somewhere between the x and y value of the <see cref="Vector2"/> (inclusive)
+        /// </summary>
+        /// <param name="minMax">The boundaries</param>
+        /// <returns>A value somewhere between the x and y value (inclusive)</returns>
+        public static float GetRandomFloatFromMinMaxVector(Vector2 minMax)
+        {
+            return UnityEngine.Random.Range(minMax.x, minMax.y);
+        }
+        
+        /// <summary>
+        /// Reflect the "<paramref name="source"/>" at the given "<paramref name="normal"/>"
+        /// </summary>
+        /// <param name="source"><see cref="Quaternion"/></param>
+        /// <param name="normal"><see cref="Vector3"/></param>
+        /// <returns>The reflected <see cref="Quaternion"/></returns>
+        public static Quaternion ReflectRotation(Quaternion source, Vector3 normal)
+        {
+            return Quaternion.LookRotation(Vector3.Reflect(source * Vector3.forward, normal), Vector3.Reflect(source * Vector3.up, normal));
+        }
+
+        /// <summary>
+        /// Does the calculations to look at a given target with the "<paramref name="alignWithTargetsUp"/>" option
+        /// </summary>
+        /// <param name="from">Starting <see cref="Transform"/></param>
+        /// <param name="to">Has to look at <see cref="Transform"/></param>
+        /// <param name="alignWithTargetsUp">Should the "<paramref name="from"/>" <see cref="Transform"/>
+        /// align with the up normal of the "<paramref name="to"/>" <see cref="Transform"/>?</param>
+        /// <returns>
+        /// The <see cref="Quaternion"/> rotation to look at the "<paramref name="to"/>" <see cref="Transform"/>
+        /// </returns>
+        public static Quaternion LookAt(Transform from, Transform to, bool alignWithTargetsUp)
+        {
+            Quaternion rot = LookAt(to.position, from.position, Vector3.zero);
+            if (alignWithTargetsUp)
+            {
+                rot = Quaternion.LookRotation(rot * Vector3.forward, to.up);
+            }
+
+            return rot;
+        }
+        
+        /// <summary>
         /// Does the calculations to look at a given target
         /// </summary>
         /// <param name="startingPos"></param>
         /// <param name="targetPos"></param>
         /// <param name="eulerOffset"></param>
         /// <returns>
-        /// The <see cref="Quaternion"/> rotation to look at the <paramref name="targetPos"/>
+        /// The <see cref="Quaternion"/> rotation to look at the "<paramref name="targetPos"/>"
         /// </returns>
         public static Quaternion LookAt(Vector3 startingPos, Vector3 targetPos, Vector3 eulerOffset)
         {
@@ -169,7 +257,7 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Converts the given global quat to a local one relative to the given <paramref name="forTransform"/>
+        /// Converts the given global <see cref="Quaternion"/> to a local one relative to the given "<paramref name="forTransform"/>"
         /// </summary>
         /// <param name="globalRotationToConvert"></param>
         /// <param name="forTransform"></param>
@@ -188,7 +276,7 @@ namespace NikosAssets.Helpers
         /// Roly-poly like behaviour for a rigidbody 
         /// </summary>
         /// <param name="transform">
-        /// The transform associated with the <paramref name="rigidbody"/>
+        /// The transform associated with the "<paramref name="rigidbody"/>"
         /// </param>
         /// <param name="rigidbody">
         /// The <see cref="Rigidbody"/> we want to align
@@ -248,7 +336,8 @@ namespace NikosAssets.Helpers
         }
         
         /// <summary>
-        /// Is the distance between <paramref name="a"/> and <paramref name="b"/> (not squared) in the bounds of <paramref name="minMaxDistanceInclusive"/>?
+        /// Is the distance between "<paramref name="a"/>" and "<paramref name="b"/>" (not squared)
+        /// in the bounds of "<paramref name="minMaxDistanceInclusive"/>"?
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
@@ -262,7 +351,7 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Is the <paramref name="dist"/> (not squared) in the bounds of <paramref name="minMaxDistanceInclusive"/>?
+        /// Is the "<paramref name="dist"/>" (not squared) in the bounds of "<paramref name="minMaxDistanceInclusive"/>"?
         /// </summary>
         /// <param name="dist"></param>
         /// <param name="minMaxDistanceInclusive"></param>
@@ -275,7 +364,8 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Is the distance between <paramref name="a"/> and <paramref name="b"/> (squared) in the bounds of <paramref name="minMaxDistanceNotSquaredInclusive"/>?
+        /// Is the distance between "<paramref name="a"/>" and "<paramref name="b"/>" (squared)
+        /// in the bounds of "<paramref name="minMaxDistanceNotSquaredInclusive"/>"?
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
@@ -289,7 +379,7 @@ namespace NikosAssets.Helpers
         }
         
         /// <summary>
-        /// Is the <paramref name="distSquared"/> (squared) in the bounds of <paramref name="minMaxDistanceNotSquaredInclusive"/>?
+        /// Is the "<paramref name="distSquared"/>" (squared) in the bounds of "<paramref name="minMaxDistanceNotSquaredInclusive"/>"?
         /// </summary>
         /// <param name="distSquared"></param>
         /// <param name="minMaxDistanceNotSquaredInclusive"></param>
@@ -303,8 +393,8 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Checks if the (<paramref name="targetPos"/> - <paramref name="originPos"/>) Vector3 direction
-        /// is within the given <paramref name="maxAngle"/>, taking the <paramref name="originNormal"/> into account
+        /// Checks if the ("<paramref name="targetPos"/>" - "<paramref name="originPos"/>") Vector3 direction
+        /// is within the given "<paramref name="maxAngle"/>", taking the "<paramref name="originNormal"/>" into account
         /// </summary>
         /// <param name="originPos"></param>
         /// <param name="originNormal"></param>
@@ -322,7 +412,7 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Checks if the <paramref name="targetPos"/> is within the horizontal and vertical angle bounds of the origin (caster)
+        /// Checks if the "<paramref name="targetPos"/>" is within the horizontal and vertical angle bounds of the origin (caster)
         /// </summary>
         /// <param name="origin"></param>
         /// <param name="targetPos"></param>
@@ -351,33 +441,39 @@ namespace NikosAssets.Helpers
             
             return verticalAngle < verticalMaxAngle && horizontalAngle < horizontalMaxAngle;
         }
+        
+        /// <summary>
+        /// Helper method that indicates if the <see cref="Transform"/> "<paramref name="a"/>" looks at the
+        /// <see cref="Vector3"/> position of "<paramref name="bPos"/>" with the given "<paramref name="withinViewAngle"/>" tolerance
+        /// </summary>
+        /// <param name="a"><see cref="Transform"/></param>
+        /// <param name="bPos"><see cref="Vector3"/></param>
+        /// <param name="withinViewAngle">The tolerance</param>
+        /// <returns>true if "<paramref name="a"/>" is looking at "<paramref name="bPos"/>", otherwise false</returns>
+        public static bool IsALookingAtB(Transform a, Vector3 bPos, float withinViewAngle)
+        {
+            return IsInViewArea3D(a.position, a.forward, bPos, withinViewAngle);
+        }
+        
+        /// <summary>
+        /// Helper method that indicates if the <see cref="Transform"/> "<paramref name="a"/>" looks at the
+        /// <see cref="Vector3"/> position of "<paramref name="bPos"/>" with the given "<paramref name="withinViewAngle"/>" tolerance
+        /// by also taking into account that both are set to be on the same height (simulated in this method)
+        /// </summary>
+        /// <param name="a"><see cref="Transform"/></param>
+        /// <param name="bPos"><see cref="Vector3"/></param>
+        /// <param name="withinViewAngle">The tolerance</param>
+        /// <returns>true if "<paramref name="a"/>" is looking at "<paramref name="bPos"/>" when they would be at the same height, otherwise false</returns>
+        public static bool IsALookingAtBSameHeight(Transform a, Vector3 bPos, float withinViewAngle)
+        {
+            Vector3 aPos = a.position;
+            return IsInViewArea3D(aPos, a.forward, 
+                //set position of a to be the same height as b, so that the angle is always valid when looking in the right dir
+                bPos.GetWithNewY(aPos.y), withinViewAngle);
+        }
 
-        /// <summary>
-        /// Returns a <see cref="Vector4"/> division for each value of the given vectors
-        /// </summary>
-        /// <param name="dividend"></param>
-        /// <param name="divisor"></param>
-        /// <returns>
-        /// The item by item divided <see cref="Vector4"/>
-        /// </returns>
-        public static Vector4 Divide2Vectors(Vector4 dividend, Vector4 divisor)
-        {
-            return new Vector4(dividend.x / divisor.x, dividend.y / divisor.y, dividend.z / divisor.z, dividend.w / divisor.w);
-        }
-        
-        /// <summary>
-        /// Returns a <see cref="Vector3"/> division for each value of the given vectors
-        /// </summary>
-        /// <param name="dividend"></param>
-        /// <param name="divisor"></param>
-        /// <returns>
-        /// The item by item divided <see cref="Vector3"/>
-        /// </returns>
-        public static Vector3 Divide2Vectors(Vector3 dividend, Vector3 divisor)
-        {
-            return new Vector3(dividend.x / divisor.x, dividend.y / divisor.y, dividend.z / divisor.z);
-        }
-        
+        #region Obsolete Methods
+
         /// <summary>
         /// Returns a <see cref="Vector2"/> division for each value of the given vectors
         /// </summary>
@@ -386,35 +482,40 @@ namespace NikosAssets.Helpers
         /// <returns>
         /// The item by item divided <see cref="Vector2"/>
         /// </returns>
+        [Obsolete("Method has moved to Extensions.VectorUtils.Divide(...) and will be deleted here in future updates. You can now just use Vector.Divide(otherVector)")]
         public static Vector2 Divide2Vectors(Vector2 dividend, Vector2 divisor)
         {
-            return new Vector2(dividend.x / divisor.x, dividend.y / divisor.y);
+            return dividend.Divide(divisor);
         }
-
-        #region Obsolete Methods
 
         /// <summary>
-        /// 
+        /// Returns a <see cref="Vector3"/> division for each value of the given vectors
         /// </summary>
-        /// <param name="dir"></param>
-        /// <param name="directionToCheck"></param>
+        /// <param name="dividend"></param>
+        /// <param name="divisor"></param>
         /// <returns>
-        /// Returns the dot float result, indicating if the Vector <paramref name="dir"/> is facing the <paramref name="directionToCheck"/> Vector.
-        /// <example>
-        /// dot = 1     => Is Not Facing ("100%" Opposite direction)
-        /// dot = .5f   => Is not Facing
-        /// dot == 0    => Is Perpendicular
-        /// dot = -.5f  => Is Facing
-        /// dot = -1    => Is Facing directly "100%"
-        /// </example>
+        /// The item by item divided <see cref="Vector3"/>
         /// </returns>
-        [Obsolete("This method is redundant and will be removed in the future")]
-        public static float VectorFacingDotResult(Vector3 dir, Vector3 directionToCheck)
+        [Obsolete("Method has moved to Extensions.VectorUtils.Divide(...) and will be deleted here in future updates. You can now just use Vector.Divide(otherVector)")]
+        public static Vector3 Divide2Vectors(Vector3 dividend, Vector3 divisor)
         {
-            dir = dir.normalized;
-            return Vector3.Dot(dir, directionToCheck);
+            return dividend.Divide(divisor);
         }
-
+        
+        /// <summary>
+        /// Returns a <see cref="Vector4"/> division for each value of the given vectors
+        /// </summary>
+        /// <param name="dividend"></param>
+        /// <param name="divisor"></param>
+        /// <returns>
+        /// The item by item divided <see cref="Vector4"/>
+        /// </returns>
+        [Obsolete("Method has moved to Extensions.VectorUtils.Divide(...) and will be deleted here in future updates. You can now just use Vector.Divide(otherVector)")]
+        public static Vector4 Divide2Vectors(Vector4 dividend, Vector4 divisor)
+        {
+            return dividend.Divide(divisor);
+        }
+        
         #endregion
     }
 }

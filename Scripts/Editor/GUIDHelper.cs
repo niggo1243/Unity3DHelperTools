@@ -409,6 +409,15 @@ namespace NikosAssets.Helpers.Editor
             }
         }
 
+        /// <summary>
+        /// Return found GUIDs of the given file contents (text/ string) for every found "guid:" prefix
+        /// </summary>
+        /// <param name="fileContents">
+        /// The string contents of a file
+        /// </param>
+        /// <returns>
+        /// A list of found GUID strings
+        /// </returns>
         public static List<string> GetGuidsFromFileContents(string fileContents)
         {
             List<string> guids = new List<string>();

@@ -54,7 +54,7 @@ namespace NikosAssets.Helpers
         
         /// <summary>
         /// Get a random point inside a limited sphere area based on <see cref="minAngleFromLookDir"/>, <see cref="maxAngleFromLookDir"/>,
-        /// <see cref="minMaxDistance"/> and <see cref="shiftAngleClockwise"/> for the given <paramref name="target"/>s position and orientation
+        /// <see cref="minMaxDistance"/> and <see cref="shiftAngleClockwise"/> for the given "<paramref name="target"/>s" position and orientation
         /// </summary>
         /// <param name="target"></param>
         /// <returns>A random <see cref="Vector3"/> point</returns>
@@ -65,8 +65,8 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Get a random <see cref="Vector3"/> point on a straight line based on the <paramref name="originPoint"/> and
-        /// the <paramref name="normalizedLookDirection"/> multiplied by and in bounds of <see cref="minMaxDistance"/> 
+        /// Get a random <see cref="Vector3"/> point on a straight line based on the "<paramref name="originPoint"/>" and
+        /// the "<paramref name="normalizedLookDirection"/>" multiplied by and in bounds of <see cref="minMaxDistance"/> 
         /// </summary>
         /// <param name="originPoint"></param>
         /// <param name="normalizedLookDirection"></param>
@@ -79,8 +79,8 @@ namespace NikosAssets.Helpers
         #region Public Static Methods
 
         /// <summary>
-        /// Get a random <see cref="Vector3"/> point on a straight line based on the <paramref name="originPoint"/> and
-        /// the <paramref name="normalizedLookDirection"/> multiplied by and in bounds of <paramref name="minDist"/> and <paramref name="maxDist"/>
+        /// Get a random <see cref="Vector3"/> point on a straight line based on the "<paramref name="originPoint"/>" and
+        /// the "<paramref name="normalizedLookDirection"/>" multiplied by and in bounds of "<paramref name="minDist"/>" and "<paramref name="maxDist"/>"
         /// </summary>
         /// <param name="originPoint"></param>
         /// <param name="normalizedLookDirection"></param>
@@ -170,25 +170,25 @@ namespace NikosAssets.Helpers
         }
 
         /// <summary>
-        /// Try to get the closest point on a surface with the accepted <paramref name="layerMasks"/> based
-        /// on the starting <paramref name="airPoint"/>, the <paramref name="shootDir"/> and the <paramref name="maxDist"/>
+        /// Try to get the closest point on a surface with the accepted "<paramref name="layerMasks"/>" based
+        /// on the starting "<paramref name="originalAndShootRayPoint"/>", the "<paramref name="shootDir"/>" and the "<paramref name="maxDist"/>"
         /// </summary>
-        /// <param name="airPoint">
-        /// The floating starting point
+        /// <param name="originalAndShootRayPoint">
+        /// The original point and the point of the raycast that will search for a surface
         /// </param>
         /// <param name="shootDir">
         /// Try to hit a surface based on this dir
         /// </param>
         /// <param name="maxDist">
-        /// How far shoot we shoot?
+        /// How far should we shoot?
         /// </param>
         /// <param name="layerMasks">
         /// What colliders are accepted?
         /// </param>
         /// <returns>
-        /// If no surface found, the <paramref name="airPoint"/>, otherwise a surface hit <see cref="Vector3"/> point
+        /// If no surface found, the "<paramref name="originalAndShootRayPoint"/>", otherwise a surface hit <see cref="Vector3"/> point
         /// </returns>
-        public static Vector3 GetClosestPointOnSurface(Vector3 airPoint, Vector3 shootDir,
+        public static Vector3 GetClosestPointOnSurface(Vector3 originalAndShootRayPoint, Vector3 shootDir,
             float maxDist = 50, params string[] layerMasks)
         {
             layerMasks = layerMasks == null || layerMasks.Length < 1
@@ -196,25 +196,42 @@ namespace NikosAssets.Helpers
                 : layerMasks;
 
             int layerMaskInt = LayerMask.GetMask(layerMasks);
-            Physics.Raycast(airPoint, shootDir, out RaycastHit raycastHit, maxDist, layerMaskInt);
+            Physics.Raycast(originalAndShootRayPoint, shootDir, out RaycastHit raycastHit, maxDist, layerMaskInt);
 
             if (raycastHit.collider == null)
             {
                 Debug.LogWarning("missed surface");
-                Debug.DrawLine(airPoint, airPoint + shootDir * maxDist, Color.black, 3);
+                Debug.DrawLine(originalAndShootRayPoint, originalAndShootRayPoint + shootDir * maxDist, Color.black, 3);
 
-                return airPoint;
+                return originalAndShootRayPoint;
             }
 
             return raycastHit.point;
         }
-        
-        #endregion
 
-        #region Obsolete Methods
-
-        [Obsolete("This method will be replaced by the static GetClosestPointOnSurface() method")]
-        public static Vector3 GetRandomPointOnSurface(Vector3 airPoint, Vector3 offsetAirPoint, Vector3 shootDir, 
+        /// <summary>
+        /// Try to get the closest point on a surface with the accepted "<paramref name="layerMasks"/>" based
+        /// on the starting "<paramref name="shootRayPoint"/>", the "<paramref name="shootDir"/>" and the "<paramref name="maxDist"/>"
+        /// </summary>
+        /// <param name="originalPoint">
+        /// The original point
+        /// </param>
+        /// <param name="shootRayPoint">
+        /// The starting point of the raycast that will search for a surface
+        /// </param>
+        /// <param name="shootDir">
+        /// Try to hit a surface based on this dir
+        /// </param>
+        /// <param name="maxDist">
+        /// How far should we shoot?
+        /// </param>
+        /// <param name="layerMasks">
+        /// What collider layers are accepted?
+        /// </param>
+        /// <returns>
+        /// If no surface found, the "<paramref name="originalPoint"/>", otherwise a surface hit <see cref="Vector3"/> point
+        /// </returns>
+        public static Vector3 GetRandomPointOnSurface(Vector3 originalPoint, Vector3 shootRayPoint, Vector3 shootDir, 
             float maxDist = 50, params string[] layerMasks)
         {
             layerMasks = layerMasks == null || layerMasks.Length < 1 
@@ -225,7 +242,7 @@ namespace NikosAssets.Helpers
 
             //Debug.DrawRay(offsetAirPoint, airPoint - offsetAirPoint, Color.blue, 3);
 
-            Physics.Raycast(offsetAirPoint, shootDir, out RaycastHit raycastHit, maxDist, layerMaskInt);
+            Physics.Raycast(shootRayPoint, shootDir, out RaycastHit raycastHit, maxDist, layerMaskInt);
 
             //Debug.DrawRay(offsetAirPoint, shootDir * maxDist, Color.black, 3);
             
@@ -234,9 +251,9 @@ namespace NikosAssets.Helpers
             if (raycastHit.collider == null)
             {
                 Debug.LogWarning("missed surface");
-                Debug.DrawLine(offsetAirPoint, offsetAirPoint + shootDir * maxDist, Color.black, 3);
+                Debug.DrawLine(shootRayPoint, shootRayPoint + shootDir * maxDist, Color.black, 3);
 
-                return airPoint;
+                return originalPoint;
             }
             else
             {
@@ -246,17 +263,9 @@ namespace NikosAssets.Helpers
             }
         }
         
-        [Obsolete("This method is redundant and will be removed")]
-        public static Vector3 GetClosestPointOnNavmesh(Vector3 pointSomewhere, float searchRadiusOfPoint = 5, int navMeshArea = -1)
-        {
-            if (NavMesh.SamplePosition(pointSomewhere, out NavMeshHit navMeshHit, searchRadiusOfPoint, navMeshArea))
-            {
-                return navMeshHit.position;
-            }
+        #endregion
 
-            return pointSomewhere;
-        }
-
+        #region Obsolete Methods
         #endregion
     }
 }
